@@ -14,9 +14,9 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
        
         public string ProductName { get; set; }
 
-        public int? SupplierID { get; set; }
+        public Guid? SupplierID { get; set; }
 
-        public int? CategoryID { get; set; }
+        public Guid? CategoryID { get; set; }
 
         public string QuantityPerUnit { get; set; }
 

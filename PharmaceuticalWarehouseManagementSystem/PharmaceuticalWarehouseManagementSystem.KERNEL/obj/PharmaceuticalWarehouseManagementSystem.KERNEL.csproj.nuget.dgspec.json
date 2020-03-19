@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj": {}
+    "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj": {}
   },
   "projects": {
-    "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj": {
+    "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj",
+        "projectUniqueName": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj",
         "projectName": "PharmaceuticalWarehouseManagementSystem.KERNEL",
-        "projectPath": "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj",
+        "projectPath": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj",
         "packagesPath": "C:\\Users\\LornV\\.nuget\\packages\\",
-        "outputPath": "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\obj\\",
+        "outputPath": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\LornV\\AppData\\Roaming\\NuGet\\NuGet.Config",

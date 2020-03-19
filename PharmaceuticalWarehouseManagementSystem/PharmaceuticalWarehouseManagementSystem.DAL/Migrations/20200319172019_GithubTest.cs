@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 {
-    public partial class first : Migration
+    public partial class GithubTest : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -11,8 +11,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 name: "Categories",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<Guid>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: true),
@@ -35,8 +34,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 name: "Customers",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<Guid>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: true),
@@ -66,8 +64,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 name: "Employees",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<Guid>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: true),
@@ -105,8 +102,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 name: "Shippers",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<Guid>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: true),
@@ -136,8 +132,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 name: "Suppliers",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<Guid>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: true),
@@ -170,8 +165,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 name: "Products",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<Guid>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: true),
@@ -183,8 +177,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     RemovedIP = table.Column<string>(maxLength: 15, nullable: true),
                     RemovedComputerName = table.Column<string>(maxLength: 15, nullable: true),
                     ProductName = table.Column<string>(maxLength: 20, nullable: false),
-                    SupplierID = table.Column<int>(nullable: true),
-                    CategoryID = table.Column<int>(nullable: true),
+                    SupplierID = table.Column<Guid>(nullable: true),
+                    CategoryID = table.Column<Guid>(nullable: true),
                     QuantityPerUnit = table.Column<string>(nullable: false),
                     UnitPrice = table.Column<decimal>(type: "decimal(5,3)", nullable: false),
                     UnitsInStock = table.Column<int>(nullable: false),
@@ -214,8 +208,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<Guid>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: true),
@@ -226,14 +219,14 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     ModifiedComputerName = table.Column<string>(maxLength: 255, nullable: true),
                     RemovedIP = table.Column<string>(maxLength: 15, nullable: true),
                     RemovedComputerName = table.Column<string>(maxLength: 15, nullable: true),
-                    CustomerID = table.Column<int>(nullable: true),
-                    EmployeeID = table.Column<int>(nullable: true),
+                    CustomerID = table.Column<Guid>(nullable: true),
+                    EmployeeID = table.Column<Guid>(nullable: true),
                     ShippedDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ShipCity = table.Column<string>(maxLength: 50, nullable: true),
                     ShipAddress = table.Column<string>(maxLength: 50, nullable: true),
                     Freight = table.Column<double>(nullable: true),
-                    ProductID = table.Column<int>(nullable: true)
+                    ProductID = table.Column<Guid>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -262,8 +255,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 name: "OrderDetails",
                 columns: table => new
                 {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<Guid>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     CreatedDate = table.Column<DateTime>(nullable: true),
                     ModifiedDate = table.Column<DateTime>(nullable: true),
@@ -274,9 +266,9 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     ModifiedComputerName = table.Column<string>(maxLength: 255, nullable: true),
                     RemovedIP = table.Column<string>(maxLength: 15, nullable: true),
                     RemovedComputerName = table.Column<string>(maxLength: 15, nullable: true),
-                    OrderID = table.Column<int>(nullable: false),
-                    ProductID = table.Column<int>(nullable: false),
-                    ShipperID = table.Column<int>(nullable: false),
+                    OrderID = table.Column<Guid>(nullable: false),
+                    ProductID = table.Column<Guid>(nullable: false),
+                    ShipperID = table.Column<Guid>(nullable: false),
                     UnitPrice = table.Column<decimal>(type: "decimal(5,3)", nullable: false),
                     Quantity = table.Column<int>(nullable: false),
                     Discount = table.Column<decimal>(type: "decimal(5,3)", nullable: false)

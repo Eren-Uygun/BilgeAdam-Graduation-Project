@@ -14,9 +14,9 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
         }
 
 
-        public int? CustomerID { get; set; }
+        public Guid? CustomerID { get; set; }
 
-        public int? EmployeeID { get; set; }
+        public Guid? EmployeeID { get; set; }
         public DateTime? ShippedDate { get; set; }
 
         public DateTime? OrderDate { get; set; }

@@ -10,8 +10,8 @@ using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20200319135408_first")]
-    partial class first
+    [Migration("20200319172019_GithubTest")]
+    partial class GithubTest
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,10 +23,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 
             modelBuilder.Entity("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.Category", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier")
+                        .IsUnicode(true);
 
                     b.Property<string>("CategoryDescription")
                         .HasColumnType("nvarchar(255)")
@@ -59,6 +59,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedIP")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
@@ -80,10 +81,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 
             modelBuilder.Entity("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.Customer", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier")
+                        .IsUnicode(true);
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(80)")
@@ -137,6 +138,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedIP")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
@@ -167,10 +169,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 
             modelBuilder.Entity("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.Employee", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier")
+                        .IsUnicode(true);
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(100)")
@@ -233,6 +235,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedIP")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
@@ -282,10 +285,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 
             modelBuilder.Entity("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.Order", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier")
+                        .IsUnicode(true);
 
                     b.Property<string>("CreatedComputerName")
                         .HasColumnType("nvarchar(255)")
@@ -298,14 +301,14 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
-                    b.Property<int?>("CustomerID")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("CustomerID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("EmployeeID")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("EmployeeID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<double?>("Freight")
                         .HasColumnType("float");
@@ -318,6 +321,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedIP")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
@@ -325,8 +329,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("ProductID")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("ProductID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("RemovedComputerName")
                         .HasColumnType("nvarchar(15)")
@@ -364,10 +368,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 
             modelBuilder.Entity("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.OrderDetail", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier")
+                        .IsUnicode(true);
 
                     b.Property<string>("CreatedComputerName")
                         .HasColumnType("nvarchar(255)")
@@ -394,14 +398,15 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedIP")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
-                    b.Property<int>("OrderID")
-                        .HasColumnType("int");
+                    b.Property<Guid>("OrderID")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("ProductID")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ProductID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -414,8 +419,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
-                    b.Property<int>("ShipperID")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ShipperID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -436,13 +441,13 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 
             modelBuilder.Entity("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.Product", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier")
+                        .IsUnicode(true);
 
-                    b.Property<int?>("CategoryID")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("CategoryID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedComputerName")
                         .HasColumnType("nvarchar(255)")
@@ -473,6 +478,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedIP")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
@@ -500,8 +506,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SupplierID")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("SupplierID")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal?>("UnitPrice")
                         .IsRequired()
@@ -525,10 +531,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 
             modelBuilder.Entity("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.Shipper", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier")
+                        .IsUnicode(true);
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -569,6 +575,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedIP")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
@@ -604,10 +611,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 
             modelBuilder.Entity("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.Supplier", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier")
+                        .IsUnicode(true);
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(100)")
@@ -666,6 +673,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedIP")
+                        .ValueGeneratedOnUpdate()
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 

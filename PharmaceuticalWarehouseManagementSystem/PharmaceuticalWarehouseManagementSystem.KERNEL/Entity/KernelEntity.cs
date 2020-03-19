@@ -4,19 +4,23 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Data;
 using System.Runtime.InteropServices;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 
 namespace PharmaceuticalWarehouseManagementSystem.KERNEL.Entity
 {
-    public class KernelEntity : IEntity<int>
+    public class KernelEntity : IEntity<Guid>
     {
         public KernelEntity()
         {
 
         }
-        public int ID { get; set; }
+
+        [Key]
+        public Guid ID { get; set; } = new Guid();
         public Status Status { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.Utility\\PharmaceuticalWarehouseManagementSystem.Utility.csproj": {}
+    "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.Utility\\PharmaceuticalWarehouseManagementSystem.Utility.csproj": {}
   },
   "projects": {
-    "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.Utility\\PharmaceuticalWarehouseManagementSystem.Utility.csproj": {
+    "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.Utility\\PharmaceuticalWarehouseManagementSystem.Utility.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.Utility\\PharmaceuticalWarehouseManagementSystem.Utility.csproj",
+        "projectUniqueName": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.Utility\\PharmaceuticalWarehouseManagementSystem.Utility.csproj",
         "projectName": "PharmaceuticalWarehouseManagementSystem.Utility",
-        "projectPath": "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.Utility\\PharmaceuticalWarehouseManagementSystem.Utility.csproj",
+        "projectPath": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.Utility\\PharmaceuticalWarehouseManagementSystem.Utility.csproj",
         "packagesPath": "C:\\Users\\LornV\\.nuget\\packages\\",
-        "outputPath": "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.Utility\\obj\\",
+        "outputPath": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.Utility\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\LornV\\AppData\\Roaming\\NuGet\\NuGet.Config",

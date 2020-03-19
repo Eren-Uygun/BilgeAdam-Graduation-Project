@@ -4968,11 +4968,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.MAP\\PharmaceuticalWarehouseManagementSystem.MAP.csproj",
+      "projectUniqueName": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.MAP\\PharmaceuticalWarehouseManagementSystem.MAP.csproj",
       "projectName": "PharmaceuticalWarehouseManagementSystem.MAP",
-      "projectPath": "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.MAP\\PharmaceuticalWarehouseManagementSystem.MAP.csproj",
+      "projectPath": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.MAP\\PharmaceuticalWarehouseManagementSystem.MAP.csproj",
       "packagesPath": "C:\\Users\\LornV\\.nuget\\packages\\",
-      "outputPath": "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.MAP\\obj\\",
+      "outputPath": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.MAP\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\LornV\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -4988,11 +4988,11 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.ENTITY\\PharmaceuticalWarehouseManagementSystem.ENTITY.csproj": {
-              "projectPath": "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.ENTITY\\PharmaceuticalWarehouseManagementSystem.ENTITY.csproj"
+            "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.ENTITY\\PharmaceuticalWarehouseManagementSystem.ENTITY.csproj": {
+              "projectPath": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.ENTITY\\PharmaceuticalWarehouseManagementSystem.ENTITY.csproj"
             },
-            "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj": {
-              "projectPath": "C:\\Ecza Deposu Yönetim Sistemi\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj"
+            "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj": {
+              "projectPath": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj"
             }
           }
         }

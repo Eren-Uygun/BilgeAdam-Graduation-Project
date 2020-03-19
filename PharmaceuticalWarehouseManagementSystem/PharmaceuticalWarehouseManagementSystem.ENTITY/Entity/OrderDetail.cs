@@ -10,11 +10,11 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
    public class OrderDetail:KernelEntity
     {
 
-        public int OrderID { get; set; }
+        public Guid OrderID { get; set; }
 
-        public int ProductID { get; set; }
+        public Guid ProductID { get; set; }
 
-        public int ShipperID { get; set; }
+        public Guid ShipperID { get; set; }
  
         public decimal UnitPrice { get; set; }
  

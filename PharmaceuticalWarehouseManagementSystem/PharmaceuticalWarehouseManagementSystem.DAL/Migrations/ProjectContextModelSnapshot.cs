@@ -23,8 +23,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CategoryDescription")
                         .HasColumnType("nvarchar(255)")
@@ -81,8 +80,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(80)")
@@ -169,8 +167,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(100)")
@@ -285,8 +282,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedComputerName")
                         .HasColumnType("nvarchar(255)")
@@ -368,8 +364,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedComputerName")
                         .HasColumnType("nvarchar(255)")
@@ -441,8 +436,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("CategoryID")
                         .HasColumnType("uniqueidentifier");
@@ -531,8 +525,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -611,8 +604,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(100)")

@@ -10,8 +10,8 @@ using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20200319172019_GithubTest")]
-    partial class GithubTest
+    [Migration("20200319175023_Test1")]
+    partial class Test1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,8 +25,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CategoryDescription")
                         .HasColumnType("nvarchar(255)")
@@ -83,8 +82,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(80)")
@@ -171,8 +169,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(100)")
@@ -287,8 +284,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedComputerName")
                         .HasColumnType("nvarchar(255)")
@@ -370,8 +366,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedComputerName")
                         .HasColumnType("nvarchar(255)")
@@ -443,8 +438,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("CategoryID")
                         .HasColumnType("uniqueidentifier");
@@ -533,8 +527,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
@@ -613,8 +606,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier")
-                        .IsUnicode(true);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(100)")

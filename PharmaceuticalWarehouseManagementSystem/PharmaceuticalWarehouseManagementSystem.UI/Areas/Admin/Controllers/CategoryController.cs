@@ -37,7 +37,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result == true)
                 {
                     _repository.Save();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("List");
                 }
                 else
                 {
@@ -71,7 +71,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result)
                 {
                     _repository.Save();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("List");
                 }
                 else
                 {
@@ -84,6 +84,12 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
                 return View();
             }
+        }
+
+        public IActionResult Delete(Guid id)
+        {
+            _repository.Remove(_repository.GetById(id));
+            return RedirectToAction("List");
         }
 
     }

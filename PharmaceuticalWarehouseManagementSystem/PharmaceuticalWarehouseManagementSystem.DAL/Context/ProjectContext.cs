@@ -72,13 +72,6 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
                             entity.ModifiedDate = date;
                             entity.Status = Status.Modified;
                             break;
-                        case EntityState.Deleted:
-                            entity.RemovedComputerName = computerName;
-                            entity.RemovedIP = ipAddress;
-                            entity.DeleteDate = date;
-                            entity.Status = Status.Passive;
-
-                            break;
                         default:
                             break;
                     }

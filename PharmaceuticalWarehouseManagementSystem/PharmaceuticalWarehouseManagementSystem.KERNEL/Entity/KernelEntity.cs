@@ -21,7 +21,7 @@ namespace PharmaceuticalWarehouseManagementSystem.KERNEL.Entity
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid ID { get; set; } = new Guid();
+        public Guid ID { get; set; }
         public Status Status { get; set; }
         public DateTime? CreatedDate { get; set; }
         public DateTime? ModifiedDate { get; set; }

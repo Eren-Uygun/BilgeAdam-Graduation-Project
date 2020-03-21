@@ -17,6 +17,7 @@ namespace PharmaceuticalWarehouseManagementSystem.KERNEL.Map
         public virtual void Configure(EntityTypeBuilder<T> builder)
         {
             builder.HasKey(x => x.ID);
+            builder.Property(x => x.ID).ValueGeneratedOnAdd();
             builder.Property(x => x.Status).IsRequired(true);
             builder.Property(x => x.CreatedDate).IsRequired(false);
             builder.Property(x => x.CreatedComputerName).HasMaxLength(255).IsRequired(false);

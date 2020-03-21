@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using PharmaceuticalWarehouseManagementSystem.KERNEL.Enum;
 
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
 {
@@ -30,9 +31,6 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
             modelBuilder.ApplyConfiguration(new ShipperMap());
             modelBuilder.ApplyConfiguration(new SupplierMap());
 
-
-
-
             base.OnModelCreating(modelBuilder);
         }
 
@@ -48,10 +46,11 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
 
         public override int SaveChanges()
         {
+
             var modifiedEntites = ChangeTracker.Entries().Where(x => x.State == EntityState.Modified || x.State == EntityState.Added).ToList();
 
             string computerName = Environment.MachineName;
-            string ipAddress = Ipfinder.GetIpAddress().ToString(); /*"127.0.0.1";*/
+            string ipAddress = Ipfinder.GetIpAddress(); /*"127.0.0.1";*/
             DateTime date = DateTime.Now;
 
             foreach (var item in modifiedEntites)
@@ -65,19 +64,27 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
                             entity.CreatedComputerName = computerName;
                             entity.CreatedIP = ipAddress;
                             entity.CreatedDate = date;
-                            
+                            entity.Status = Status.Active;
                             break;
                         case EntityState.Modified:
                             entity.ModifiedComputerName = computerName;
                             entity.ModifiedIP = ipAddress;
                             entity.ModifiedDate = date;
-                            
+                            entity.Status = Status.Modified;
+                            break;
+                        case EntityState.Deleted:
+                            entity.RemovedComputerName = computerName;
+                            entity.RemovedIP = ipAddress;
+                            entity.DeleteDate = date;
+                            entity.Status = Status.Passive;
+
                             break;
                         default:
                             break;
                     }
                 }
             }
+
             return base.SaveChanges();
         }
     }

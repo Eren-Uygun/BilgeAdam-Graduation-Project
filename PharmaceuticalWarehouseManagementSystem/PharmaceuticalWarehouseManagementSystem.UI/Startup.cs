@@ -29,6 +29,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            
 
             services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -69,7 +70,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
             {
                 endpoints.MapControllerRoute(
                     name: "areas",
-                    pattern: "{area:exists}/{controller=Employees}/{action=Index}/{id?}");
+                    pattern: "{area:exists}/{controller=Category}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
                     name: "default",

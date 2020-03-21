@@ -10,8 +10,8 @@ using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20200319175023_Test1")]
-    partial class Test1
+    [Migration("20200320181237_PWMS")]
+    partial class PWMS
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

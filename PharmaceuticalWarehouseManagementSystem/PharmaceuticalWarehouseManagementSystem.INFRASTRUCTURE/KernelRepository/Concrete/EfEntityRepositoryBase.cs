@@ -8,6 +8,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Transactions;
+using Microsoft.EntityFrameworkCore;
 
 namespace PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.KernelRepository.Concrete
 {
@@ -32,7 +33,7 @@ namespace PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.KernelRepositor
             try
             {
                 _context.Set<T>().Add(item);
-                return Save() > 0;
+                return Save()>0;
 
             }
             catch (Exception)

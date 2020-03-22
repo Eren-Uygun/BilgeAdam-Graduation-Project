@@ -50,6 +50,7 @@ namespace PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.KernelRepositor
                 {
                     _context.Set<T>().AddRange(items);
                     ts.Complete();
+                    
                     return Save() > 0;
                 }
             }

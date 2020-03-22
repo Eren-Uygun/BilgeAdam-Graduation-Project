@@ -64,13 +64,11 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
                             entity.CreatedComputerName = computerName;
                             entity.CreatedIP = ipAddress;
                             entity.CreatedDate = date;
-                            entity.Status = Status.Active;
                             break;
                         case EntityState.Modified:
                             entity.ModifiedComputerName = computerName;
                             entity.ModifiedIP = ipAddress;
                             entity.ModifiedDate = date;
-                            entity.Status = Status.Modified;
                             break;
                         default:
                             break;

@@ -8,32 +8,36 @@ using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract
 
 namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class CategoryController : Controller
+    public class CustomerController : Controller
     {
-        private ICategoryRepository _repository;
+        private ICustomerRepository _repository;
 
-        public CategoryController(ICategoryRepository repository)
+        public CustomerController(ICustomerRepository repository)
         {
             this._repository = repository;
         }
+
+        
         public IActionResult List()
         {
-          return View(_repository.GetActive());
+           
+            return View(_repository.GetActive());
         }
+
         [HttpGet]
-        public IActionResult Create()
+        public IActionResult Add()
         {
+
             return View();
         }
+
         [HttpPost]
-        public IActionResult Create(Category category)
+        public IActionResult Add(Customer customer)
         {
             if (ModelState.IsValid)
-            { 
-                bool result = _repository.Add(category);
-                
-                
+            {
+                bool result = _repository.Add(customer);
+
                 if (result == true)
                 {
                     _repository.Save();
@@ -42,13 +46,13 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 else
                 {
                     TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
-                    return View(category);
+                    return View(customer);
                 }
             }
             else
             {
                 TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
-                return View(category);
+                return View(customer);
             }
         }
 
@@ -58,13 +62,25 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             return View(_repository.GetById(id));
         }
 
-        [HttpPost] public IActionResult Edit(Category item)
+        [HttpPost]
+        public IActionResult Edit(Customer item)
         {
+
             if (ModelState.IsValid)
             {
-                Category updated = _repository.GetById(item.ID);
-                updated.CategoryName = item.CategoryName;
-                updated.CategoryDescription = item.CategoryDescription;
+                Customer updated = _repository.GetById(item.ID);
+                updated.CompanyName = item.CompanyName;
+                updated.ContactName = item.CompanyName;
+                updated.ContactTitle = item.ContactTitle;
+                updated.Address = item.Address;
+                updated.City = item.City;
+                updated.Country = item.Country;
+                updated.Region = item.Region;
+                updated.Phone = item.Phone;
+                updated.Fax = item.Fax;
+               
+
+                
 
                 bool result = _repository.Update(updated);
                 if (result)
@@ -86,18 +102,15 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         }
 
 
+
+
+
         public IActionResult Delete(Guid id)
         {
             _repository.Remove(_repository.GetById(id));
             return RedirectToAction("List");
         }
 
-        public IActionResult Details(Guid id)
-        {
-
-            var category = _repository.GetById(id);
-            return View(category);
-        }
 
     }
 }

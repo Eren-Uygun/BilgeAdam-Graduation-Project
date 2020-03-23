@@ -8,6 +8,7 @@ using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract
 
 namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class OrderController : Controller
     {
         private IOrderRepository _repository;

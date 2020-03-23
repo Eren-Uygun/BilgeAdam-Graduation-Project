@@ -8,6 +8,7 @@ using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract
 
 namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class EmployeeController : Controller
     {
         private IEmployeeRepository _repository;
@@ -87,6 +88,20 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 
 
 
+        }
+
+
+        public IActionResult Delete(Guid id)
+        {
+            _repository.Remove(_repository.GetById(id));
+            return RedirectToAction("List");
+        }
+
+        public IActionResult Details(Guid id)
+        {
+
+            var employee = _repository.GetById(id);
+            return View(employee);
         }
     }
 }

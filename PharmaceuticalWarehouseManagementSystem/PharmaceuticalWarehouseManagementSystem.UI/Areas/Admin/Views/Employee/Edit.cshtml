@@ -2,17 +2,17 @@
 @model PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.Employee
 
 @{
-    ViewData["Title"] = "Add";
+    ViewData["Title"] = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Add</h1>
+<h1>Edit</h1>
 
 <h4>Employee</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Add">
+        <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
@@ -96,11 +96,13 @@
             </div>
             <div class="form-group">
                 <label asp-for="Role" class="control-label"></label>
-                <select asp-for="Role" asp-items="Html.GetEnumSelectList<Role>()" class="form-control"></select>
+                <select asp-for="Role" asp-items="Html.GetEnumSelectList<Role>() " class="form-control"></select>
                 <span asp-validation-for="Role" class="text-danger"></span>
             </div>
+            <input type="hidden" asp-for="ID" />
+          
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>

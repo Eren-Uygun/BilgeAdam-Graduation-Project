@@ -9,11 +9,9 @@ namespace PharmaceuticalWarehouseManagementSystem.KERNEL.Enum
     {
         [Display(Name = "Employee")]
         Employeee = 1,
-        [Display(Name = "Supervisor")]
-        Supervisor = 2,
         [Display(Name = "Admin")]
-        Admin = 3,
+        Admin = 2,
         [Display(Name = "Other")]
-        Other = 4
+        Other = 3
     }
 }

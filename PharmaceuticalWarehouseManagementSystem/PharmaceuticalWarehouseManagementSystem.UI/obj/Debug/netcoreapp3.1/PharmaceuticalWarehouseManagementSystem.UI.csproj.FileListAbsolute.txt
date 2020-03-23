@@ -381,7 +381,10 @@ C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSy
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.UI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\List.cshtml.g.cs
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Details.cshtml.g.cs
-C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Customer\List.cshtml.g.cs
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Customer\Add.cshtml.g.cs
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Customer\Edit.cshtml.g.cs
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Employee\List.cshtml.g.cs
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Employee\Add.cshtml.g.cs
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Employee\Details.cshtml.g.cs
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Employee\Edit.cshtml.g.cs
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Customer\List.cshtml.g.cs

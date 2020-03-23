@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
@@ -9,11 +10,11 @@ using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract
 namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class ShipperController : Controller
+    public class OrderDetailController : Controller
     {
-        private IShipperRepository _repository;
+        private IOrderDetailRepository _repository;
 
-        public ShipperController(IShipperRepository repository)
+        public OrderDetailController(IOrderDetailRepository repository)
         {
             this._repository = repository;
         }
@@ -29,7 +30,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Shipper item)
+        public IActionResult Add(OrderDetail item)
         {
             _repository.Add(item);
             return RedirectToAction("List");
@@ -41,21 +42,17 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             return View(_repository.GetById(id));
         }
 
-        [HttpPost]
-        public IActionResult Edit(Shipper item)
+        public IActionResult Edit(OrderDetail item)
         {
             if (ModelState.IsValid)
             {
-                Shipper update = _repository.GetById(item.ID);
-                update.CompanyName = item.CompanyName;
-                update.ContactName = item.ContactName;
-                update.TaxIdNumber = item.TaxIdNumber;
-                update.PhoneNumber = item.PhoneNumber;
-                update.Address = item.Address;
-                update.Country = item.Country;
-                update.Region = item.Region;
-                update.City = item.City;
-                update.PostalCode = item.PostalCode;
+                OrderDetail update = _repository.GetById(item.ID);
+                update.OrderID = item.OrderID;
+                update.ProductID = item.ProductID;
+                update.ShipperID = item.ShipperID;
+                update.UnitPrice = item.UnitPrice;
+                update.Quantity = item.Quantity;
+                update.Discount = item.Discount;
 
                 bool result = _repository.Update(update);
                 if (result)
@@ -67,19 +64,11 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 {
                     return View(update);
                 }
-
-
             }
             else
             {
                 return View();
             }
-        }
-
-        public IActionResult Delete(Guid id)
-        {
-            var shipper = _repository.GetById(id);
-            return View(shipper);
         }
     }
 }

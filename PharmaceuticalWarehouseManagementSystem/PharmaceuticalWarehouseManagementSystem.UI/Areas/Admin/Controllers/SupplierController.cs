@@ -8,11 +8,11 @@ using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract
 
 namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 {
-    public class OrderController : Controller
+    public class SupplierController : Controller
     {
-        private IOrderRepository _repository;
+        private ISupplierRepository _repository;
 
-        public OrderController(IOrderRepository repository)
+        public SupplierController(ISupplierRepository repository)
         {
             this._repository = repository;
         }
@@ -28,11 +28,10 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Order item)
+        public IActionResult Add(Supplier item)
         {
             _repository.Add(item);
             return RedirectToAction("List");
-
         }
 
         [HttpGet]
@@ -42,19 +41,24 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Order item)
+        public IActionResult Edit(Supplier item)
         {
             if (ModelState.IsValid)
             {
-                Order updated = _repository.GetById(item.ID);
-                updated.CustomerID = item.CustomerID;
-                updated.EmployeeID = item.EmployeeID;
-                updated.ShippedDate = item.ShippedDate;
-                updated.OrderDate = item.OrderDate;
-                updated.ShipAddress = item.ShipAddress;
-                updated.Freight = item.Freight;
+                Supplier update = _repository.GetById(item.ID);
+                update.CompanyName = item.CompanyName;
+                update.ContactName = item.ContactName;
+                update.ContactTitle = item.ContactTitle;
+                update.PhoneNumber = item.PhoneNumber;
+                update.FaxNumber = item.FaxNumber;
+                update.Address = item.Address;
+                update.Country = item.Country;
+                update.Region = item.Region;
+                update.City = item.City;
+                update.PostalCode = item.PostalCode;
+                update.HomePage = item.HomePage;
 
-                bool result = _repository.Update(updated);
+               bool result = _repository.Update(update);
                 if (result)
                 {
                     _repository.Save();
@@ -62,21 +66,23 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 }
                 else
                 {
-                    TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
-                    return View(updated);
+                    return View(update);
                 }
             }
             else
             {
-                TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
                 return View();
             }
         }
+
+
 
         public IActionResult Delete(Guid id)
         {
             _repository.Remove(_repository.GetById(id));
             return RedirectToAction("List");
         }
+
+
     }
 }

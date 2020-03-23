@@ -63,6 +63,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 updated.Notes = item.Notes;
                 updated.Role = item.Role;
                 updated.PostalCode = item.PostalCode;
+                updated.Photo = item.Photo;
 
 
 

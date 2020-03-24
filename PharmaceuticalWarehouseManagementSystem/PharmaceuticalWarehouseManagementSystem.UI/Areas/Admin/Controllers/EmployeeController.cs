@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
 
@@ -12,10 +13,13 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
     public class EmployeeController : Controller
     {
         private IEmployeeRepository _repository;
+        private ProjectContext _context;
 
-        public EmployeeController(IEmployeeRepository repository)
+
+        public EmployeeController(IEmployeeRepository repository,ProjectContext context)
         {
             this._repository = repository;
+            this._context = context;
         }
         public IActionResult List()
         {
@@ -26,14 +30,35 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            
             return View();
         }
 
         [HttpPost]
         public IActionResult Add(Employee item)
         {
-            _repository.Add(item);
-            return RedirectToAction("List");
+            if (ModelState.IsValid)
+            {
+                bool result = _repository.Add(item);
+
+
+                if (result == true)
+                {
+                    _repository.Save();
+                    return RedirectToAction("List");
+                }
+                else
+                {
+                    TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                    return View(item);
+                }
+            }
+            else
+            {
+                TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                return View(item);
+            }
+          
         }
 
         [HttpGet]

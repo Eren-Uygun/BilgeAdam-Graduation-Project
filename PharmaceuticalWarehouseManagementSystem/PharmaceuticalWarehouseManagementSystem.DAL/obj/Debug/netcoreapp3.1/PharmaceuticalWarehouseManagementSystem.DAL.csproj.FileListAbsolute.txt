@@ -36,3 +36,5 @@ C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSy
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.DAL\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.DAL.csproj.CopyComplete
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.DAL\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.DAL.dll
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.DAL\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.DAL.pdb
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.DAL\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.DAL.csproj.CoreCompileInputs.cache
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.DAL\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.DAL.genruntimeconfig.cache

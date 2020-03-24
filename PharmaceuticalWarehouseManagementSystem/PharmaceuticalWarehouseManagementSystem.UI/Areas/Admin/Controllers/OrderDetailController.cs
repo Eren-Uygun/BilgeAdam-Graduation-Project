@@ -5,6 +5,8 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Razor.Language.Extensions;
+using Microsoft.EntityFrameworkCore.Migrations;
+using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
 
@@ -14,10 +16,12 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
     public class OrderDetailController : Controller
     {
         private IOrderDetailRepository _repository;
+        private ProjectContext _context;
 
-        public OrderDetailController(IOrderDetailRepository repository)
+        public OrderDetailController(IOrderDetailRepository repository,ProjectContext context)
         {
             this._repository = repository;
+            this._context = context;
         }
         public IActionResult List()
         {
@@ -27,14 +31,45 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Add()
         {
+            List<Order> ord = new List<Order>();
+            ord = _context.Orders.ToList();
+            ViewBag.OrderID = ord;
+
+            List<Product> pro = new List<Product>();
+            pro = _context.Products.ToList();
+            ViewBag.ProductID = pro;
+
+            List<Shipper> ship = new List<Shipper>();
+            ship = _context.Shippers.ToList();
+            ViewBag.ShipperID = ship;
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Add(OrderDetail item)
         {
-            _repository.Add(item);
-            return RedirectToAction("List");
+            if (ModelState.IsValid)
+            {
+                bool result = _repository.Add(item);
+
+
+                if (result == true)
+                {
+                    _repository.Save();
+                    return RedirectToAction("List");
+                }
+                else
+                {
+                    TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                    return View(item);
+                }
+            }
+            else
+            {
+                TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                return View(item);
+            }
         }
 
         [HttpGet]

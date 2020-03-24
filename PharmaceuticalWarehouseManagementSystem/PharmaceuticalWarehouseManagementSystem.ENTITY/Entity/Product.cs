@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Reflection.Metadata;
 using System.Text;
 
 namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
@@ -29,6 +30,8 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
         public int? ReorderLevel { get; set; }
 
         public DateTime? ExpiredDate { get; set; }
+
+        //public string Photo { get; set; }
 
         public bool Discontinued { get; set; }
 

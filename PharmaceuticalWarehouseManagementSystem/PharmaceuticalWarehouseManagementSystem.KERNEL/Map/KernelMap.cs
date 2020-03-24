@@ -29,6 +29,8 @@ namespace PharmaceuticalWarehouseManagementSystem.KERNEL.Map
             builder.Property(x => x.RemovedIP).HasMaxLength(15).IsRequired(false);
 
 
+
+
            
         }
 

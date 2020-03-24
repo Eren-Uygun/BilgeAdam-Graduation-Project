@@ -4,6 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis;
+using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
 
@@ -13,16 +16,22 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
     public class CategoryController : Controller
     {
         private ICategoryRepository _repository;
+        private ProjectContext _context;
+       
+       
 
-        public CategoryController(ICategoryRepository repository)
+        public CategoryController(ICategoryRepository repository,ProjectContext context)
         {
             this._repository = repository;
+            this._context = context;
+
         }
         public IActionResult List()
         {
-          return View(_repository.GetActive());
+
+            return View(_repository.GetActive());
         }
-        [HttpGet]
+        [HttpGet] 
         public IActionResult Create()
         {
             return View();

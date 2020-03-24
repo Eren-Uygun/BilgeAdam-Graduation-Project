@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Razor.Language.Extensions;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
 
@@ -42,8 +43,10 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             return View(_repository.GetById(id));
         }
 
+        [HttpPost]
         public IActionResult Edit(OrderDetail item)
         {
+            
             if (ModelState.IsValid)
             {
                 OrderDetail update = _repository.GetById(item.ID);
@@ -69,6 +72,12 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             {
                 return View();
             }
+        }
+
+        public IActionResult Delete(Guid id)
+        {
+            _repository.Remove(_repository.GetById(id));
+            return RedirectToAction("List");
         }
     }
 }

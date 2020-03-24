@@ -13,7 +13,7 @@
 </p>
 
 <div class="card-body table-responsive" >
-    <table class="table">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>
@@ -96,8 +96,10 @@
                         @Html.DisplayFor(modelItem => item.RemovedComputerName)
                     </td>
                     <td>
-                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.ID" class="btn btn-warning">Edit</a> |
-                        <a asp-controller="Category" asp-action="Details" asp-route-id="@item.ID" class="btn btn-info">Details</a> |
+                        <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.ID" class="btn btn-warning">Edit</a>
+                        <br />
+                        <a asp-controller="Category" asp-action="Details" asp-route-id="@item.ID" class="btn btn-info">Details</a>
+                        <br />
                         <a asp-controller="Category" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>

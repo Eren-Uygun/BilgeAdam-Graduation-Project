@@ -43,11 +43,7 @@
                 <input asp-for="UnitsInStock" class="form-control" />
                 <span asp-validation-for="UnitsInStock" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="UnitsInOrder" class="control-label"></label>
-                <input asp-for="UnitsInOrder" class="form-control" />
-                <span asp-validation-for="UnitsInOrder" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="ReorderLevel" class="control-label"></label>
                 <input asp-for="ReorderLevel" class="form-control" />
@@ -72,6 +68,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="List">Back to List</a>
 </div>
 

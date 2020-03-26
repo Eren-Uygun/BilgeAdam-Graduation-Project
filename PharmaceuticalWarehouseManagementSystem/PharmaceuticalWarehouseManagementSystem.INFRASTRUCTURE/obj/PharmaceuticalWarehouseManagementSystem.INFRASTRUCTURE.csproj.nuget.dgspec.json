@@ -51,18 +51,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.CodeAnalysis": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.CSharp": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.Common": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.2, )"
@@ -118,6 +106,9 @@
             "projectReferences": {
               "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj": {
                 "projectPath": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.KERNEL\\PharmaceuticalWarehouseManagementSystem.KERNEL.csproj"
+              },
+              "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.Utility\\PharmaceuticalWarehouseManagementSystem.Utility.csproj": {
+                "projectPath": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.Utility\\PharmaceuticalWarehouseManagementSystem.Utility.csproj"
               }
             }
           }
@@ -131,18 +122,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.CodeAnalysis": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.CSharp": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.Common": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.2, )"
@@ -217,18 +196,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.CodeAnalysis": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.CSharp": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.Common": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.2, )"
@@ -297,18 +264,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Microsoft.CodeAnalysis": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.CSharp": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.Common": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.2, )"
@@ -383,20 +338,6 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
-          "dependencies": {
-            "Microsoft.CodeAnalysis": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.CSharp": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.Common": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -454,21 +395,13 @@
               "target": "Package",
               "version": "[2.2.7, )"
             },
+            "Microsoft.AspNetCore.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.Http": {
               "target": "Package",
               "version": "[2.2.2, )"
-            },
-            "Microsoft.CodeAnalysis": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.CSharp": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.Common": {
-              "target": "Package",
-              "version": "[3.5.0, )"
             }
           },
           "imports": [

@@ -59,11 +59,7 @@
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Region" class="control-label"></label>
-                <input asp-for="Region" class="form-control" />
-                <span asp-validation-for="Region" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="Country" class="control-label"></label>
                 <input asp-for="Country" class="form-control" />
@@ -75,32 +71,18 @@
                 <span asp-validation-for="PostalCode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="HomePhoneNumber" class="control-label"></label>
-                <input asp-for="HomePhoneNumber" class="form-control" />
-                <span asp-validation-for="HomePhoneNumber" class="text-danger"></span>
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CellPhoneNumber" class="control-label"></label>
-                <input asp-for="CellPhoneNumber" class="form-control" />
-                <span asp-validation-for="CellPhoneNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Notes" class="control-label"></label>
-                <input asp-for="Notes" class="form-control" />
-                <span asp-validation-for="Notes" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Photo" class="control-label"></label>
-                <input asp-for="Photo" class="form-control" />
-                <span asp-validation-for="Photo" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="Role" class="control-label"></label>
                 <select asp-for="Role" asp-items="Html.GetEnumSelectList<Role>() " class="form-control"></select>
                 <span asp-validation-for="Role" class="text-danger"></span>
             </div>
             <input type="hidden" asp-for="ID" />
-          
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
@@ -109,6 +91,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="List">Back to List</a>
 </div>
 

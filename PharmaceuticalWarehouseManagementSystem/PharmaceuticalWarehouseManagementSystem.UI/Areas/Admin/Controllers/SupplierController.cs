@@ -54,12 +54,10 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 update.FaxNumber = item.FaxNumber;
                 update.Address = item.Address;
                 update.Country = item.Country;
-                update.Region = item.Region;
                 update.City = item.City;
                 update.PostalCode = item.PostalCode;
-                update.HomePage = item.HomePage;
 
-               bool result = _repository.Update(update);
+                bool result = _repository.Update(update);
                 if (result)
                 {
                     _repository.Save();

@@ -48,12 +48,10 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             {
                 Shipper update = _repository.GetById(item.ID);
                 update.CompanyName = item.CompanyName;
-                update.ContactName = item.ContactName;
                 update.TaxIdNumber = item.TaxIdNumber;
                 update.PhoneNumber = item.PhoneNumber;
                 update.Address = item.Address;
                 update.Country = item.Country;
-                update.Region = item.Region;
                 update.City = item.City;
                 update.PostalCode = item.PostalCode;
 

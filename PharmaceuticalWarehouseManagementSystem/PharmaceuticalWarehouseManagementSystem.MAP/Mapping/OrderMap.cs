@@ -12,10 +12,10 @@ namespace PharmaceuticalWarehouseManagementSystem.MAP.Mapping
     {
         public override void Configure(EntityTypeBuilder<Order> builder)
         {
-            builder.Property(x => x.OrderDate).HasColumnType("datetime2").IsRequired(true);
+            builder.Property(x => x.OrderDate).HasColumnType("date").IsRequired(true);
             builder.Property(x => x.ShipAddress).HasMaxLength(50).IsRequired(false);
             builder.Property(x => x.ShipCity).HasMaxLength(50).IsRequired(false);
-            builder.Property(x => x.ShippedDate).HasColumnType("datetime2").IsRequired(true);
+            builder.Property(x => x.ShippedDate).HasColumnType("date").IsRequired(true);
 
             builder.HasOne(x => x.Employee)
                 .WithMany(x => x.Orders)

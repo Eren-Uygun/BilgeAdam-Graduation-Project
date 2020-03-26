@@ -80,16 +80,13 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 updated.HireDate = item.HireDate;
                 updated.Email = item.Email;
                 updated.Password = item.Password;
-                updated.CellPhoneNumber = item.CellPhoneNumber;
-                updated.HomePhoneNumber = item.HomePhoneNumber;
+                updated.PhoneNumber = item.PhoneNumber;
                 updated.Address = item.Address;
                 updated.Country = item.Country;
-                updated.Region = item.Region;
                 updated.City = item.City;
-                updated.Notes = item.Notes;
                 updated.Role = item.Role;
                 updated.PostalCode = item.PostalCode;
-                updated.Photo = item.Photo;
+              
 
 
 

@@ -16,7 +16,6 @@ namespace PharmaceuticalWarehouseManagementSystem.MAP.Mapping
             builder.Property(x => x.ContactName).HasMaxLength(50).IsRequired(true);
             builder.Property(x => x.ContactTitle).HasMaxLength(50).IsRequired(false);
             builder.Property(x => x.Country).HasMaxLength(30).IsRequired(false);
-            builder.Property(x => x.Region).HasMaxLength(30).IsRequired(false);
             builder.Property(x => x.City).HasMaxLength(30).IsRequired(false);
             builder.Property(x => x.Address).HasMaxLength(80).IsRequired(false);
             builder.Property(x => x.Phone).HasMaxLength(20).IsRequired(true);

@@ -75,8 +75,8 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 updated.ContactTitle = item.ContactTitle;
                 updated.Address = item.Address;
                 updated.City = item.City;
+                updated.TaxId = item.TaxId;
                 updated.Country = item.Country;
-                updated.Region = item.Region;
                 updated.Phone = item.Phone;
                 updated.Fax = item.Fax;
                

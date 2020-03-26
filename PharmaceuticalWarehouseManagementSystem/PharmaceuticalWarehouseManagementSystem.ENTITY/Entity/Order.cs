@@ -12,8 +12,7 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
         {
           
         }
-
-
+        
         public Guid? CustomerID { get; set; }
 
         public Guid? EmployeeID { get; set; }

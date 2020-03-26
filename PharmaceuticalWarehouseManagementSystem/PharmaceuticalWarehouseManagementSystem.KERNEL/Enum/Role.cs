@@ -7,11 +7,11 @@ namespace PharmaceuticalWarehouseManagementSystem.KERNEL.Enum
 {
     public enum Role
     {
-        [Display(Name = "Employee")]
-        Employeee = 1,
+        None = 0,
+        [Display(Name = "User")]
+        User = 1,
         [Display(Name = "Admin")]
-        Admin = 2,
-        [Display(Name = "Other")]
-        Other = 3
+        Admin = 2
+        
     }
 }

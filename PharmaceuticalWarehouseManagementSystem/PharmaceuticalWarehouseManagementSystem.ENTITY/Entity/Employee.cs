@@ -2,6 +2,8 @@
 using PharmaceuticalWarehouseManagementSystem.KERNEL.Enum;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -10,38 +12,39 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
     public class Employee : KernelEntity
     {
 
+        [Required(ErrorMessage = "Please Enter Your Name")]
         public string FirstName { get; set; }
 
+        [Required(ErrorMessage = "Please Enter Your Surname")]
         public string LastName { get; set; }
 
         public string Title { get; set; }
 
+        [Required(ErrorMessage = "Please Enter your Birthdate")]
         public DateTime? BirthDate { get; set; }
 
+        [Required(ErrorMessage = "Hire Date must be required")]
         public DateTime? HireDate { get; set; }
 
+        public string PhoneNumber { get; set; }
 
-        public string Address { get; set; }
-        public string City { get; set; }
+        [
+            EmailAddress(ErrorMessage = "Entered Wrong Mail"),
+            Required(ErrorMessage = "Please Enter Your Email")
+
+        ]
 
         public string Email { get; set; }
-
+        [
+            Required(ErrorMessage = "Entered Wrong Password")
+        ]
         public string Password { get; set; }
-
-        public string Region { get; set; }
-
+        public string Address { get; set; }
+        public string City { get; set; }
         public string Country { get; set; }
-
         public string PostalCode { get; set; }
 
-        public string HomePhoneNumber { get; set; }
-
-        public string CellPhoneNumber { get; set; }
-
-        public string Notes { get; set; }
-
-        public string Photo { get; set; }
-
+        [Required(ErrorMessage = "Please Select your role")]
         public Role Role { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }

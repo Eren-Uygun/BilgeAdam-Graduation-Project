@@ -32,12 +32,12 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             return View(_repository.GetActive());
         }
         [HttpGet] 
-        public IActionResult Create()
+        public IActionResult Add()
         {
             return View();
         }
         [HttpPost]
-        public IActionResult Create(Category category)
+        public IActionResult Add(Category category)
         {
             if (ModelState.IsValid)
             { 

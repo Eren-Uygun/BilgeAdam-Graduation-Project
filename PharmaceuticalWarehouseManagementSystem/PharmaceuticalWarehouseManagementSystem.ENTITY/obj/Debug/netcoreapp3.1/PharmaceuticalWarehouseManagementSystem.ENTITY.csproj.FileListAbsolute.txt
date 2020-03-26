@@ -26,3 +26,5 @@ C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSy
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.ENTITY\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.ENTITY.pdb
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.ENTITY\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.ENTITY.csproj.CoreCompileInputs.cache
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.ENTITY\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.ENTITY.genruntimeconfig.cache
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.ENTITY\bin\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.Utility.dll
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.ENTITY\bin\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.Utility.pdb

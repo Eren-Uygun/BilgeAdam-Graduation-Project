@@ -15,17 +15,17 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="OrderID" class="control-label"></label>
-                <select asp-for="OrderID" class="form-control" asp-items="ViewBag.OrderID"></select>
+                <select asp-for="OrderID" class="form-control" asp-items="@(new SelectList(ViewBag.OrderID,"ID","OrderName"))"></select>
                 <span asp-validation-for="OrderID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ProductID" class="control-label"></label>
-                <select asp-for="ProductID" class="form-control" asp-items="ViewBag.ProductID"></select>
+                <select asp-for="ProductID" class="form-control" asp-items="@(new SelectList(ViewBag.ProductID,"ID","ProductName"))"></select>
                 <span asp-validation-for="ProductID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ShipperID" class="control-label"></label>
-                <select asp-for="ShipperID" class="form-control" asp-items="ViewBag.ShipperID"></select>
+                <select asp-for="ShipperID" class="form-control" asp-items="@(new SelectList(ViewBag.ShipperID,"ID","CompanyName"))"></select>
                 <span asp-validation-for="ShipperID" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -52,6 +52,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="List">Back to List</a>
 </div>
 

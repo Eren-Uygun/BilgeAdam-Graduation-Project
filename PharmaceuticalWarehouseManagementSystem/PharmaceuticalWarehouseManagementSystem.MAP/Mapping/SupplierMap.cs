@@ -4,6 +4,7 @@ using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.KERNEL.Map;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace PharmaceuticalWarehouseManagementSystem.MAP.Mapping
@@ -16,11 +17,10 @@ namespace PharmaceuticalWarehouseManagementSystem.MAP.Mapping
             builder.Property(x => x.ContactName).HasMaxLength(20).IsRequired(true);
             builder.Property(x => x.ContactTitle).HasMaxLength(50).IsRequired(true);
             builder.Property(x => x.PhoneNumber).HasMaxLength(20).IsRequired(true);
-
+            builder.Property(x => x.TaxIdNumber).HasMaxLength(10).IsRequired(true);
+               
             builder.Property(x => x.Address).HasMaxLength(100).IsRequired(false);
             builder.Property(x => x.City).HasMaxLength(100).IsRequired(false);
-            builder.Property(x => x.Region).HasMaxLength(100).IsRequired(false);
-            builder.Property(x => x.HomePage).HasMaxLength(100).IsRequired(false);
             builder.Property(x => x.Country).HasMaxLength(100).IsRequired(false);
             builder.Property(x => x.FaxNumber).HasMaxLength(20).IsRequired(false);
 

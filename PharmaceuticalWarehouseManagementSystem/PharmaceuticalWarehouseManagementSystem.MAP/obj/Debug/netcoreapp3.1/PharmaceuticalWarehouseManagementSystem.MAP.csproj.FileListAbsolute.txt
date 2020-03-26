@@ -25,3 +25,5 @@ C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSy
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.MAP\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.MAP.dll
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.MAP\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.MAP.pdb
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.MAP\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.MAP.csproj.CoreCompileInputs.cache
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.MAP\bin\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.Utility.dll
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.MAP\bin\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.Utility.pdb

@@ -70,7 +70,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
             {
                 endpoints.MapControllerRoute(
                     name: "areas",
-                    pattern: "{area:exists}/{controller=Category}/{action=Index}/{id?}");
+                    pattern: "{area:exists}/{controller=CategoryController}/{action=HomePage}");
 
                 endpoints.MapControllerRoute(
                     name: "default",

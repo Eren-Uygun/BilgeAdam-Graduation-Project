@@ -14,6 +14,7 @@ namespace PharmaceuticalWarehouseManagementSystem.MAP.Mapping
         {
             builder.Property(x => x.CompanyName).HasMaxLength(50).IsRequired(true);
             builder.Property(x => x.PhoneNumber).HasMaxLength(50).IsRequired(true);
+            builder.Property(x => x.TaxIdNumber).HasMaxLength(10).IsRequired(true);
 
             builder.HasMany(x => x.OrderDetails)
                 .WithOne(x => x.Shipper)

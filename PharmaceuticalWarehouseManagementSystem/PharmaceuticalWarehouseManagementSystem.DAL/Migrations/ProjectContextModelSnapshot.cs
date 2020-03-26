@@ -143,10 +143,6 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
-                    b.Property<string>("Region")
-                        .HasColumnType("nvarchar(30)")
-                        .HasMaxLength(30);
-
                     b.Property<string>("RemovedComputerName")
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
@@ -157,6 +153,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
+
+                    b.Property<string>("TaxId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -174,10 +174,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasMaxLength(100);
 
                     b.Property<DateTime?>("BirthDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("CellPhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("date");
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(25)")
@@ -212,10 +209,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasMaxLength(30);
 
                     b.Property<DateTime?>("HireDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("HomePhoneNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("date");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -234,24 +228,17 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
-                    b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(16)")
                         .HasMaxLength(16);
 
-                    b.Property<string>("Photo")
+                    b.Property<string>("PhoneNumber")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PostalCode")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
-                    b.Property<string>("Region")
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.Property<string>("RemovedComputerName")
                         .HasColumnType("nvarchar(15)")
@@ -321,10 +308,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 
                     b.Property<DateTime?>("OrderDate")
                         .IsRequired()
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("ProductID")
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("date");
 
                     b.Property<string>("RemovedComputerName")
                         .HasColumnType("nvarchar(15)")
@@ -344,7 +328,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 
                     b.Property<DateTime?>("ShippedDate")
                         .IsRequired()
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -354,8 +338,6 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.HasIndex("CustomerID");
 
                     b.HasIndex("EmployeeID");
-
-                    b.HasIndex("ProductID");
 
                     b.ToTable("Orders");
                 });
@@ -380,7 +362,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Discount")
+                    b.Property<decimal?>("Discount")
+                        .IsRequired()
                         .HasColumnType("decimal(5,3)");
 
                     b.Property<string>("ModifiedComputerName")
@@ -401,7 +384,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.Property<Guid>("ProductID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("Quantity")
+                    b.Property<int?>("Quantity")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("RemovedComputerName")
@@ -418,7 +402,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("UnitPrice")
+                    b.Property<decimal?>("UnitPrice")
+                        .IsRequired()
                         .HasColumnType("decimal(5,3)");
 
                     b.HasKey("ID");
@@ -491,8 +476,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
 
-                    b.Property<int?>("ReorderLevel")
-                        .IsRequired()
+                    b.Property<int>("ReorderLevel")
                         .HasColumnType("int");
 
                     b.Property<int>("Status")
@@ -504,9 +488,6 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.Property<decimal?>("UnitPrice")
                         .IsRequired()
                         .HasColumnType("decimal(5,3)");
-
-                    b.Property<int?>("UnitsInOrder")
-                        .HasColumnType("int");
 
                     b.Property<int?>("UnitsInStock")
                         .IsRequired()
@@ -537,9 +518,6 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
-
-                    b.Property<string>("ContactName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
                         .HasColumnType("nvarchar(max)");
@@ -578,9 +556,6 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.Property<string>("PostalCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Region")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("RemovedComputerName")
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
@@ -593,7 +568,9 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TaxIdNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.HasKey("ID");
 
@@ -651,10 +628,6 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
-                    b.Property<string>("HomePage")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
                     b.Property<string>("ModifiedComputerName")
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
@@ -675,10 +648,6 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.Property<string>("PostalCode")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Region")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
-
                     b.Property<string>("RemovedComputerName")
                         .HasColumnType("nvarchar(15)")
                         .HasMaxLength(15);
@@ -691,7 +660,9 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("TaxIdNumber")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(10)")
+                        .HasMaxLength(10);
 
                     b.HasKey("ID");
 
@@ -709,10 +680,6 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .WithMany("Orders")
                         .HasForeignKey("EmployeeID")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.Product", null)
-                        .WithMany("Orders")
-                        .HasForeignKey("ProductID");
                 });
 
             modelBuilder.Entity("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.OrderDetail", b =>

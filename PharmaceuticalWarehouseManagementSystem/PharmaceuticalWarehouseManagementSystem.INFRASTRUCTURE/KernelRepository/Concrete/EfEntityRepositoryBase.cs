@@ -33,6 +33,7 @@ namespace PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.KernelRepositor
             try
             {
                 _context.Set<T>().Add(item);
+                item.Status = Status.Active;
                 return Save()>0;
 
             }

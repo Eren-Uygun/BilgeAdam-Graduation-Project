@@ -7,12 +7,14 @@
 
 <h1>List</h1>
 
-<p>
-    <a asp-action="Add">Create New</a>
-</p>
-<table class="table table-bordered">
-    <thead>
+
+<div class="card-body table-responsive">
+    <table class="table table-bordered">
+        <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.ProductName)
             </th>
@@ -24,9 +26,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UnitsInStock)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UnitsInOrder)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ReorderLevel)
@@ -43,110 +42,53 @@
             <th>
                 @Html.DisplayNameFor(model => model.Supplier)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Status)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeleteDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedIP)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreatedComputerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedIP)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModifiedComputerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RemovedIP)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RemovedComputerName)
-            </th>
+
             <th></th>
         </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuantityPerUnit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitPrice)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitsInStock)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnitsInOrder)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReorderLevel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExpiredDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discontinued)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Supplier.CompanyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeleteDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedIP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedComputerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedIP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModifiedComputerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RemovedIP)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RemovedComputerName)
-            </td>
-            <td>
-                <a asp-controller="Product" asp-action="Edit" asp-route-id="@item.ID" class="btn btn-warning">Edit</a> 
-                <br/>
-                <a asp-controller="Product" asp-action="Details" asp-route-id="@item.ID" class="btn btn-info">Details</a> 
-                <br/>
-                <a asp-controller="Product" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuantityPerUnit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UnitsInStock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReorderLevel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpiredDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Discontinued)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupplierID)
+                </td>
+                <td>
+                    <a asp-controller="Product" asp-action="Edit" asp-route-id="@item.ID" class="btn btn-warning">Edit</a>
+                    <br />
+                    <a asp-controller="Product" asp-action="Details" asp-route-id="@item.ID" class="btn btn-info">Details</a>
+                    <br />
+                    <a asp-controller="Product" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

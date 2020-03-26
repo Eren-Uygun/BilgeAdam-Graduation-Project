@@ -42,21 +42,13 @@
               "target": "Package",
               "version": "[2.2.7, )"
             },
+            "Microsoft.AspNetCore.Hosting.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.AspNetCore.Http": {
               "target": "Package",
               "version": "[2.2.2, )"
-            },
-            "Microsoft.CodeAnalysis": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.CSharp": {
-              "target": "Package",
-              "version": "[3.5.0, )"
-            },
-            "Microsoft.CodeAnalysis.Common": {
-              "target": "Package",
-              "version": "[3.5.0, )"
             }
           },
           "imports": [

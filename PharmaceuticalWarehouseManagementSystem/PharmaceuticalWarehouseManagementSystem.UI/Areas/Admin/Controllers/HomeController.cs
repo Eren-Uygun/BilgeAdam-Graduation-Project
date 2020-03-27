@@ -8,9 +8,9 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult HomePage()
+        public IActionResult AdminHomePage()
         {
-            return View();
+            return View("AdminHomePage");
         }
     }
 }

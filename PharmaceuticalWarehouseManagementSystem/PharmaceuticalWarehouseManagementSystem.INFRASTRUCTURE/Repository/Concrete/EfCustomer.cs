@@ -13,7 +13,7 @@ namespace PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Conc
     {
         public EfCustomer(ProjectContext context):base(context)
         {
-
+        
         }
     }
 }

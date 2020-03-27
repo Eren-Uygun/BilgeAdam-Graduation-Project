@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -12,6 +13,7 @@ using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Concrete;
 using PharmaceuticalWarehouseManagementSystem.KERNEL;
+using PharmaceuticalWarehouseManagementSystem.UI.Models;
 
 namespace PharmaceuticalWarehouseManagementSystem.UI
 {
@@ -28,7 +30,11 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            
             services.AddControllersWithViews();
+            services.AddSession();
+
+
             
 
             services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -41,10 +47,6 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
             services.AddScoped<IProductRepository, EfProduct>();
             services.AddScoped<IShipperRepository, EfShipper>();
             services.AddScoped<ISupplierRepository, EfSupplier>();
-            
-
-      
-
 
 
         }
@@ -61,16 +63,19 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                 app.UseExceptionHandler("/Home/Error");
             }
             app.UseStaticFiles();
-
+       
             app.UseRouting();
-
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
+
+
                 endpoints.MapControllerRoute(
-                    name: "areas",
-                    pattern: "{area:exists}/{controller=CategoryController}/{action=HomePage}");
+                    name: "Login",
+                    pattern: "{controller=Account}/{action=Login}",
+                    defaults: new {controller = "Account", Action = "Login"});
+                  
 
                 endpoints.MapControllerRoute(
                     name: "default",

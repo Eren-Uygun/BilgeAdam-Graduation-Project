@@ -8,6 +8,7 @@ using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract
 
 namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
 {
+    [Area("User")]
     public class ShipperController : Controller
     {
         private IShipperRepository _repository;

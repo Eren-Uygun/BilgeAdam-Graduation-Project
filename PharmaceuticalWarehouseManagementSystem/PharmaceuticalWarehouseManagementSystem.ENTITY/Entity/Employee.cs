@@ -29,14 +29,14 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
         public string PhoneNumber { get; set; }
 
         [
-            EmailAddress(ErrorMessage = "Entered Wrong Mail"),
+            EmailAddress(ErrorMessage = "example@mail.com"),
             Required(ErrorMessage = "Please Enter Your Email")
 
         ]
 
         public string Email { get; set; }
         [
-            Required(ErrorMessage = "Entered Wrong Password")
+            Required(ErrorMessage = "Entered Wrong Password"),DataType(DataType.Password)
         ]
         public string Password { get; set; }
         public string Address { get; set; }

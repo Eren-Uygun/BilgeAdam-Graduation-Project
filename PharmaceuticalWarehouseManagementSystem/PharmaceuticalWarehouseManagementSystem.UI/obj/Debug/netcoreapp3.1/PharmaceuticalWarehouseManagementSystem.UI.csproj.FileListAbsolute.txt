@@ -377,5 +377,12 @@ C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSy
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.UI.csproj.CoreCompileInputs.cache
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.UI.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Category\Add.cshtml.g.cs
-C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\HomePage.cshtml.g.cs
-C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Views\AccountView\_Layout.cshtml.g.cs
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Home\AdminHomePage.cshtml.g.cs
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\Category\Add.cshtml.g.cs
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\Category\List.cshtml.g.cs
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\Home\UserHomePage.cshtml.g.cs
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\_ViewImports.cshtml.g.cs
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\_ViewStart.cshtml.g.cs
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs

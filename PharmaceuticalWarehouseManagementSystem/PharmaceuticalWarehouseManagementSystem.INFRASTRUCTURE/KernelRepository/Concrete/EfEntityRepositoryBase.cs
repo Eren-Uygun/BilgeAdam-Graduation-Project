@@ -149,6 +149,21 @@ namespace PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.KernelRepositor
             return _context.SaveChanges();
         }
 
+        public bool FindByUserName(T param1)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CheckCredentials(T user, T password)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CheckCredentialsFromWebSerice(T user, T password)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool Update(T item)
         {
             try

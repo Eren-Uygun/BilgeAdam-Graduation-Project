@@ -4,11 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
+namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
 {
-    public class LoginController : Controller
+    [Area("User")]
+    public class CustomerController : Controller
     {
-        public IActionResult Login()
+        public IActionResult Index()
         {
             return View();
         }

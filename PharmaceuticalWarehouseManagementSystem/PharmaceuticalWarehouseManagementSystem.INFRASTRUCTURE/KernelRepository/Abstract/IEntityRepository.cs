@@ -22,5 +22,9 @@ namespace PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.KernelRepositor
         bool Activate(Guid id);
         bool Any(Expression<Func<T, bool>> exp);
         int Save();
+
+        bool FindByUserName(T param1);
+        bool CheckCredentials(T user, T password);
+        bool CheckCredentialsFromWebSerice(T user, T password);
     }
 }

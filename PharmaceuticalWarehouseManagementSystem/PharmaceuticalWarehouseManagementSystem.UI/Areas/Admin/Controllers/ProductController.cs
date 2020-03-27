@@ -71,14 +71,16 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Edit(Guid id)
         {
-            List<Category> upli = new List<Category>();
-            upli = _context.Categories.ToList();
-            ViewBag.ListOfCategories = upli;
+            List<Category> upli1 = new List<Category>();
+            upli1 = _context.Categories.ToList();
+            ViewBag.ListOfCategories = upli1;
 
 
-            List<Supplier> upsup = new List<Supplier>();
-            upsup = _context.Suppliers.ToList();
-            ViewBag.ListOfSuppliers = upsup;
+            List<Supplier> upsup1 = new List<Supplier>();
+            upsup1 = _context.Suppliers.ToList();
+            ViewBag.ListOfSuppliers = upsup1;
+
+
             return View(_repository.GetById(id));
         }
 

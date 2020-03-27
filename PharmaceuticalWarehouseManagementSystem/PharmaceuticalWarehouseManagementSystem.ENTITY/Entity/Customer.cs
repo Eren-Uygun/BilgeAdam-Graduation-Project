@@ -17,7 +17,7 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
 
         public string ContactTitle { get; set; }
 
-        [Required(ErrorMessage = "Please enter taxId")]
+        [Required(ErrorMessage = "Please enter 10 digit taxId"),MaxLength(10),MinLength(10)]
         public string TaxId { get; set; }
 
         public string Address { get; set; }

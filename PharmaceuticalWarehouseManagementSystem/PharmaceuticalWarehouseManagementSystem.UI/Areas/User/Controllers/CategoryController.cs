@@ -2,36 +2,26 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis;
-using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
 
-namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
+namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
 {
-    [Area("Admin")]
+    [Area("User")]
     public class CategoryController : Controller
     {
         private ICategoryRepository _repository;
-        private ProjectContext _context;
-       
-       
-
-        public CategoryController(ICategoryRepository repository,ProjectContext context)
+        public CategoryController(ICategoryRepository repository)
         {
             this._repository = repository;
-            this._context = context;
-
         }
         public IActionResult List()
         {
-
-            return View(_repository.GetActive());
+          
+            return View(  _repository.GetActive());
         }
-        [HttpGet] 
+        [HttpGet]
         public IActionResult Add()
         {
             return View();
@@ -60,15 +50,15 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
                 return View(category);
             }
+            
         }
-
         [HttpGet]
-        public IActionResult Edit(Guid id)
+        public IActionResult Edit(Guid ID)
         {
-            return View(_repository.GetById(id));
+            return View(_repository.GetById(ID));
         }
-
-        [HttpPost] public IActionResult Edit(Category item)
+        [HttpPost]
+        public IActionResult Edit(Category item)
         {
             if (ModelState.IsValid)
             {
@@ -91,31 +81,15 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             else
             {
                 TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
-                return BadRequest();
+                return View();
             }
+            
         }
-
 
         public IActionResult Delete(Guid id)
         {
-            if (ModelState.IsValid)
-            {
-                _repository.Remove(_repository.GetById(id));
-                return RedirectToAction("List");
-            }
-            else
-            {
-                return BadRequest();
-            }
-         
+            _repository.Remove(_repository.GetById(id));
+            return RedirectToAction("List");
         }
-
-        public IActionResult Details(Guid id)
-        {
-
-            var category = _repository.GetById(id);
-            return View(category);
-        }
-
     }
 }

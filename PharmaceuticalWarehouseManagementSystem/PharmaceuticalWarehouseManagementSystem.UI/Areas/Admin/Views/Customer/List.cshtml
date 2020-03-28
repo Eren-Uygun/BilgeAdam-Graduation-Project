@@ -5,45 +5,53 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h1>List</h1>
+    <div class="card-header">
+        <div class="card-title">Customer List</div>
+    </div>
 
 
 <div class="card-body table-responsive">
     <table class="table table-bordered">
         <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.CompanyName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ContactName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.ContactTitle)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Address)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.City)
-                </th>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
 
-                <th>
-                    @Html.DisplayNameFor(model => model.Country)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Phone)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Fax)
-                </th>
-                <th></th>
-            </tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Country)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fax)
+            </th>
+            <th></th>
+        </tr>
         </thead>
         <tbody>
             @foreach (var item in Model)
             {
                 <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID)
+                    </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.CompanyName)
                     </td>
@@ -70,7 +78,7 @@
                     </td>
                     <td>
                         <a asp-controller="Customer" asp-action="Edit" asp-route-id="@item.ID" class="btn btn-warning">Edit</a>
-                        <br />
+                        <br/>
                         <a asp-controller="Customer" asp-action="Delete" asp-route-id="@item.ID" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>

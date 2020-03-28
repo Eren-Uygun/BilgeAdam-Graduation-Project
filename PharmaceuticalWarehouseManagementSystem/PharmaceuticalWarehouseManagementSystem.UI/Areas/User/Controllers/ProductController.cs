@@ -52,6 +52,12 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
             _repository.Remove(_repository.GetById(ID));
             return RedirectToAction("List");
         }
+
+        public IActionResult Details(Guid id)
+        {
+            var product = _repository.GetById(id);
+            return View(product);
+        }
         
     }
 }

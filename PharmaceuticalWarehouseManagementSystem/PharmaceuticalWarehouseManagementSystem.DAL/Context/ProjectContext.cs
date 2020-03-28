@@ -8,11 +8,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using PharmaceuticalWarehouseManagementSystem.KERNEL.Enum;
 
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
 {
-   public class ProjectContext:DbContext
+   public class ProjectContext:IdentityDbContext
     {
         public ProjectContext(DbContextOptions options):base(options)
         {
@@ -21,6 +22,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
 
             modelBuilder.ApplyConfiguration(new CategoryMap());
             modelBuilder.ApplyConfiguration(new CustomerMap());
@@ -30,6 +32,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
             modelBuilder.ApplyConfiguration(new ProductMap());
             modelBuilder.ApplyConfiguration(new ShipperMap());
             modelBuilder.ApplyConfiguration(new SupplierMap());
+            
 
 
             base.OnModelCreating(modelBuilder);

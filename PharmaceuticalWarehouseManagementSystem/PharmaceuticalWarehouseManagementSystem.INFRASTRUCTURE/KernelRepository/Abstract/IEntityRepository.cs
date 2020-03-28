@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using PharmaceuticalWarehouseManagementSystem.KERNEL.Enum;
 
 namespace PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.KernelRepository.Abstract
 {
@@ -23,8 +25,7 @@ namespace PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.KernelRepositor
         bool Any(Expression<Func<T, bool>> exp);
         int Save();
 
-        bool FindByUserName(T param1);
-        bool CheckCredentials(T user, T password);
-        bool CheckCredentialsFromWebSerice(T user, T password);
+        bool CheckCredentials(string email, string password);
+
     }
 }

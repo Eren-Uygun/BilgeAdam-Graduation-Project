@@ -6,9 +6,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Transactions;
 using Microsoft.EntityFrameworkCore;
+using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 
 namespace PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.KernelRepository.Concrete
 {
@@ -149,20 +151,12 @@ namespace PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.KernelRepositor
             return _context.SaveChanges();
         }
 
-        public bool FindByUserName(T param1)
+        public bool CheckCredentials(string email, string password)
         {
-            throw new NotImplementedException();
+          return _context.Employees.Any(x=>x.Email == email && x.Password == password);
         }
 
-        public bool CheckCredentials(T user, T password)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool CheckCredentialsFromWebSerice(T user, T password)
-        {
-            throw new NotImplementedException();
-        }
+      
 
         public bool Update(T item)
         {

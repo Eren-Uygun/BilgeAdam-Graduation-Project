@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing.Matching;
 using Microsoft.AspNetCore.Server.IIS;
 using Microsoft.CodeAnalysis;
@@ -77,8 +78,9 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                     options.LoginPath = "/Account/Login/";
                 });
 
-          
 
+
+            services.AddMvc(options => { options.EnableEndpointRouting = false; });
 
 
 
@@ -103,20 +105,24 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
             app.UseAuthorization();
             
             
-            app.UseEndpoints(endpoints =>
+            app.UseMvc(routes =>
             {
-           
-
-                endpoints.MapControllerRoute(
-                    name: "areas",
-                    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
-
-                endpoints.MapControllerRoute(
-
+                routes.MapAreaRoute( 
+                        name: "MyAdminArea",
+                        areaName: "Admin",
+                        template: "Admin/{controller=Category}/{action=List}/{id?}");
+                    
+                routes.MapRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Account}/{action=Login}");
 
-                endpoints.MapRazorPages();
+                routes.MapRoute(
+                    name: "Admin",
+                    template: "{Areas=Admin}/{Controller=Category}/{Action=List}");
+
+                routes.MapRoute(
+                    name:"User",
+                    template:"{Areas=User}/{Controller=Category}/{Action=List}");
             });
         } 
     }

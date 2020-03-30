@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -58,11 +59,13 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
                     {
                         if (Rmodel.Role == Role.Admin)
                         {
-                            return RedirectToAction("index", "home");
+                            ViewBag.Login = model.Username.ToString();
+                            return Redirect("/Admin/Category/List");
                         }
                         else if(Rmodel.Role == Role.User)
                         {
-                            return RedirectToAction("index", "home");
+                            ViewBag.Login = model.Username.ToString();
+                            return Redirect("/User/Category/List");
                         }
                         else
                         {
@@ -74,7 +77,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt,Check your email , password and role");
                 }
 
               

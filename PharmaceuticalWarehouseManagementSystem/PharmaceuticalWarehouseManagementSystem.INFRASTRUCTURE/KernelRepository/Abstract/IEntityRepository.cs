@@ -25,7 +25,7 @@ namespace PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.KernelRepositor
         bool Any(Expression<Func<T, bool>> exp);
         int Save();
 
-        bool CheckCredentials(string email, string password);
+        bool CheckCredentials(string email, string password,Role role);
 
     }
 }

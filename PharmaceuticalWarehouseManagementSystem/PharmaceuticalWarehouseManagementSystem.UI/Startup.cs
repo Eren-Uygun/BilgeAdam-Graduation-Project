@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Routing.Matching;
 using Microsoft.AspNetCore.Server.IIS;
+using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -16,9 +17,11 @@ using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
 using PharmaceuticalWarehouseManagementSystem.DAL.Context;
+using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Concrete;
 using PharmaceuticalWarehouseManagementSystem.KERNEL;
+using PharmaceuticalWarehouseManagementSystem.KERNEL.Enum;
 using PharmaceuticalWarehouseManagementSystem.UI.Models;
 
 namespace PharmaceuticalWarehouseManagementSystem.UI
@@ -37,15 +40,27 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddAuthentication("CookieAuth").AddCookie("CookieAuth",config=>
-            //{
-            //    config.Cookie.Name = "Grandmas.Cookie";
-            //});
+         
+            services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddMvc().AddXmlDataContractSerializerFormatters();
-  
-            services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<IdentityUser, IdentityRole>(options=>
+                {
+                    options.SignIn.RequireConfirmedEmail = false;
+                    options.SignIn.RequireConfirmedAccount = false;
+                    options.SignIn.RequireConfirmedPhoneNumber = false;
+                    
+                })
+                .AddEntityFrameworkStores<ProjectContext>()
+                .AddDefaultTokenProviders();
+
+            services.Configure<PasswordHasherOptions>(options =>
+            {
+                options.CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV2;
+            });
+
 
             services.AddScoped<ICategoryRepository, EfCategory>();
             services.AddScoped<ICustomerRepository, EfCustomer>();
@@ -56,18 +71,14 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
             services.AddScoped<IShipperRepository, EfShipper>();
             services.AddScoped<ISupplierRepository, EfSupplier>();
 
-            services.AddIdentity<IdentityUser, IdentityRole>(options=>
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options =>
                 {
-                    options.SignIn.RequireConfirmedEmail = true;
-                    
-                })
-                .AddEntityFrameworkStores<ProjectContext>()
-                .AddDefaultTokenProviders();
-
-            services.Configure<PasswordHasherOptions>(options =>
-                {
-                    options.CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV2;
+                    options.LoginPath = "/Account/Login/";
                 });
+
+          
+
 
 
 
@@ -87,9 +98,8 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
             }
             app.UseStaticFiles();
 
-  
-
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             
             
@@ -102,11 +112,12 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                     pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapControllerRoute(
+
                     name: "default",
-                    pattern: "{controller=Account}/{action=Login}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
 
                 endpoints.MapRazorPages();
             });
-        }
+        } 
     }
 }

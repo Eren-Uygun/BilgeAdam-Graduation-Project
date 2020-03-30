@@ -8,12 +8,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using PharmaceuticalWarehouseManagementSystem.KERNEL.Enum;
 
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
 {
    public class ProjectContext:IdentityDbContext
+    
     {
         public ProjectContext(DbContextOptions options):base(options)
         {
@@ -47,6 +49,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<Shipper> Shippers { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
+
+       
 
         public override int SaveChanges()
         {

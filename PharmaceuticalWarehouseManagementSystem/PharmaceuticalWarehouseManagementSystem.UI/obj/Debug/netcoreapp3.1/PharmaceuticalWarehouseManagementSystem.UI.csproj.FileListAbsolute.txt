@@ -404,8 +404,6 @@ C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSy
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\Product\List.cshtml.g.cs
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\Shipper\Add.cshtml.g.cs
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Areas\User\Views\Shipper\Edit.cshtml.g.cs
-C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Views\Home\Login.cshtml.g.cs
-C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -413,3 +411,4 @@ C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSy
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.UI.csproj.CoreCompileInputs.cache
 C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\PharmaceuticalWarehouseManagementSystem.UI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\LornV\Documents\GitHub\Test-Version\PharmaceuticalWarehouseManagementSystem\PharmaceuticalWarehouseManagementSystem.UI\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs

@@ -18,7 +18,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PharmaceuticalWarehouseMana
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PharmaceuticalWarehouseManagementSystem.MAP", "PharmaceuticalWarehouseManagementSystem.MAP\PharmaceuticalWarehouseManagementSystem.MAP.csproj", "{00DAAD33-F26C-4E88-B0B8-3F5CE32491F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PharmaceuticalWarehouseManagementSystem.Utility", "PharmaceuticalWarehouseManagementSystem.Utility\PharmaceuticalWarehouseManagementSystem.Utility.csproj", "{FA9D3764-FD37-48AD-A66F-BE5039E0A7DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PharmaceuticalWarehouseManagementSystem.Utility", "PharmaceuticalWarehouseManagementSystem.Utility\PharmaceuticalWarehouseManagementSystem.Utility.csproj", "{FA9D3764-FD37-48AD-A66F-BE5039E0A7DA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

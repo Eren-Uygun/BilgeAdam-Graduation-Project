@@ -10,8 +10,8 @@ using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20200328154733_IdentiyDB")]
-    partial class IdentiyDB
+    [Migration("20200330000043_t")]
+    partial class t
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

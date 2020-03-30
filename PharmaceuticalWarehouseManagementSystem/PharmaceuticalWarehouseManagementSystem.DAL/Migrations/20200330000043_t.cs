@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 {
-    public partial class IdentiyDB : Migration
+    public partial class t : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

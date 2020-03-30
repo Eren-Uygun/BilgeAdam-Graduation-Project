@@ -151,9 +151,9 @@ namespace PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.KernelRepositor
             return _context.SaveChanges();
         }
 
-        public bool CheckCredentials(string email, string password)
+        public bool CheckCredentials(string email, string password , Role role)
         {
-          return _context.Employees.Any(x=>x.Email == email && x.Password == password);
+          return _context.Employees.Any(x=>x.Email == email && x.Password == password&&x.Role == role);
         }
 
       

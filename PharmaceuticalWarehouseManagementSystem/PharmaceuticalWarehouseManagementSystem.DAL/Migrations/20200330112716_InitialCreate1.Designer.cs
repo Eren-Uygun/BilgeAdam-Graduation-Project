@@ -10,8 +10,8 @@ using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20200330000043_t")]
-    partial class t
+    [Migration("20200330112716_InitialCreate1")]
+    partial class InitialCreate1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

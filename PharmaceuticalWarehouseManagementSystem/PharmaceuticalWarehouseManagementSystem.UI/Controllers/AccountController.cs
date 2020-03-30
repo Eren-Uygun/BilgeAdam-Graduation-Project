@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
+using PharmaceuticalWarehouseManagementSystem.KERNEL.Enum;
 using PharmaceuticalWarehouseManagementSystem.UI.Models;
 
 namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
@@ -13,10 +14,10 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
     [AllowAnonymous]
     public class AccountController : Controller
     {
-        private readonly SignInManager<LoginViewModel> _signInManager;
-        private readonly UserManager<LoginViewModel> _userManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
         private readonly IEmployeeRepository _repository;
-        public AccountController(SignInManager<LoginViewModel> signInManager,UserManager<LoginViewModel> userManager,IEmployeeRepository repository)
+        public AccountController(SignInManager<IdentityUser> signInManager,UserManager<IdentityUser> userManager,IEmployeeRepository repository)
         {
             this._signInManager = signInManager;
             this._userManager = userManager;
@@ -37,11 +38,11 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
 
 
         [HttpPost, ValidateAntiForgeryToken,AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel model)
+        public async Task<IActionResult> Login(LoginViewModel model,RoleModel Rmodel)
         {
             if (ModelState.IsValid)
             {
-                var check = _repository.CheckCredentials(model.Username, model.Password,model.Role);
+                var check = _repository.CheckCredentials(model.Username, model.Password,Rmodel.Role);
 
                 if (check)
                 {
@@ -50,14 +51,30 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
 
                     if (result.Succeeded)
                     {
-                        return RedirectToAction("index", "home");
+                     
+                        ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                    }
+                    else
+                    {
+                        if (Rmodel.Role == Role.Admin)
+                        {
+                            return RedirectToAction("index", "home");
+                        }
+                        else if(Rmodel.Role == Role.User)
+                        {
+                            return RedirectToAction("index", "home");
+                        }
+                        else
+                        {
+                            return RedirectToAction("index", "home");
+                        }
                     }
 
-                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                 
                 }
                 else
                 {
-                    
+                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
                 }
 
               

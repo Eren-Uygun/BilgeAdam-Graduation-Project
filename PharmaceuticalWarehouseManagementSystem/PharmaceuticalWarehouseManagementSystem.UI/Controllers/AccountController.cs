@@ -2,33 +2,42 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Security.Claims;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
 using PharmaceuticalWarehouseManagementSystem.KERNEL.Enum;
 using PharmaceuticalWarehouseManagementSystem.UI.Models;
+using System.Web;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
 {
     [AllowAnonymous]
+    [Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IEmployeeRepository _repository;
-        public AccountController(SignInManager<IdentityUser> signInManager,UserManager<IdentityUser> userManager,IEmployeeRepository repository)
+
+        public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager,
+            IEmployeeRepository repository)
         {
             this._signInManager = signInManager;
             this._userManager = userManager;
             this._repository = repository;
         }
 
-        public async Task<IActionResult> LogOut()
+        public IActionResult LogOut()
         {
-            await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            var Login = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login");
         }
 
         [HttpGet]
@@ -38,53 +47,85 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
         }
 
 
-        [HttpPost, ValidateAntiForgeryToken,AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel model,RoleModel Rmodel)
+        [HttpPost, ValidateAntiForgeryToken, AllowAnonymous]
+        public async Task<IActionResult> Login(LoginViewModel model, RoleModel Rmodel)
         {
+           
+
+
             if (ModelState.IsValid)
             {
-                var check = _repository.CheckCredentials(model.Username, model.Password,Rmodel.Role);
+
+
+                var check = _repository.CheckCredentials(model.UserMail, model.Password, Rmodel.Role);
 
                 if (check)
                 {
-                    var result = await _signInManager.PasswordSignInAsync(
-                        model.Username, model.Password, model.RememberMe, false);
-
-                    if (result.Succeeded)
+                    var claims = new List<Claim>
                     {
-                     
-                        ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                        new Claim(ClaimTypes.Email, model.UserMail),
+                       
+                    };
+
+                    var userIdentity = new ClaimsIdentity(claims,"Login");
+
+                    ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
+
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,principal);
+
+                    if (Rmodel.Role == Role.Admin)
+                    {
+                        return Redirect("/Admin/Category/List");
+                    }
+                    else if (Rmodel.Role == Role.User)
+                    {
+                        return Redirect("/User/Category/List");
                     }
                     else
                     {
-                        if (Rmodel.Role == Role.Admin)
-                        {
-                            ViewBag.Login = model.Username.ToString();
-                            return Redirect("/Admin/Category/List");
-                        }
-                        else if(Rmodel.Role == Role.User)
-                        {
-                            ViewBag.Login = model.Username.ToString();
-                            return Redirect("/User/Category/List");
-                        }
-                        else
-                        {
-                            return RedirectToAction("index", "home");
-                        }
+                        return RedirectToAction("index", "home");
                     }
 
-                 
+
+
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt,Check your email , password and role");
+                    ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
                 }
+            }
+            else
+            {
 
-              
+                ModelState.AddModelError(string.Empty,
+                    "Invalid Login Attempt,Check your email , password and role");
+
+
             }
 
-            return View(model);
+
+
+
+            return View();
         }
+
+
+
+
+        //public JsonResult JLogin(LoginViewModel model, RoleModel Rmodel, string ReturnUrl)
+        //{
+        //    var check =  _repository.CheckCredentials(model.UserMail, model.Password, Rmodel.Role);
+
+        //    if (check)
+        //    {
+
+        //    }
+
+        //}
+
+
+        //}
+
     }
-    
 }
+

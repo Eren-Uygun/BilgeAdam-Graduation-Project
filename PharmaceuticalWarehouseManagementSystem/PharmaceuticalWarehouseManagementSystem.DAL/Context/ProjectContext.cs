@@ -50,7 +50,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
         public virtual DbSet<Shipper> Shippers { get; set; }
         public virtual DbSet<Supplier> Suppliers { get; set; }
 
-       
+
 
         public override int SaveChanges()
         {

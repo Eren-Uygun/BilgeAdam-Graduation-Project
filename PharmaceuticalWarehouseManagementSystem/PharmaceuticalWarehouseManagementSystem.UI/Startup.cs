@@ -52,14 +52,16 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                     options.SignIn.RequireConfirmedEmail = false;
                     options.SignIn.RequireConfirmedAccount = false;
                     options.SignIn.RequireConfirmedPhoneNumber = false;
-                    
+                    options.User.RequireUniqueEmail = false;
+
+
                 })
                 .AddEntityFrameworkStores<ProjectContext>()
                 .AddDefaultTokenProviders();
 
             services.Configure<PasswordHasherOptions>(options =>
             {
-                options.CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV2;
+                options.CompatibilityMode = PasswordHasherCompatibilityMode.IdentityV3;
             });
 
 
@@ -72,11 +74,19 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
             services.AddScoped<IShipperRepository, EfShipper>();
             services.AddScoped<ISupplierRepository, EfSupplier>();
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+
+            services.AddAuthentication(Options =>
+                {
+                    Options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    Options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                })
                 .AddCookie(options =>
                 {
                     options.LoginPath = "/Account/Login/";
                 });
+
+     
+              
 
 
 
@@ -98,6 +108,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
             {
                 app.UseExceptionHandler("/Home/Error");
             }
+            app.UseCookiePolicy();
             app.UseStaticFiles();
 
             app.UseRouting();

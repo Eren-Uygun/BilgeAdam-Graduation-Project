@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
@@ -10,6 +12,7 @@ using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract
 namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
 {
     [Area("User")]
+    [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
    public class OrderDetailController : Controller
     {
         private IOrderDetailRepository _repository;

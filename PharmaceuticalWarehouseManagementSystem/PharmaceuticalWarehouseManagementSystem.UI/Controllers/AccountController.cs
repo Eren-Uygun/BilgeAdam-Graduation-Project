@@ -15,16 +15,18 @@ using PharmaceuticalWarehouseManagementSystem.KERNEL.Enum;
 using PharmaceuticalWarehouseManagementSystem.UI.Models;
 using System.Web;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Http;
 
 namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
 {
     [AllowAnonymous]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin"),Authorize(Roles = "User")]
     public class AccountController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IEmployeeRepository _repository;
+        
 
         public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager,
             IEmployeeRepository repository)
@@ -32,11 +34,17 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
             this._signInManager = signInManager;
             this._userManager = userManager;
             this._repository = repository;
+            
+
+
         }
+
+        
 
         public IActionResult LogOut()
         {
             var Login = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            HttpContext.Session.Remove("UserMail");
             return RedirectToAction("Login");
         }
 
@@ -71,14 +79,21 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
 
                     ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
 
+                  
+
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme,principal);
+
 
                     if (Rmodel.Role == Role.Admin)
                     {
+                        HttpContext.Session.SetString("UserMail",model.UserMail);
+                        var user = await _userManager.GetUserAsync(HttpContext.User);
                         return Redirect("/Admin/Category/List");
                     }
                     else if (Rmodel.Role == Role.User)
                     {
+                        HttpContext.Session.SetString("UserMail",model.UserMail);
+                        var user = await _userManager.GetUserAsync(HttpContext.User);
                         return Redirect("/User/Category/List");
                     }
                     else

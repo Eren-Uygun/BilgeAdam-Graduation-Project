@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing.Matching;
@@ -14,6 +16,7 @@ using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
@@ -44,8 +47,17 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
          
             services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+           
+
+
             services.AddControllersWithViews();
             services.AddRazorPages();
+           
+          
+
+          
+
+           
 
             services.AddIdentity<IdentityUser, IdentityRole>(options=>
                 {
@@ -82,11 +94,12 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                 })
                 .AddCookie(options =>
                 {
+                    options.Cookie.Name = "Cookie1";
                     options.LoginPath = "/Account/Login/";
                 });
 
      
-              
+            services.AddSession();
 
 
 
@@ -110,10 +123,10 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
             }
             app.UseCookiePolicy();
             app.UseStaticFiles();
-
             app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseSession();
             
             
             app.UseMvc(routes =>
@@ -122,6 +135,11 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                         name: "MyAdminArea",
                         areaName: "Admin",
                         template: "Admin/{controller=Category}/{action=List}/{id?}");
+
+                routes.MapAreaRoute( 
+                    name: "MyUserArea",
+                    areaName: "User",
+                    template: "User/{controller=Category}/{action=List}/{id?}");
                     
                 routes.MapRoute(
                     name: "default",

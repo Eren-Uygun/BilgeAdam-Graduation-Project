@@ -18,19 +18,21 @@
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body class="sidebar-mini layout-fixed sidebar-collapse" style="height: auto;">
+<body class="sidebar-mini layout-fixed sidebar-open" style="height: auto;">
 <!-- Site wrapper -->
 <div class="wrapper">
 <!-- Navbar -->
-<nav class="main-header nav-sidebar navbar navbar-expand navbar-white navbar-light">
+<nav class="main-header nav-sidebar navbar navbar-white navbar-light">
+    <label class="border-primary float-right"> User: @Context.Session.GetString("UserMail")</label>
+    <a asp-action="Logout" asp-controller="Account" class="btn btn-warning float-right">Logout</a>
     <!-- Left navbar links -->
-    
+
 
     <!-- SEARCH FORM -->
- 
+
 
     <!-- Right navbar links -->
- 
+
 </nav>
 <!-- /.navbar -->
 <!-- Main Sidebar Container -->

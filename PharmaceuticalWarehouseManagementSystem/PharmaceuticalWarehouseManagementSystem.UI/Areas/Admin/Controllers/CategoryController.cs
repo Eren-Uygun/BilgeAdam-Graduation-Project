@@ -16,6 +16,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    
     public class CategoryController : Controller
     {
         private ICategoryRepository _repository;
@@ -29,16 +30,22 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             this._context = context;
 
         }
+
+
         public IActionResult List()
         {
 
             return View(_repository.GetActive());
         }
-        [HttpGet] 
+
+
+        [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
+
+
         [HttpPost]
         public IActionResult Add(Category category)
         {
@@ -71,7 +78,9 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             return View(_repository.GetById(id));
         }
 
-        [HttpPost] public IActionResult Edit(Category item)
+
+        [HttpPost]
+        public IActionResult Edit(Category item)
         {
             if (ModelState.IsValid)
             {
@@ -99,6 +108,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         }
 
 
+    
         public IActionResult Delete(Guid id)
         {
             if (ModelState.IsValid)
@@ -113,6 +123,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
          
         }
 
+      
         public IActionResult Details(Guid id)
         {
 

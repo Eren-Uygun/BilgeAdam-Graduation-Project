@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Claims;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -125,21 +126,13 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
         }
 
 
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
 
 
-        //public JsonResult JLogin(LoginViewModel model, RoleModel Rmodel, string ReturnUrl)
-        //{
-        //    var check =  _repository.CheckCredentials(model.UserMail, model.Password, Rmodel.Role);
 
-        //    if (check)
-        //    {
-
-        //    }
-
-        //}
-
-
-        //}
 
     }
 }

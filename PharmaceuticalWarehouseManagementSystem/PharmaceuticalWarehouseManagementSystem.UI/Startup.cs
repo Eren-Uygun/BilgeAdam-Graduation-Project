@@ -19,6 +19,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.FileSystemGlobbing.Internal.Patterns;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
@@ -66,6 +67,8 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                     options.SignIn.RequireConfirmedPhoneNumber = false;
                     options.User.RequireUniqueEmail = false;
 
+                 
+
 
                 })
                 .AddEntityFrameworkStores<ProjectContext>()
@@ -95,9 +98,19 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                 .AddCookie(options =>
                 {
                     options.Cookie.Name = "Cookie1";
+                    
                     options.LoginPath = "/Account/Login/";
+                    options.LogoutPath = "/Account/Logout";
+
+                    options.Cookie.HttpOnly = true;
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(45);
+                    options.AccessDeniedPath = "Account/AccessDenied"; 
+                    options.SlidingExpiration = true;
+
                 });
 
+
+         
      
             services.AddSession();
 

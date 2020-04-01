@@ -21,7 +21,8 @@ using Microsoft.AspNetCore.Http;
 namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
 {
     [AllowAnonymous]
-    [Authorize(Roles = "Admin"),Authorize(Roles = "User")]
+    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "User")]
     public class AccountController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;

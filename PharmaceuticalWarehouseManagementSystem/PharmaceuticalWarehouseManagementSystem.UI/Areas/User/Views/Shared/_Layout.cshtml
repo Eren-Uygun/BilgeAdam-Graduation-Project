@@ -23,15 +23,8 @@
 <div class="wrapper">
 <!-- Navbar -->
 <nav class="main-header nav-sidebar navbar navbar-white navbar-light">
-    <label class="border-primary float-right"> User: @Context.Session.GetString("UserMail")</label>
+    <label class="border-primary"> User: @Context.Session.GetString("UserMail")</label>
     <a asp-action="Logout" asp-controller="Account" class="btn btn-warning float-right">Logout</a>
-    <!-- Left navbar links -->
-
-
-    <!-- SEARCH FORM -->
-
-
-    <!-- Right navbar links -->
 
 </nav>
 <!-- /.navbar -->
@@ -67,22 +60,22 @@
         with font-awesome or any other icon font library -->
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="fas fa-tachometer-alt"></i>
+               
                 <p>
                     Category Operations
-                    <i class="right fas fa-angle-left"></i>
+                   
                 </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="/Admin/Category/List" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/Category/List" class="nav-link">
+                       
                         <p>List Category</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Admin/Category/Add" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/Category/Add" class="nav-link">
+                        
                         <p>Add Category</p>
                     </a>
                 </li>
@@ -90,7 +83,7 @@
         </li> <!--Category Operations-->
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="fas fa-tachometer-alt"></i>
+               
                 <p>
                     Customer Operations
                     <i class="right fas fa-angle-left"></i>
@@ -98,14 +91,14 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="/Admin/Customer/List" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/Customer/List" class="nav-link">
+                       
                         <p>List Customer</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Admin/Customer/Add" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/Customer/Add" class="nav-link">
+                       
                         <p>Add Customer</p>
                     </a>
                 </li>
@@ -113,45 +106,22 @@
         </li> <!--Customer Operations-->
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="fas fa-tachometer-alt"></i>
-                <p>
-                    Employee Operations
-                    <i class="right fas fa-angle-left"></i>
-                </p>
-            </a>
-            <ul class="nav nav-treeview">
-                <li class="nav-item">
-                    <a href="/Admin/Employee/List" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>List Employee</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/Admin/Employee/Add" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Add Employee</p>
-                    </a>
-                </li>
-            </ul>
-        </li> <!--Employee Operations-->
-        <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-                <i class="fas fa-tachometer-alt"></i>
+                
                 <p>
                     Order Operations
-                    <i class="right fas fa-angle-left"></i>
+                   
                 </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="/Admin/Order/List" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/Order/List" class="nav-link">
+                       
                         <p>List Order</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Admin/Order/Add" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/Order/Add" class="nav-link">
+                      
                         <p>Add Order</p>
                     </a>
                 </li>
@@ -159,22 +129,21 @@
         </li> <!--Order Operations-->
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="fas fa-tachometer-alt"></i>
                 <p>
                     OrderDetail Operations
-                    <i class="right fas fa-angle-left"></i>
+                    
                 </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="/Admin/OrderDetail/List" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/OrderDetail/List" class="nav-link">
+                        
                         <p>List OrderDetail</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Admin/OrderDetail/Add" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/OrderDetail/Add" class="nav-link">
+                      
                         <p>Add OrderDetail</p>
                     </a>
                 </li>
@@ -182,22 +151,22 @@
         </li> <!--OrderDetail Operations-->
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="fas fa-tachometer-alt"></i>
+             
                 <p>
                     Product Operations
-                    <i class="right fas fa-angle-left"></i>
+                  
                 </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="/Admin/Product/List" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/Product/List" class="nav-link">
+                     
                         <p>List Product</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Admin/Product/Add" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/Product/Add" class="nav-link">
+                        
                         <p>Add Product</p>
                     </a>
                 </li>
@@ -205,22 +174,22 @@
         </li> <!--Product Operation-->
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="fas fa-tachometer-alt"></i>
+              
                 <p>
                     Shipper Operations
-                    <i class="right fas fa-angle-left"></i>
+                  
                 </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="/Admin/Shipper/List" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/Shipper/List" class="nav-link">
+                        
                         <p>List Shipper</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Admin/Shipper/Add" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/Shipper/Add" class="nav-link">
+                        
                         <p>Add Shipper</p>
                     </a>
                 </li>
@@ -228,22 +197,22 @@
         </li> <!--Shipper Operation-->
         <li class="nav-item has-treeview">
             <a href="#" class="nav-link">
-                <i class="fas fa-tachometer-alt"></i>
+               
                 <p>
                     Supplier Operations
-                    <i class="right fas fa-angle-left"></i>
+                    
                 </p>
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item">
-                    <a href="/Admin/Supplier/List" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/Supplier/List" class="nav-link">
+                      
                         <p>List Supplier</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="/Admin/Supplier/Add" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
+                    <a href="/User/Supplier/Add" class="nav-link">
+                       
                         <p>Add Supplier</p>
                     </a>
                 </li>

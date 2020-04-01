@@ -104,7 +104,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
 
                     options.Cookie.HttpOnly = true;
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(45);
-                    options.AccessDeniedPath = "Account/AccessDenied"; 
+                    options.AccessDeniedPath = "/Home/Index"; 
                     options.SlidingExpiration = true;
 
                 });

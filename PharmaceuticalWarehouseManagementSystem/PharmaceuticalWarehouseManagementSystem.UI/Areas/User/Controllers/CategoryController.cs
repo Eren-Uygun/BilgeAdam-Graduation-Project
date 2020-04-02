@@ -12,6 +12,8 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
 {
     [Area("User")]
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    [Authorize(Roles = "User")]
+    
     public class CategoryController : Controller
     {
         private ICategoryRepository _repository;

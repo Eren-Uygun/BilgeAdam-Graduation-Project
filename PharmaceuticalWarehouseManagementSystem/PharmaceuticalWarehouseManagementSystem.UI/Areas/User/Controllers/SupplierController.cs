@@ -12,6 +12,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
 {
     [Area("User")]
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    [Authorize(Roles = "User")]
     public class SupplierController : Controller
     {
         private ISupplierRepository _repository;

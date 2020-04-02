@@ -13,6 +13,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
 {
     [Area("User")]
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
+    [Authorize(Roles = "User")]
    public class OrderDetailController : Controller
     {
         private IOrderDetailRepository _repository;

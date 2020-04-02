@@ -21,8 +21,6 @@ using Microsoft.AspNetCore.Http;
 namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
 {
     [AllowAnonymous]
-    [Authorize(Roles = "Admin")]
-    [Authorize(Roles = "User")]
     public class AccountController : Controller
     {
         private readonly SignInManager<IdentityUser> _signInManager;
@@ -74,6 +72,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
                     var claims = new List<Claim>
                     {
                         new Claim(ClaimTypes.Email, model.UserMail),
+                        new Claim(ClaimTypes.Role, value:Rmodel.Role.ToString()),
                        
                     };
 

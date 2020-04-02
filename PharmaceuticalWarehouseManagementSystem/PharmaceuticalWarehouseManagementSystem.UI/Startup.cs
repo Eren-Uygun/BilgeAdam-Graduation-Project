@@ -5,11 +5,13 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Routing.Matching;
 using Microsoft.AspNetCore.Server.IIS;
 using Microsoft.CodeAnalysis;
@@ -90,17 +92,20 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
             services.AddScoped<ISupplierRepository, EfSupplier>();
 
 
+            
+
             services.AddAuthentication(Options =>
                 {
                     Options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     Options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+
                 })
                 .AddCookie(options =>
                 {
                     options.Cookie.Name = "Cookie1";
                     
                     options.LoginPath = "/Account/Login/";
-                    options.LogoutPath = "/Account/Logout";
+                    options.LogoutPath = "/Account/Login";
 
                     options.Cookie.HttpOnly = true;
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(45);
@@ -116,7 +121,14 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
 
 
 
-            services.AddMvc(options => { options.EnableEndpointRouting = false; });
+            services.AddMvc(options =>
+            {
+                options.EnableEndpointRouting = false;
+                var policy = new AuthorizationPolicyBuilder()
+                    .RequireRole("Admin", "User")
+                    .Build();
+                    options.Filters.Add(new AuthorizeFilter(policy));
+            });
 
 
 
@@ -134,12 +146,15 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-            app.UseCookiePolicy();
+
+         
+           
             app.UseStaticFiles();
-            app.UseRouting();
             app.UseAuthentication();
             app.UseAuthorization();
+            app.UseCookiePolicy();
             app.UseSession();
+            app.UseRouting();
             
             
             app.UseMvc(routes =>
@@ -158,13 +173,6 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                     name: "default",
                     template: "{controller=Account}/{action=Login}");
 
-                routes.MapRoute(
-                    name: "Admin",
-                    template: "{Areas=Admin}/{Controller=Category}/{Action=List}");
-
-                routes.MapRoute(
-                    name:"User",
-                    template:"{Areas=User}/{Controller=Category}/{Action=List}");
             });
         } 
     }

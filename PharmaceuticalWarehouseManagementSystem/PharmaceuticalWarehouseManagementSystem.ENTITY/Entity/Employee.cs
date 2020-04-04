@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using Microsoft.AspNetCore.Http;
 
 namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
 {
@@ -46,6 +47,8 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
 
         [Required(ErrorMessage = "Please Select your role")]
         public Role Role { get; set; }
+
+        //public IFormFile Photo { get; set; } // Eklenecek
 
         public virtual ICollection<Order> Orders { get; set; }
 

@@ -84,7 +84,7 @@
             <input type="hidden" asp-for="ID" />
 
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" id="Edit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -93,4 +93,18 @@
 <div>
     <a asp-action="List">Back to List</a>
 </div>
+
+<script>
+    document
+        .getElementById("Edit")
+        .addEventListener("click", function (e) { //e => event
+            if (!confirm("Do you want to edit?")) {
+                e.preventDefault(); // ! => don't want to do this
+            } else {
+                //want to do this! => maybe do something about it?
+                alert('Modified');
+            }
+        });
+
+</script>
 

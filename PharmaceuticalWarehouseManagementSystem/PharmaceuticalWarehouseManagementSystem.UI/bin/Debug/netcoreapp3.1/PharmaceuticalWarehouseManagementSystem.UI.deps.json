@@ -2553,7 +2553,8 @@
         "dependencies": {
           "Microsoft.AspNetCore.Hosting": "2.2.7",
           "Microsoft.AspNetCore.Hosting.Abstractions": "2.2.0",
-          "Microsoft.AspNetCore.Http": "2.2.2"
+          "Microsoft.AspNetCore.Http": "2.2.2",
+          "Microsoft.EntityFrameworkCore": "3.1.3"
         },
         "runtime": {
           "PharmaceuticalWarehouseManagementSystem.Utility.dll": {}

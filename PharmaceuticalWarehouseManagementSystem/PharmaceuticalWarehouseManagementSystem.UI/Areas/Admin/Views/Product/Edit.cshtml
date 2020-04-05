@@ -48,11 +48,11 @@
             <div class="form-group">
                 <label asp-for="ReorderLevel" class="control-label"></label>
                 <select asp-for="ReorderLevel" class="control-label" asp-items="Html.GetEnumSelectList<ReorderLevel>()"></select>
-                    <span asp-validation-for="ReorderLevel" class="text-danger"></span>
-</div>
+                <span asp-validation-for="ReorderLevel" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <label asp-for="ExpiredDate" class="control-label"></label>
-                <input asp-for="ExpiredDate" class="form-control"/>
+                <input asp-for="ExpiredDate" class="form-control" />
                 <span asp-validation-for="ExpiredDate" class="text-danger"></span>
             </div>
             <div class="form-group form-check">
@@ -62,7 +62,7 @@
             </div>
             <input type="hidden" asp-for="ID" />
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" id="Edit" value="Save" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -72,3 +72,17 @@
     <a asp-action="List">Back to List</a>
 </div>
 
+
+<script>
+    document
+        .getElementById("Edit")
+        .addEventListener("click", function (e) { //e => event
+            if (!confirm("Do you want to edit?")) {
+                e.preventDefault(); // ! => don't want to do this
+            } else {
+                //want to do this! => maybe do something about it?
+                alert('Modified');
+            }
+        });
+
+</script>

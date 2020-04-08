@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 
 namespace PharmaceuticalWarehouseManagementSystem.UI
 {
@@ -21,6 +22,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+
                 });
     }
 }

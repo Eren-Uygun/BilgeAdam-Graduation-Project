@@ -35,7 +35,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
             modelBuilder.ApplyConfiguration(new ShipperMap());
             modelBuilder.ApplyConfiguration(new SupplierMap());
 
-            modelBuilder.Seed();
+     
 
 
 

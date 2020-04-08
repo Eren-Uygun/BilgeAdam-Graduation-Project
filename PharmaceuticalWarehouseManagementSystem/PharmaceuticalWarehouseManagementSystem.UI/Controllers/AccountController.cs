@@ -40,12 +40,13 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
         }
 
         
-
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult LogOut()
         {
             var Login = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             HttpContext.Session.Remove("UserMail");
             return RedirectToAction("Login");
+
         }
 
         [HttpGet]
@@ -56,6 +57,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
 
 
         [HttpPost, ValidateAntiForgeryToken, AllowAnonymous]
+        [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
         public async Task<IActionResult> Login(LoginViewModel model, RoleModel Rmodel)
         {
            

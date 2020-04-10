@@ -44,11 +44,10 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
         public string City { get; set; }
         public string Country { get; set; }
         public string PostalCode { get; set; }
+        public string imageUrl { get; set; }
 
         [Required(ErrorMessage = "Please Select your role")]
         public Role Role { get; set; }
-
-        //public IFormFile Photo { get; set; } // Eklenecek
 
         public virtual ICollection<Order> Orders { get; set; }
 

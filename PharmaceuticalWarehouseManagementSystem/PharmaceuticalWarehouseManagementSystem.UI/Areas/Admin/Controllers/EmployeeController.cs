@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
+using PharmaceuticalWarehouseManagementSystem.Utility;
 
 namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 {
@@ -18,12 +22,14 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
     {
         private IEmployeeRepository _repository;
         private ProjectContext _context;
+        private IHostingEnvironment _hostingEnvironment;
 
 
-        public EmployeeController(IEmployeeRepository repository,ProjectContext context)
+        public EmployeeController(IEmployeeRepository repository,ProjectContext context,IHostingEnvironment hostEnvironment)
         {
             this._repository = repository;
             this._context = context;
+            this._hostingEnvironment = hostEnvironment;
         }
         public IActionResult List()
         {
@@ -39,10 +45,22 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Add(Employee item)
+        public IActionResult Add(Employee item,List<IFormFile> Files)
         {
             if (ModelState.IsValid)
             {
+                bool imgResult;
+                string imgPath = Image.ImageUpload(Files, _hostingEnvironment, out imgResult);
+
+                if (imgResult)
+                {
+                    item.imageUrl = imgPath;
+                }
+                else
+                {
+                    item.imageUrl = string.Empty;
+                }
+
                 bool result = _repository.Add(item);
 
 

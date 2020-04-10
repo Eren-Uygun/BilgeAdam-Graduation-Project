@@ -1,19 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
+using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ValueGeneration;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.KERNEL.Enum;
 
-namespace PharmaceuticalWarehouseManagementSystem.UI.Models
+namespace PharmaceuticalWarehouseManagementSystem.DAL.DataSeed
 {
-    public static class ModelBuilderExtension
+   public static class DataSeed
     {
-        public static void Seed(this ModelBuilder modelBuilder)
+       public static void Seed(this ModelBuilder modelBuilder)
         {
-            
+         
             modelBuilder.Entity<Employee>().HasData(
                 new Employee()
                 {
@@ -58,7 +57,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Models
 
             );
 
-          
+
         }
     }
 }

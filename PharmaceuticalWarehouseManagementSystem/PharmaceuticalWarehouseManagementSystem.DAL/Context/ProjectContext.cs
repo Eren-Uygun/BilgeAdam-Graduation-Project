@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using PharmaceuticalWarehouseManagementSystem.DAL.DataSeed;
 using PharmaceuticalWarehouseManagementSystem.KERNEL.Enum;
 
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
@@ -22,6 +23,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
             
         }
 
+    
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             
@@ -35,11 +38,12 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
             modelBuilder.ApplyConfiguration(new ShipperMap());
             modelBuilder.ApplyConfiguration(new SupplierMap());
 
+            modelBuilder.Seed();
+
+       
      
 
-
-
-          
+           
 
 
             base.OnModelCreating(modelBuilder);

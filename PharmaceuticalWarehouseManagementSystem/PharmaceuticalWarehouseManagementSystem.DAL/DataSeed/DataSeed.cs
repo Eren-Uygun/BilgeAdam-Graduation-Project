@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.KERNEL.Enum;
+using PharmaceuticalWarehouseManagementSystem.Utility;
 
 namespace PharmaceuticalWarehouseManagementSystem.DAL.DataSeed
 {
@@ -23,7 +24,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.DataSeed
                     Email = "admin@mail.com",
                     Password = "123",
                     BirthDate = DateTime.Parse("10/11/2020 17:00"),
-                    HireDate = DateTime.Parse("24/02/2020 09:05")
+                    HireDate = DateTime.Parse("24/02/2020 09:05"),
+                    CreatedComputerName = Environment.MachineName,
+                    CreatedIP = Ipfinder.IpAddress,
+                    CreatedDate = DateTime.Now,
                 },
 
                 new Employee()
@@ -35,7 +39,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.DataSeed
                     Email = "user@mail.com",
                     Password = "123",
                     BirthDate = DateTime.Parse("10/11/2020 17:00"),
-                    HireDate = DateTime.Parse("24/02/2020 09:05")
+                    HireDate = DateTime.Parse("24/02/2020 09:05"),
+                    CreatedComputerName = Environment.MachineName,
+                    CreatedIP = Ipfinder.IpAddress,
+                    CreatedDate = DateTime.Now,
                 }
 
             );
@@ -45,14 +52,21 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.DataSeed
                 {
                     ID = new Guid(),
                     CategoryName = "Ağrı kesici",
-                    CategoryDescription = "Düşük ve orta düzey ağrı giderici ilaçlar"
+                    CategoryDescription = "Düşük ve orta düzey ağrı giderici ilaçlar",
+                    CreatedComputerName = "Admin".ToString(),
+                    CreatedIP = Ipfinder.IpAddress,
+                    CreatedDate = DateTime.Now,
+
                 },
 
                 new Category()
                 {
                     ID = new Guid(),
                     CategoryName = "Ateş Düşürücü",
-                    CategoryDescription = "Vücut sıcaklığını ayarlamaya yarayan ilaçlar"
+                    CategoryDescription = "Vücut sıcaklığını ayarlamaya yarayan ilaçlar",
+                    CreatedComputerName = Environment.MachineName,
+                    CreatedIP = Ipfinder.IpAddress,
+                    CreatedDate = DateTime.Now,
                 }
 
             );

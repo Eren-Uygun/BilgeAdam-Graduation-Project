@@ -17,14 +17,14 @@ namespace PharmaceuticalWarehouseManagementSystem.KERNEL.Map
         public virtual void Configure(EntityTypeBuilder<T> builder)
         {
             builder.HasKey(x => x.ID);
-            builder.Property(x => x.ID).ValueGeneratedOnAdd();
+            builder.Property(x => x.ID).HasColumnName("ID").HasDefaultValueSql("newid()").IsRequired();
             builder.Property(x => x.Status).IsRequired(true);
             builder.Property(x => x.CreatedDate).IsRequired(false);
             builder.Property(x => x.CreatedComputerName).HasMaxLength(255).IsRequired(false);
             builder.Property(x => x.CreatedIP).HasMaxLength(15).IsRequired(false);
             builder.Property(x => x.ModifiedDate).IsRequired(false);
             builder.Property(x => x.ModifiedComputerName).HasMaxLength(255).IsRequired(false);
-            builder.Property(x => x.ModifiedIP).HasMaxLength(15).IsRequired(false).ValueGeneratedOnUpdate();
+            builder.Property(x => x.ModifiedIP).HasMaxLength(15).IsRequired(false);
             builder.Property(x => x.RemovedComputerName).HasMaxLength(15).IsRequired(false);
             builder.Property(x => x.RemovedIP).HasMaxLength(15).IsRequired(false);
 

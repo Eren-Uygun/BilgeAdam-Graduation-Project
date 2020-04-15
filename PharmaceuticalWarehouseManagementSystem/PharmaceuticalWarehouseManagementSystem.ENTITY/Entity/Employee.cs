@@ -21,10 +21,10 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
 
         public string Title { get; set; }
 
-        [Required(ErrorMessage = "Please Enter your Birthdate")]
+        [Required(ErrorMessage = "Please Enter your Birthdate"),DataType(DataType.Date)]
         public DateTime? BirthDate { get; set; }
 
-        [Required(ErrorMessage = "Hire Date must be required")]
+        [Required(ErrorMessage = "Hire Date must be required"),DataType(DataType.Date)]
         public DateTime? HireDate { get; set; }
 
         public string PhoneNumber { get; set; }

@@ -18,8 +18,8 @@ namespace PharmaceuticalWarehouseManagementSystem.MAP.Mapping
             builder.Property(x => x.LastName).HasMaxLength(30).IsRequired();
             builder.Property(x => x.Title).HasMaxLength(50).IsRequired();
             builder.Property(x => x.Role).HasMaxLength(50).IsRequired();
-            builder.Property(x => x.BirthDate).HasColumnType("date").IsRequired(false);
-            builder.Property(x => x.HireDate).HasColumnType("date").IsRequired(false);
+            builder.Property(x => x.BirthDate).IsRequired(false);
+            builder.Property(x => x.HireDate).IsRequired(false);
             builder.Property(x => x.Email).HasMaxLength(50).IsRequired();
             builder.Property(x => x.Password).HasMaxLength(16).IsRequired();
             builder.Property(x => x.Address).HasMaxLength(100).IsRequired(false);

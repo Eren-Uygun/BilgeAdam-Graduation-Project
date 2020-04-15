@@ -1,6 +1,7 @@
 ﻿using PharmaceuticalWarehouseManagementSystem.KERNEL.Entity;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -16,8 +17,9 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
         public Guid? CustomerID { get; set; }
 
         public Guid? EmployeeID { get; set; }
+        [DataType(DataType.Date)]
         public DateTime? ShippedDate { get; set; }
-
+        [DataType(DataType.Date)]
         public DateTime? OrderDate { get; set; }
 
         public string ShipCity { get; set; }

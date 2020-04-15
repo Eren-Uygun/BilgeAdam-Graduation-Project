@@ -46,7 +46,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result == true)
                 {
                     _repository.Save();
-                    return RedirectToAction("List");
+                    return RedirectToAction("List","Customer");
                 }
                 else
                 {

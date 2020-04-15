@@ -32,7 +32,7 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
 
         [Required(ErrorMessage = "Please Select Reorder Level")]
         public ReorderLevel ReorderLevel { get; set; }
-
+        [DataType(DataType.Date)]
         public DateTime? ExpiredDate { get; set; }
 
         public bool Discontinued { get; set; }

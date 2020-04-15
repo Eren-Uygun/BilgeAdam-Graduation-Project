@@ -10,8 +10,8 @@ using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20200413211541_first")]
-    partial class first
+    [Migration("20200415142728_Working")]
+    partial class Working
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -277,21 +277,21 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("9b0e128a-37a5-43b3-9462-fce9ea8327aa"),
+                            ID = new Guid("8c738f5e-e4fb-4780-b07d-ddc714489fdf"),
                             CategoryDescription = "Düşük ve orta düzey ağrı giderici ilaçlar",
                             CategoryName = "Ağrı kesici",
                             CreatedComputerName = "DataSeed",
-                            CreatedDate = new DateTime(2020, 4, 14, 0, 15, 41, 369, DateTimeKind.Local).AddTicks(1705),
+                            CreatedDate = new DateTime(2020, 4, 15, 17, 27, 28, 109, DateTimeKind.Local).AddTicks(6932),
                             CreatedIP = "127.0.0.1",
                             Status = 1
                         },
                         new
                         {
-                            ID = new Guid("1f00acbc-4d5f-4bc3-92b9-446130cb1527"),
+                            ID = new Guid("eac062a6-afaa-445a-a2a4-dea337e84dcb"),
                             CategoryDescription = "Vücut sıcaklığını ayarlamaya yarayan ilaçlar",
                             CategoryName = "Ateş Düşürücü",
                             CreatedComputerName = "DataSeed",
-                            CreatedDate = new DateTime(2020, 4, 14, 0, 15, 41, 369, DateTimeKind.Local).AddTicks(3717),
+                            CreatedDate = new DateTime(2020, 4, 15, 17, 27, 28, 109, DateTimeKind.Local).AddTicks(9053),
                             CreatedIP = "127.0.0.1",
                             Status = 1
                         });
@@ -399,7 +399,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasMaxLength(100);
 
                     b.Property<DateTime?>("BirthDate")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(25)")
@@ -434,7 +434,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasMaxLength(30);
 
                     b.Property<DateTime?>("HireDate")
-                        .HasColumnType("date");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -494,10 +494,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("53be5a47-2450-4d9d-8341-c321af0f39ed"),
+                            ID = new Guid("aa3c9da0-4eac-4650-8adb-f4ba6f0a0c82"),
                             BirthDate = new DateTime(2020, 11, 10, 17, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedComputerName = "DataSeed",
-                            CreatedDate = new DateTime(2020, 4, 14, 0, 15, 41, 366, DateTimeKind.Local).AddTicks(5880),
+                            CreatedDate = new DateTime(2020, 4, 15, 17, 27, 28, 106, DateTimeKind.Local).AddTicks(9718),
                             CreatedIP = "127.0.0.1",
                             Email = "admin@mail.com",
                             FirstName = "Admin",
@@ -510,10 +510,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         },
                         new
                         {
-                            ID = new Guid("0bb517dc-14d5-4061-968f-02202689a22b"),
+                            ID = new Guid("7ab1dc10-cbe5-4770-822c-291e48611d83"),
                             BirthDate = new DateTime(2020, 11, 10, 17, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedComputerName = "DataSeed",
-                            CreatedDate = new DateTime(2020, 4, 14, 0, 15, 41, 367, DateTimeKind.Local).AddTicks(6033),
+                            CreatedDate = new DateTime(2020, 4, 15, 17, 27, 28, 108, DateTimeKind.Local).AddTicks(510),
                             CreatedIP = "127.0.0.1",
                             Email = "user@mail.com",
                             FirstName = "User",

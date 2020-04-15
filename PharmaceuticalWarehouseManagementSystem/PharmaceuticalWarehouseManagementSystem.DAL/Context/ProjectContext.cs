@@ -27,7 +27,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
         
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
+           
 
             modelBuilder.ApplyConfiguration(new CategoryMap());
             modelBuilder.ApplyConfiguration(new CustomerMap());
@@ -38,12 +38,12 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
             modelBuilder.ApplyConfiguration(new ShipperMap());
             modelBuilder.ApplyConfiguration(new SupplierMap());
 
-            modelBuilder.Seed();
+            //modelBuilder.Seed();
 
-       
-     
 
-           
+
+
+
 
 
             base.OnModelCreating(modelBuilder);

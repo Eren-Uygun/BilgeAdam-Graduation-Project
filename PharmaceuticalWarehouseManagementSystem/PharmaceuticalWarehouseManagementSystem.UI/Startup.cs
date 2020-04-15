@@ -50,12 +50,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
          
             services.AddDbContext<ProjectContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-           
-
-
-            services.AddControllersWithViews();
-            services.AddRazorPages();
-           
+        
           
 
           
@@ -109,6 +104,8 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                     options.LoginPath = "/Account/Login/";
                     options.LogoutPath = "/Account/Login";
 
+                    options.ReturnUrlParameter = "/Category/List";
+
                     options.Cookie.HttpOnly = true;
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(45);
                     options.AccessDeniedPath = "/Account/AccessDenied"; 
@@ -133,6 +130,13 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
             });
 
 
+               
+
+
+            services.AddControllersWithViews();
+            services.AddRazorPages();
+
+
 
 
         }
@@ -150,22 +154,18 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
             }
 
          
-           
+            
+            
             app.UseStaticFiles();
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseCookiePolicy();
             app.UseSession();
             app.UseRouting();
-            
-            
+  
+               
             app.UseMvc(routes =>
             {
-                     
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Account}/{action=Login}");
-
                 routes.MapAreaRoute( 
                         name: "MyAdminArea",
                         areaName: "Admin",
@@ -175,9 +175,14 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                     name: "MyUserArea",
                     areaName: "User",
                     template: "User/{controller=Category}/{action=List}/{id?}");
-               
+                    
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Account}/{action=Login}");
 
             });
-        } 
+
+
+        }
     }
 }

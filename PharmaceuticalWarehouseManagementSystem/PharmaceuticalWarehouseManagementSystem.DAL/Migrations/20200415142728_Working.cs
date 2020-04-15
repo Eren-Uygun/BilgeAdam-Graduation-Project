@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 {
-    public partial class first : Migration
+    public partial class Working : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -117,8 +117,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     FirstName = table.Column<string>(maxLength: 30, nullable: false),
                     LastName = table.Column<string>(maxLength: 30, nullable: false),
                     Title = table.Column<string>(maxLength: 50, nullable: false),
-                    BirthDate = table.Column<DateTime>(type: "date", nullable: true),
-                    HireDate = table.Column<DateTime>(type: "date", nullable: true),
+                    BirthDate = table.Column<DateTime>(nullable: true),
+                    HireDate = table.Column<DateTime>(nullable: true),
                     PhoneNumber = table.Column<string>(nullable: true),
                     Email = table.Column<string>(maxLength: 50, nullable: false),
                     Password = table.Column<string>(maxLength: 16, nullable: false),
@@ -431,8 +431,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 columns: new[] { "ID", "CategoryDescription", "CategoryName", "CreatedComputerName", "CreatedDate", "CreatedIP", "DeleteDate", "ModifiedComputerName", "ModifiedDate", "ModifiedIP", "RemovedComputerName", "RemovedIP", "Status" },
                 values: new object[,]
                 {
-                    { new Guid("9b0e128a-37a5-43b3-9462-fce9ea8327aa"), "Düşük ve orta düzey ağrı giderici ilaçlar", "Ağrı kesici", "DataSeed", new DateTime(2020, 4, 14, 0, 15, 41, 369, DateTimeKind.Local).AddTicks(1705), "127.0.0.1", null, null, null, null, null, null, 1 },
-                    { new Guid("1f00acbc-4d5f-4bc3-92b9-446130cb1527"), "Vücut sıcaklığını ayarlamaya yarayan ilaçlar", "Ateş Düşürücü", "DataSeed", new DateTime(2020, 4, 14, 0, 15, 41, 369, DateTimeKind.Local).AddTicks(3717), "127.0.0.1", null, null, null, null, null, null, 1 }
+                    { new Guid("8c738f5e-e4fb-4780-b07d-ddc714489fdf"), "Düşük ve orta düzey ağrı giderici ilaçlar", "Ağrı kesici", "DataSeed", new DateTime(2020, 4, 15, 17, 27, 28, 109, DateTimeKind.Local).AddTicks(6932), "127.0.0.1", null, null, null, null, null, null, 1 },
+                    { new Guid("eac062a6-afaa-445a-a2a4-dea337e84dcb"), "Vücut sıcaklığını ayarlamaya yarayan ilaçlar", "Ateş Düşürücü", "DataSeed", new DateTime(2020, 4, 15, 17, 27, 28, 109, DateTimeKind.Local).AddTicks(9053), "127.0.0.1", null, null, null, null, null, null, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -440,8 +440,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 columns: new[] { "ID", "Address", "BirthDate", "City", "Country", "CreatedComputerName", "CreatedDate", "CreatedIP", "DeleteDate", "Email", "FirstName", "HireDate", "LastName", "ModifiedComputerName", "ModifiedDate", "ModifiedIP", "Password", "PhoneNumber", "PostalCode", "RemovedComputerName", "RemovedIP", "Role", "Status", "Title", "imageUrl" },
                 values: new object[,]
                 {
-                    { new Guid("53be5a47-2450-4d9d-8341-c321af0f39ed"), null, new DateTime(2020, 11, 10, 17, 0, 0, 0, DateTimeKind.Unspecified), null, null, "DataSeed", new DateTime(2020, 4, 14, 0, 15, 41, 366, DateTimeKind.Local).AddTicks(5880), "127.0.0.1", null, "admin@mail.com", "Admin", new DateTime(2020, 2, 24, 9, 5, 0, 0, DateTimeKind.Unspecified), "Admin", null, null, null, "123", null, null, null, null, 2, 1, "DbAdmin", null },
-                    { new Guid("0bb517dc-14d5-4061-968f-02202689a22b"), null, new DateTime(2020, 11, 10, 17, 0, 0, 0, DateTimeKind.Unspecified), null, null, "DataSeed", new DateTime(2020, 4, 14, 0, 15, 41, 367, DateTimeKind.Local).AddTicks(6033), "127.0.0.1", null, "user@mail.com", "User", new DateTime(2020, 2, 24, 9, 5, 0, 0, DateTimeKind.Unspecified), "User", null, null, null, "123", null, null, null, null, 1, 1, "DbAdmin", null }
+                    { new Guid("aa3c9da0-4eac-4650-8adb-f4ba6f0a0c82"), null, new DateTime(2020, 11, 10, 17, 0, 0, 0, DateTimeKind.Unspecified), null, null, "DataSeed", new DateTime(2020, 4, 15, 17, 27, 28, 106, DateTimeKind.Local).AddTicks(9718), "127.0.0.1", null, "admin@mail.com", "Admin", new DateTime(2020, 2, 24, 9, 5, 0, 0, DateTimeKind.Unspecified), "Admin", null, null, null, "123", null, null, null, null, 2, 1, "DbAdmin", null },
+                    { new Guid("7ab1dc10-cbe5-4770-822c-291e48611d83"), null, new DateTime(2020, 11, 10, 17, 0, 0, 0, DateTimeKind.Unspecified), null, null, "DataSeed", new DateTime(2020, 4, 15, 17, 27, 28, 108, DateTimeKind.Local).AddTicks(510), "127.0.0.1", null, "user@mail.com", "User", new DateTime(2020, 2, 24, 9, 5, 0, 0, DateTimeKind.Unspecified), "User", null, null, null, "123", null, null, null, null, 1, 1, "DbAdmin", null }
                 });
 
             migrationBuilder.CreateIndex(

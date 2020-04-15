@@ -50,7 +50,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 bool imgResult;
-                string imgPath = Image.ImageUpload(Files, _hostingEnvironment, out imgResult);
+                string imgPath = Upload.ImageUpload(Files, _hostingEnvironment, out imgResult);
 
                 if (imgResult)
                 {
@@ -61,13 +61,14 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                     item.imageUrl = string.Empty;
                 }
 
+
                 bool result = _repository.Add(item);
 
 
                 if (result == true)
                 {
                     _repository.Save();
-                    return RedirectToAction("List");
+                    return RedirectToAction("List","Employee","/Admin/");
                 }
                 else
                 {

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace PharmaceuticalWarehouseManagementSystem.Utility
 {
-   public class Image
+  public static class Upload
     {
         public static string ImageUpload(List<IFormFile> files, IHostingEnvironment _env, out bool result)
         {

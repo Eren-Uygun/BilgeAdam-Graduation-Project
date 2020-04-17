@@ -11,9 +11,9 @@ namespace PharmaceuticalWarehouseManagementSystem.Utility
     {
         public static string ImageUpload(List<IFormFile> files, IHostingEnvironment _env, out bool result)
         {
-            //Resim yükleme işlemlerimizi gerçekleştiriyoruz. Geriye resim yolunu veya hata mesajını döndürüyoruz. Ayrıca dönen string'in başarı bilgisi mi veya hata mesajımı olduğunu anlamamızı kolaylaştırması açısından bir değer fırlatıyoruz.
+            //Resim yükleme işlemlerimizi gerçekleştiriyoruz. Geriye resim yolunu veya hata mesajını döndürüyoruz.Ayrıca dönen string'in başarı bilgisi mi veya hata mesajımı olduğunu anlamamızı kolaylaştırması açısından bir değer fırlatıyoruz.
             result = false;
-            var uploads = Path.Combine(_env.WebRootPath, "uploads");
+            var uploads = Path.Combine(_env.WebRootPath, "Images");
 
             foreach (var file in files)
             {
@@ -42,5 +42,11 @@ namespace PharmaceuticalWarehouseManagementSystem.Utility
             }
             return "Dosya bulunamadı! Lütfen en az bir dosya seçin.";
         }
+
+
+
+
+
+
     }
 }

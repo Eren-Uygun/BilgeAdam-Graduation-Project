@@ -270,7 +270,10 @@
                                   @RenderBody()
                                 </div>
                                 <!-- /.card-body -->
-                               
+                               @if(IsSectionDefined("Scripts"))
+                               {
+                                   @RenderSection("Scripts",required:true)
+                               }
                                 <!-- /.card-footer-->
                             </div>
                             <!-- /.card -->

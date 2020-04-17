@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
@@ -23,16 +24,22 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         private IEmployeeRepository _repository;
         private ProjectContext _context;
         private IHostingEnvironment _hostingEnvironment;
+        private IWebHostEnvironment _webHostEnvironment;
+        
 
 
-        public EmployeeController(IEmployeeRepository repository,ProjectContext context,IHostingEnvironment hostEnvironment)
+        public EmployeeController(IEmployeeRepository repository,ProjectContext context,IHostingEnvironment hostEnvironment,IWebHostEnvironment webHostEnvironment)
         {
             this._repository = repository;
             this._context = context;
             this._hostingEnvironment = hostEnvironment;
+            this._webHostEnvironment = webHostEnvironment;
+            
+                
         }
         public IActionResult List()
         {
+            
             return View(_repository.GetActive());
             
         }

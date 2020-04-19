@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -57,7 +58,10 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 bool imgResult;
+
                 string imgPath = Upload.ImageUpload(Files, _hostingEnvironment, out imgResult);
+
+                imgResult = true;
 
                 if (imgResult)
                 {
@@ -65,8 +69,11 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 }
                 else
                 {
-                    item.imageUrl = string.Empty;
+                    item.imageUrl = "NULL";
                 }
+
+
+
 
 
                 bool result = _repository.Add(item);
@@ -114,6 +121,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 updated.Address = item.Address;
                 updated.Country = item.Country;
                 updated.City = item.City;
+                updated.imageUrl = item.imageUrl;
                 updated.Role = item.Role;
                 updated.PostalCode = item.PostalCode;
               
@@ -124,6 +132,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result)
                 {
                     _repository.Save();
+                    
                     return RedirectToAction("List");
                 }
                 else
@@ -155,5 +164,13 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             var employee = _repository.GetById(id);
             return View(employee);
         }
+
+
+
+
+
+
+
+  
     }
 }

@@ -94,6 +94,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                     Options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     Options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     Options.RequireAuthenticatedSignIn = true;
+                    Options.DefaultSignOutScheme = (CookieAuthenticationDefaults.AuthenticationScheme);
 
 
                 })
@@ -101,10 +102,12 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                 {
                     options.Cookie.Name = "Cookie1";
                     
-                    options.LoginPath = "/Account/Login/";
+                    options.LoginPath = "/Account/Login";
                     options.LogoutPath = "/Account/Login";
+                  
 
-                    options.ReturnUrlParameter = "/Category/List";
+
+                    options.ReturnUrlParameter = "Account/Login";
 
                     options.Cookie.HttpOnly = true;
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(45);
@@ -166,6 +169,8 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                
             app.UseMvc(routes =>
             {
+           
+
                 routes.MapAreaRoute( 
                         name: "MyAdminArea",
                         areaName: "Admin",
@@ -175,10 +180,11 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                     name: "MyUserArea",
                     areaName: "User",
                     template: "User/{controller=Category}/{action=List}/{id?}");
-                    
+                     
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Account}/{action=Login}");
+
 
             });
 

@@ -39,13 +39,14 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
 
         }
 
-        
+        [HttpPost,ValidateAntiForgeryToken]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult LogOut()
+        public async Task<IActionResult> LogOut()
         {
-            var Login = HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+           await HttpContext.SignOutAsync(CookieAuthenticationDefaults.LoginPath);
             HttpContext.Session.Remove("UserMail");
-            return RedirectToAction("Login");
+            HttpContext.Session.Clear();
+            return Redirect("Account/Login");
 
         }
 
@@ -91,13 +92,13 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
                     {
                         HttpContext.Session.SetString("UserMail",model.UserMail);
                         var user = await _userManager.GetUserAsync(HttpContext.User);
-                        return Redirect("/Admin/Category/List");
+                        return Redirect("Admin/Category/List");
                     }
                     else if (Rmodel.Role == Role.User)
                     {
                         HttpContext.Session.SetString("UserMail",model.UserMail);
                         var user = await _userManager.GetUserAsync(HttpContext.User);
-                        return Redirect("/User/Category/List");
+                        return Redirect("User/Category/List");
                     }
                     else
                     {

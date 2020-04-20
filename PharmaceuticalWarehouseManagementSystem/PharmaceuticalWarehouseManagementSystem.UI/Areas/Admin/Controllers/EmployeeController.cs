@@ -61,7 +61,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 
                 string imgPath = Upload.ImageUpload(Files, _hostingEnvironment, out imgResult);
 
-                imgResult = true;
+              
 
                 if (imgResult)
                 {
@@ -82,7 +82,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result == true)
                 {
                     _repository.Save();
-                    return RedirectToAction("List","Employee","/Admin/");
+                    return RedirectToAction("List","Employee");
                 }
                 else
                 {

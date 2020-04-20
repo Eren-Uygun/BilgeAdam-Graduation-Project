@@ -22,8 +22,8 @@ namespace PharmaceuticalWarehouseManagementSystem.Utility
                 {
                     if (file.Length <= 2097152)
                     {
-                        //string uniqueName = $"{Guid.NewGuid().ToString().Replace("-", "_").ToLower()}.{file.ContentType.Split('/')[1]}";
-                        string uniqueName = Guid.NewGuid().ToString().Replace("-", "_") + file.ContentType.Split('/');
+                        string uniqueName = $"{Guid.NewGuid().ToString().Replace("-", "_").ToLower()}.{file.ContentType.Split('/')[1]}";
+                        
                         var filePath = Path.Combine(uploads, uniqueName);
                         using (var fileStream = new FileStream(filePath, FileMode.Create))
                         {

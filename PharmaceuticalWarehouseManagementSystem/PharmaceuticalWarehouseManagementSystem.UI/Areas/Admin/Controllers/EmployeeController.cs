@@ -26,21 +26,23 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         private ProjectContext _context;
         private IHostingEnvironment _hostingEnvironment;
         private IWebHostEnvironment _webHostEnvironment;
+        private ILogger<EmployeeController> _logger;
         
 
 
-        public EmployeeController(IEmployeeRepository repository,ProjectContext context,IHostingEnvironment hostEnvironment,IWebHostEnvironment webHostEnvironment)
+        public EmployeeController(IEmployeeRepository repository,ProjectContext context,IHostingEnvironment hostEnvironment,IWebHostEnvironment webHostEnvironment,ILogger<EmployeeController> logger)
         {
             this._repository = repository;
             this._context = context;
             this._hostingEnvironment = hostEnvironment;
             this._webHostEnvironment = webHostEnvironment;
+            this._logger = logger;
             
                 
         }
         public IActionResult List()
         {
-            
+            _logger.LogInformation("Employee Listed"+DateTime.Now.ToString());
             return View(_repository.GetActive());
             
         }
@@ -66,10 +68,12 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (imgResult)
                 {
                     item.imageUrl = imgPath;
+                    _logger.LogInformation("Image added!!");
                 }
                 else
                 {
                     item.imageUrl = "NULL";
+                   _logger.LogWarning("Image cannot added!!");
                 }
 
 
@@ -82,6 +86,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result == true)
                 {
                     _repository.Save();
+                    _logger.LogInformation("Employee Added"+DateTime.Now.ToString());
                     return RedirectToAction("List","Employee");
                 }
                 else
@@ -132,12 +137,13 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result)
                 {
                     _repository.Save();
-                    
+                    _logger.LogInformation("Employee edited"+DateTime.Now.ToString());
                     return RedirectToAction("List");
                 }
                 else
                 {
                     TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
+                   
                     return View(updated);
                 }
             }

@@ -120,5 +120,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             _repository.Remove(_repository.GetById(id));
             return RedirectToAction("List");
         }
+
+     
     }
 }

@@ -136,5 +136,8 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             var product = _repository.GetById(id);
             return View(product);
         }
+
+
+   
     }
 }

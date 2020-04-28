@@ -86,12 +86,13 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result == true)
                 {
                     _repository.Save();
-                    _logger.LogInformation("Employee Added"+DateTime.Now.ToString());
+                    _logger.LogInformation("Employee Added"+item.ID+DateTime.Now.ToString());
                     return RedirectToAction("List","Employee");
                 }
                 else
                 {
                     TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                    _logger.LogError("Employee Saving Failed");
                     return View(item);
                 }
             }
@@ -143,13 +144,14 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 else
                 {
                     TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
-                   
+                   _logger.LogError("Employee Edit Failed"+DateTime.Now.ToString());
                     return View(updated);
                 }
             }
             else
             {
                 TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
+                 _logger.LogError("Critical Employee Edit Failed"+DateTime.Now.ToString());
                 return View();
             }
 
@@ -161,6 +163,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         public IActionResult Delete(Guid id)
         {
             _repository.Remove(_repository.GetById(id));
+            _logger.LogInformation("Employee Deleted"+" "+id+" "+DateTime.Now.ToString());
             return RedirectToAction("List");
         }
 
@@ -174,8 +177,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 
 
 
-
-
+    
 
   
     }

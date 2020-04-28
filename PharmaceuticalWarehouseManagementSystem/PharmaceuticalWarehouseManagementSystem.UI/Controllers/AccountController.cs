@@ -41,9 +41,10 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
 
         [HttpPost,ValidateAntiForgeryToken]
         [ResponseCache(Location = ResponseCacheLocation.None, NoStore = true)]
-        public async Task<IActionResult> LogOut()
+        [Route("Account/Login")]
+        public IActionResult Logout()
         {
-           await HttpContext.SignOutAsync(CookieAuthenticationDefaults.LoginPath);
+           HttpContext.SignOutAsync(CookieAuthenticationDefaults.LoginPath);
             HttpContext.Session.Remove("UserMail");
             HttpContext.Session.Clear();
             return Redirect("Account/Login");

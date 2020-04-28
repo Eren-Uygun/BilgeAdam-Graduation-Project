@@ -94,7 +94,9 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                     Options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     Options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                     Options.RequireAuthenticatedSignIn = true;
-                    Options.DefaultSignOutScheme = (CookieAuthenticationDefaults.AuthenticationScheme);
+                    //Options.DefaultSignOutScheme = (CookieAuthenticationDefaults.AuthenticationScheme);
+                    Options.DefaultSignOutScheme =(CookieAuthenticationDefaults.LogoutPath);
+                    
 
 
                 })
@@ -103,11 +105,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
                     options.Cookie.Name = "Cookie1";
                     
                     options.LoginPath = "/Account/Login";
-                    options.LogoutPath = "/Account/Login";
-                  
-
-
-                    options.ReturnUrlParameter = "Account/Login";
+                    options.LogoutPath = "/Account/Logout";
 
                     options.Cookie.HttpOnly = true;
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(45);

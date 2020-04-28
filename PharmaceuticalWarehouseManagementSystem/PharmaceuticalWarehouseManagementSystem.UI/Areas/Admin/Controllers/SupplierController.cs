@@ -86,6 +86,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             return RedirectToAction("List");
         }
 
+   
 
     }
 }

@@ -83,5 +83,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             var shipper = _repository.GetById(id);
             return View(shipper);
         }
+
+     
     }
 }

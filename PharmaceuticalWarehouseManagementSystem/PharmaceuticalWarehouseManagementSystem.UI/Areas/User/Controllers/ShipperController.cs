@@ -13,9 +13,10 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
     [Area("User")]
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     [Authorize(Roles = "User")]
-    public class ShipperController : Controller
+     public class ShipperController : Controller
     {
         private IShipperRepository _repository;
+
         public ShipperController(IShipperRepository repository)
         {
             this._repository = repository;
@@ -30,28 +31,59 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
         {
             return View();
         }
+
         [HttpPost]
-        public IActionResult Add(Shipper shipper)
+        public IActionResult Add(Shipper item)
         {
-            _repository.Add(shipper);
+            _repository.Add(item);
             return RedirectToAction("List");
         }
 
         [HttpGet]
-        public IActionResult Edit(Guid ID)
+        public IActionResult Edit(Guid id)
         {
-            return View(_repository.GetById(ID));
+            return View(_repository.GetById(id));
         }
+
         [HttpPost]
         public IActionResult Edit(Shipper item)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                Shipper update = _repository.GetById(item.ID);
+                update.CompanyName = item.CompanyName;
+                update.TaxIdNumber = item.TaxIdNumber;
+                update.PhoneNumber = item.PhoneNumber;
+                update.Address = item.Address;
+                update.Country = item.Country;
+                update.City = item.City;
+                update.PostalCode = item.PostalCode;
+
+                bool result = _repository.Update(update);
+                if (result)
+                {
+                    _repository.Save();
+                    return RedirectToAction("List");
+                }
+                else
+                {
+                    return View(update);
+                }
+
+
+            }
+            else
+            {
+                return View();
+            }
         }
 
-        public IActionResult Delete(Guid ID)
+        public IActionResult Delete(Guid id)
         {
-            _repository.Remove(_repository.GetById(ID));
-            return RedirectToAction("List");
+            var shipper = _repository.GetById(id);
+            return View(shipper);
         }
+
+     
     }
 }

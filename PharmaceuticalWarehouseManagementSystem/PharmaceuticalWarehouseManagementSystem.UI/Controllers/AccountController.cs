@@ -17,6 +17,7 @@ using PharmaceuticalWarehouseManagementSystem.UI.Models;
 using System.Web;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
 {
@@ -26,14 +27,16 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IEmployeeRepository _repository;
+        private readonly ILogger<AccountController> _Ilogger;
         
 
         public AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager,
-            IEmployeeRepository repository)
+            IEmployeeRepository repository,ILogger<AccountController> logger)
         {
             this._signInManager = signInManager;
             this._userManager = userManager;
             this._repository = repository;
+            this._Ilogger = logger;
             
 
 
@@ -47,6 +50,8 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
            HttpContext.SignOutAsync(CookieAuthenticationDefaults.LoginPath);
             HttpContext.Session.Remove("UserMail");
             HttpContext.Session.Clear();
+            _Ilogger.LogInformation("Logout " + DateTime.Now.ToString());  
+
             return Redirect("Account/Login");
 
         }
@@ -93,17 +98,23 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
                     {
                         HttpContext.Session.SetString("UserMail",model.UserMail);
                         var user = await _userManager.GetUserAsync(HttpContext.User);
+                        _Ilogger.LogInformation(model.UserMail+" "+Rmodel.Role+" Logged in "+DateTime.Now.ToString());
+                        TempData["Message"] = model.UserMail+" "+Rmodel.Role+" Logged in ";
                         return Redirect("Admin/Category/List");
                     }
                     else if (Rmodel.Role == Role.User)
                     {
                         HttpContext.Session.SetString("UserMail",model.UserMail);
                         var user = await _userManager.GetUserAsync(HttpContext.User);
+                         _Ilogger.LogInformation(model.UserMail+" "+Rmodel.Role+" Logged in "+DateTime.Now.ToString());
+                         TempData["Message"] = model.UserMail+" "+Rmodel.Role+" Logged in ";
                         return Redirect("User/Category/List");
                     }
                     else
                     {
+                         TempData["Message"] = "Login Failed";
                         return RedirectToAction("index", "home");
+
                     }
 
 
@@ -112,13 +123,16 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+                     TempData["Message"] = "Login failed";
+                    _Ilogger.LogWarning("Login operation failed");
                 }
             }
             else
             {
 
-                ModelState.AddModelError(string.Empty,
-                    "Invalid Login Attempt,Check your email , password and role");
+                ModelState.AddModelError(string.Empty,"Invalid Login Attempt,Check your email , password and role");
+                TempData["Message"] = "Login failed";
+                  _Ilogger.LogWarning("Login operation failed "+DateTime.Now.ToString());
 
 
             }

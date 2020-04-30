@@ -14,8 +14,9 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
           
         }
         
+        [Required(ErrorMessage = "Please Select Customer")]
         public Guid? CustomerID { get; set; }
-
+        [Required(ErrorMessage ="Please Select Employee")]
         public Guid? EmployeeID { get; set; }
         [DataType(DataType.Date)]
         public DateTime? ShippedDate { get; set; }
@@ -26,6 +27,7 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
 
         public string ShipAddress { get; set; }
 
+        [Range(0,double.MaxValue,ErrorMessage ="Positive values allowed")]
         public double? Freight { get; set; }
 
    

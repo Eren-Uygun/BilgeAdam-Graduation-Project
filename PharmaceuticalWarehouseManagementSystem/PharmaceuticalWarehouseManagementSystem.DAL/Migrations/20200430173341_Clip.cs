@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
 {
-    public partial class Working : Migration
+    public partial class Clip : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -314,8 +314,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     ModifiedComputerName = table.Column<string>(maxLength: 255, nullable: true),
                     RemovedIP = table.Column<string>(maxLength: 15, nullable: true),
                     RemovedComputerName = table.Column<string>(maxLength: 15, nullable: true),
-                    CustomerID = table.Column<Guid>(nullable: true),
-                    EmployeeID = table.Column<Guid>(nullable: true),
+                    CustomerID = table.Column<Guid>(nullable: false),
+                    EmployeeID = table.Column<Guid>(nullable: false),
                     ShippedDate = table.Column<DateTime>(type: "date", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "date", nullable: false),
                     ShipCity = table.Column<string>(maxLength: 50, nullable: true),
@@ -355,11 +355,12 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     RemovedIP = table.Column<string>(maxLength: 15, nullable: true),
                     RemovedComputerName = table.Column<string>(maxLength: 15, nullable: true),
                     ProductName = table.Column<string>(maxLength: 20, nullable: false),
-                    SupplierID = table.Column<Guid>(nullable: true),
-                    CategoryID = table.Column<Guid>(nullable: true),
+                    SupplierID = table.Column<Guid>(nullable: false),
+                    CategoryID = table.Column<Guid>(nullable: false),
                     QuantityPerUnit = table.Column<string>(nullable: false),
                     UnitPrice = table.Column<decimal>(type: "decimal(5,3)", nullable: false),
-                    UnitsInStock = table.Column<int>(nullable: false),
+                    UnitsInStock = table.Column<long>(nullable: false),
+                    imageUrl = table.Column<string>(nullable: true),
                     ReorderLevel = table.Column<int>(nullable: false),
                     ExpiredDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Discontinued = table.Column<bool>(nullable: false)
@@ -378,7 +379,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         column: x => x.SupplierID,
                         principalTable: "Suppliers",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -400,7 +401,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     ProductID = table.Column<Guid>(nullable: false),
                     ShipperID = table.Column<Guid>(nullable: false),
                     UnitPrice = table.Column<decimal>(type: "decimal(5,3)", nullable: false),
-                    Quantity = table.Column<int>(nullable: false),
+                    Quantity = table.Column<long>(nullable: false),
                     Discount = table.Column<decimal>(type: "decimal(5,3)", nullable: false)
                 },
                 constraints: table =>
@@ -431,8 +432,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 columns: new[] { "ID", "CategoryDescription", "CategoryName", "CreatedComputerName", "CreatedDate", "CreatedIP", "DeleteDate", "ModifiedComputerName", "ModifiedDate", "ModifiedIP", "RemovedComputerName", "RemovedIP", "Status" },
                 values: new object[,]
                 {
-                    { new Guid("8c738f5e-e4fb-4780-b07d-ddc714489fdf"), "Düşük ve orta düzey ağrı giderici ilaçlar", "Ağrı kesici", "DataSeed", new DateTime(2020, 4, 15, 17, 27, 28, 109, DateTimeKind.Local).AddTicks(6932), "127.0.0.1", null, null, null, null, null, null, 1 },
-                    { new Guid("eac062a6-afaa-445a-a2a4-dea337e84dcb"), "Vücut sıcaklığını ayarlamaya yarayan ilaçlar", "Ateş Düşürücü", "DataSeed", new DateTime(2020, 4, 15, 17, 27, 28, 109, DateTimeKind.Local).AddTicks(9053), "127.0.0.1", null, null, null, null, null, null, 1 }
+                    { new Guid("e174f6bc-afc0-4d54-bc70-4ee3e0c50546"), "Düşük ve orta düzey ağrı giderici ilaçlar", "Ağrı kesici", "DataSeed", new DateTime(2020, 4, 30, 20, 33, 41, 382, DateTimeKind.Local).AddTicks(8013), "127.0.0.1", null, null, null, null, null, null, 1 },
+                    { new Guid("f309ae63-f40e-4ae0-9d7c-ca36a4f89adc"), "Vücut sıcaklığını ayarlamaya yarayan ilaçlar", "Ateş Düşürücü", "DataSeed", new DateTime(2020, 4, 30, 20, 33, 41, 383, DateTimeKind.Local).AddTicks(506), "127.0.0.1", null, null, null, null, null, null, 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -440,8 +441,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                 columns: new[] { "ID", "Address", "BirthDate", "City", "Country", "CreatedComputerName", "CreatedDate", "CreatedIP", "DeleteDate", "Email", "FirstName", "HireDate", "LastName", "ModifiedComputerName", "ModifiedDate", "ModifiedIP", "Password", "PhoneNumber", "PostalCode", "RemovedComputerName", "RemovedIP", "Role", "Status", "Title", "imageUrl" },
                 values: new object[,]
                 {
-                    { new Guid("aa3c9da0-4eac-4650-8adb-f4ba6f0a0c82"), null, new DateTime(2020, 11, 10, 17, 0, 0, 0, DateTimeKind.Unspecified), null, null, "DataSeed", new DateTime(2020, 4, 15, 17, 27, 28, 106, DateTimeKind.Local).AddTicks(9718), "127.0.0.1", null, "admin@mail.com", "Admin", new DateTime(2020, 2, 24, 9, 5, 0, 0, DateTimeKind.Unspecified), "Admin", null, null, null, "123", null, null, null, null, 2, 1, "DbAdmin", null },
-                    { new Guid("7ab1dc10-cbe5-4770-822c-291e48611d83"), null, new DateTime(2020, 11, 10, 17, 0, 0, 0, DateTimeKind.Unspecified), null, null, "DataSeed", new DateTime(2020, 4, 15, 17, 27, 28, 108, DateTimeKind.Local).AddTicks(510), "127.0.0.1", null, "user@mail.com", "User", new DateTime(2020, 2, 24, 9, 5, 0, 0, DateTimeKind.Unspecified), "User", null, null, null, "123", null, null, null, null, 1, 1, "DbAdmin", null }
+                    { new Guid("1c6964ae-cebd-4772-b8d9-6009868bc8cf"), null, new DateTime(2020, 11, 10, 17, 0, 0, 0, DateTimeKind.Unspecified), null, null, "DataSeed", new DateTime(2020, 4, 30, 20, 33, 41, 380, DateTimeKind.Local).AddTicks(1210), "127.0.0.1", null, "admin@mail.com", "Admin", new DateTime(2020, 2, 24, 9, 5, 0, 0, DateTimeKind.Unspecified), "Admin", null, null, null, "123", null, null, null, null, 2, 1, "DbAdmin", null },
+                    { new Guid("985ae49c-63cc-4a11-9fe1-7dbb24ea7336"), null, new DateTime(2020, 11, 10, 17, 0, 0, 0, DateTimeKind.Unspecified), null, null, "DataSeed", new DateTime(2020, 4, 30, 20, 33, 41, 381, DateTimeKind.Local).AddTicks(1731), "127.0.0.1", null, "user@mail.com", "User", new DateTime(2020, 2, 24, 9, 5, 0, 0, DateTimeKind.Unspecified), "User", null, null, null, "123", null, null, null, null, 1, 1, "DbAdmin", null }
                 });
 
             migrationBuilder.CreateIndex(

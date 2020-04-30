@@ -42,7 +42,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         }
         public IActionResult List()
         {
-            _logger.LogInformation("Employee Listed"+DateTime.Now.ToString());
+            _logger.LogInformation("Employee Listed "+DateTime.Now.ToString());
             return View(_repository.GetActive());
             
         }
@@ -86,19 +86,20 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result == true)
                 {
                     _repository.Save();
-                    _logger.LogInformation("Employee Added"+item.ID+DateTime.Now.ToString());
+                    _logger.LogInformation("Employee Added "+item.ID+" "+DateTime.Now.ToString());
                     return RedirectToAction("List","Employee");
                 }
                 else
                 {
                     TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
-                    _logger.LogError("Employee Saving Failed");
+                    _logger.LogError("Employee Saving Failed "+DateTime.Now.ToString());
                     return View(item);
                 }
             }
             else
             {
                 TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                _logger.LogCritical("Employee Saving Failed "+DateTime.Now.ToString());
                 return View(item);
             }
           
@@ -138,7 +139,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result)
                 {
                     _repository.Save();
-                    _logger.LogInformation("Employee edited"+DateTime.Now.ToString());
+                    _logger.LogInformation("Employee edited "+DateTime.Now.ToString());
                     return RedirectToAction("List");
                 }
                 else
@@ -151,7 +152,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             else
             {
                 TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
-                 _logger.LogError("Critical Employee Edit Failed"+DateTime.Now.ToString());
+                 _logger.LogError("Employee Edit Error "+DateTime.Now.ToString());
                 return View();
             }
 
@@ -171,6 +172,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         {
 
             var employee = _repository.GetById(id);
+            _logger.LogInformation("Details opened "+id+" "+DateTime.Now.ToString());
             return View(employee);
         }
 

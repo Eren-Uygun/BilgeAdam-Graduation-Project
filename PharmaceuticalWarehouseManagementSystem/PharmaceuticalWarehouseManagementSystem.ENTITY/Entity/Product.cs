@@ -19,16 +19,22 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
        [Required(ErrorMessage = "Please Enter Product Name")]
         public string ProductName { get; set; }
         
-
+        [Required(ErrorMessage ="Please Select Supplier")]
         public Guid? SupplierID { get; set; }
-
+        [Required(ErrorMessage ="Please Select Category")]
         public Guid? CategoryID { get; set; }
 
+        
         public string QuantityPerUnit { get; set; }
 
+        [DataType(DataType.Currency),Range(0,double.MaxValue,ErrorMessage = "Positive values allowed")]
         public decimal? UnitPrice { get; set; }
 
-        public int? UnitsInStock { get; set; }
+        [Range(0,int.MaxValue,ErrorMessage =("Positive Numbers Allowed"))]
+        public uint? UnitsInStock { get; set; }
+
+
+        public string imageUrl { get; set; }
 
         [Required(ErrorMessage = "Please Select Reorder Level")]
         public ReorderLevel ReorderLevel { get; set; }

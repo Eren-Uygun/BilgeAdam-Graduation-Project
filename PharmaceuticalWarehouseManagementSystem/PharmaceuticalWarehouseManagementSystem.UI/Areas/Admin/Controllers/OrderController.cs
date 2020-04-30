@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
+using Microsoft.Extensions.Logging;
 using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
@@ -19,14 +20,17 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
     {
         private IOrderRepository _repository;
         private ProjectContext _context;
+        private ILogger<OrderController> _Ilogger;
 
-        public OrderController(IOrderRepository repository, ProjectContext context)
+        public OrderController(IOrderRepository repository, ProjectContext context,ILogger<OrderController> logger)
         {
             this._repository = repository;
             this._context = context;
+            this._Ilogger = logger;
         }
         public IActionResult List()
         {
+            _Ilogger.LogInformation("Orders Listed "+DateTime.Now.ToString());
             return View(_repository.GetActive());
         }
 
@@ -55,17 +59,20 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result == true)
                 {
                     _repository.Save();
+                    _Ilogger.LogInformation("Order Added "+" "+DateTime.Now.ToString());
                     return RedirectToAction("List");
                 }
                 else
                 {
                     TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                    _Ilogger.LogError("Order add failed "+DateTime.Now.ToString());
                     return View(item);
                 }
             }
             else
             {
                 TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                _Ilogger.LogCritical("Order add failed");
                 return View(item);
             }
         }
@@ -100,17 +107,20 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result)
                 {
                     _repository.Save();
+                    _Ilogger.LogInformation("Order "+item.ID+" "+"Edited "+DateTime.Now.ToString());
                     return RedirectToAction("List");
                 }
                 else
                 {
                     TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
+                    _Ilogger.LogError("Order Edit Error" + DateTime.Now.ToString());
                     return View(updated);
                 }
             }
             else
             {
                 TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
+                _Ilogger.LogCritical("Order Edit Error");
                 return View();
             }
         }
@@ -118,6 +128,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         public IActionResult Delete(Guid id)
         {
             _repository.Remove(_repository.GetById(id));
+            _Ilogger.LogInformation("Order "+id+" "+"Deleted "+DateTime.Now.ToString());
             return RedirectToAction("List");
         }
 

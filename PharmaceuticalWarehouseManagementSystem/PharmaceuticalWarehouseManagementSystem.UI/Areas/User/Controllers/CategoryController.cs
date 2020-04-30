@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
 
@@ -17,9 +18,11 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
     public class CategoryController : Controller
     {
         private ICategoryRepository _repository;
-        public CategoryController(ICategoryRepository repository)
+        private ILogger<CategoryController> _logger;
+        public CategoryController(ICategoryRepository repository,ILogger<CategoryController> logger)
         {
             this._repository = repository;
+            this._logger = logger;
         }
         public IActionResult List()
         {
@@ -32,7 +35,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Add(Category category)
+       public IActionResult Add(Category category)
         {
             if (ModelState.IsValid)
             { 
@@ -42,20 +45,22 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
                 if (result == true)
                 {
                     _repository.Save();
-                    return RedirectToAction("List");
+                    _logger.LogInformation("Category Add operations success"+" "+category.ID+" "+DateTime.Now.ToString());
+                    return RedirectToAction("List","Category");
                 }
                 else
                 {
                     TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                    _logger.LogError("Category Adding operations failed"+" "+DateTime.Now.ToString());
                     return View(category);
                 }
             }
             else
             {
                 TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                _logger.LogError("Category Adding operations failed"+" "+DateTime.Now.ToString());
                 return View(category);
             }
-            
         }
         [HttpGet]
         public IActionResult Edit(Guid ID)
@@ -63,7 +68,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
             return View(_repository.GetById(ID));
         }
         [HttpPost]
-        public IActionResult Edit(Category item)
+         public IActionResult Edit(Category item)
         {
             if (ModelState.IsValid)
             {
@@ -75,26 +80,38 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
                 if (result)
                 {
                     _repository.Save();
+                   _logger.LogInformation("Category Edited"+" "+item.ID+" "+DateTime.Now.ToString());
                     return RedirectToAction("List");
                 }
                 else
                 {
                     TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
+                    _logger.LogError("Category Edit Action Failed"+" "+DateTime.Now.ToString());
                     return View(updated);
                 }
             }
             else
             {
                 TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
-                return View();
+                  _logger.LogError("Category Edit Action Failed"+" "+DateTime.Now.ToString());
+                return BadRequest();
             }
-            
         }
 
-        public IActionResult Delete(Guid id)
+          public IActionResult Delete(Guid id)
         {
-            _repository.Remove(_repository.GetById(id));
-            return RedirectToAction("List");
+            if (ModelState.IsValid)
+            {
+                _repository.Remove(_repository.GetById(id));
+                _logger.LogInformation("Category Deleted"+" "+ id+" "+DateTime.Now.ToString());
+                return RedirectToAction("List");
+            }
+            else
+            {
+                _logger.LogError("Category Delete Action Failed"+" "+DateTime.Now.ToString());
+                return BadRequest();
+            }
+         
         }
     }
 }

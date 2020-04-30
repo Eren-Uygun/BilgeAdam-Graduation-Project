@@ -12,7 +12,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
@@ -76,13 +76,8 @@
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="imageUrl" class="col-sm-2 col-form-label">Image</label>
-                <div class="col-sm-10">
-                    <div class="custom-file">
-                        <input type="file" asp-for="imageUrl" class="form-control custom-file-input" />
-                        <label class="custom-file-label">Choose Image</label>
-                    </div>
-                </div>
+
+                <input class="form-control" type="file" name="files" />
             </div>
             <div class="form-group">
                 <label asp-for="Role" class="control-label"></label>
@@ -106,13 +101,12 @@
     document
         .getElementById("Edit")
         .addEventListener("click", function (e) { //e => event
-            if (!confirm("Do you want to edit?")) {
+            if (!confirm("Do you want to Add?")) {
                 e.preventDefault(); // ! => don't want to do this
             } else {
                 //want to do this! => maybe do something about it?
-                alert('Modified');
+
             }
         });
 
 </script>
-

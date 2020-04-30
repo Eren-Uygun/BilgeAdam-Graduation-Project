@@ -18,7 +18,7 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
         [Required(ErrorMessage = "Please Select Shipper")]
         public Guid ShipperID { get; set; }
         public decimal? UnitPrice { get; set; }
-        public int? Quantity { get; set; }
+        public uint? Quantity { get; set; }
         public decimal? Discount { get; set; }
 
         public virtual Order Order { get; set; }

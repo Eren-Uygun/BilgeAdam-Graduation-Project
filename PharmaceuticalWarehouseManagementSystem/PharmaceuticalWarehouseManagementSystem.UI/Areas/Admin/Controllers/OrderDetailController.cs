@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.Extensions.Logging;
 using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
@@ -20,14 +21,17 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
     {
         private IOrderDetailRepository _repository;
         private ProjectContext _context;
+        private ILogger<OrderDetailController> _logger;
 
-        public OrderDetailController(IOrderDetailRepository repository,ProjectContext context)
+        public OrderDetailController(IOrderDetailRepository repository,ProjectContext context,ILogger<OrderDetailController> logger)
         {
             this._repository = repository;
             this._context = context;
+            this._logger  = logger;
         }
         public IActionResult List()
         {
+            _logger.LogInformation("Order Details Listed "+DateTime.Now.ToString());
             return View(_repository.GetActive());
         }
 
@@ -60,6 +64,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result == true)
                 {
                     _repository.Save();
+                    _logger.LogInformation("Order Detail added "+item.ID+" "+DateTime.Now.ToString());
                     return RedirectToAction("List");
                 }
                 else
@@ -115,6 +120,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         public IActionResult Delete(Guid id)
         {
             _repository.Remove(_repository.GetById(id));
+            
             return RedirectToAction("List");
         }
 

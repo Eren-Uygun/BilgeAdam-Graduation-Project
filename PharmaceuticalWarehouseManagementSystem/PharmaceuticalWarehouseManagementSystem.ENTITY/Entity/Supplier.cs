@@ -25,9 +25,9 @@ namespace PharmaceuticalWarehouseManagementSystem.ENTITY.Entity
 
         public string PostalCode { get; set; }
 
-        [Required(ErrorMessage = "Please Enter your Tax Id Number")]
+        [Required(ErrorMessage = "Please Enter your Tax Id Number"),MaxLength(10)]
         public string TaxIdNumber { get; set; }
-
+        [Required(ErrorMessage ="Please Enter PhoneNumber")]
         public string PhoneNumber { get; set; }
 
         public string FaxNumber { get; set; }

@@ -275,21 +275,21 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("8c738f5e-e4fb-4780-b07d-ddc714489fdf"),
+                            ID = new Guid("e174f6bc-afc0-4d54-bc70-4ee3e0c50546"),
                             CategoryDescription = "Düşük ve orta düzey ağrı giderici ilaçlar",
                             CategoryName = "Ağrı kesici",
                             CreatedComputerName = "DataSeed",
-                            CreatedDate = new DateTime(2020, 4, 15, 17, 27, 28, 109, DateTimeKind.Local).AddTicks(6932),
+                            CreatedDate = new DateTime(2020, 4, 30, 20, 33, 41, 382, DateTimeKind.Local).AddTicks(8013),
                             CreatedIP = "127.0.0.1",
                             Status = 1
                         },
                         new
                         {
-                            ID = new Guid("eac062a6-afaa-445a-a2a4-dea337e84dcb"),
+                            ID = new Guid("f309ae63-f40e-4ae0-9d7c-ca36a4f89adc"),
                             CategoryDescription = "Vücut sıcaklığını ayarlamaya yarayan ilaçlar",
                             CategoryName = "Ateş Düşürücü",
                             CreatedComputerName = "DataSeed",
-                            CreatedDate = new DateTime(2020, 4, 15, 17, 27, 28, 109, DateTimeKind.Local).AddTicks(9053),
+                            CreatedDate = new DateTime(2020, 4, 30, 20, 33, 41, 383, DateTimeKind.Local).AddTicks(506),
                             CreatedIP = "127.0.0.1",
                             Status = 1
                         });
@@ -492,10 +492,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("aa3c9da0-4eac-4650-8adb-f4ba6f0a0c82"),
+                            ID = new Guid("1c6964ae-cebd-4772-b8d9-6009868bc8cf"),
                             BirthDate = new DateTime(2020, 11, 10, 17, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedComputerName = "DataSeed",
-                            CreatedDate = new DateTime(2020, 4, 15, 17, 27, 28, 106, DateTimeKind.Local).AddTicks(9718),
+                            CreatedDate = new DateTime(2020, 4, 30, 20, 33, 41, 380, DateTimeKind.Local).AddTicks(1210),
                             CreatedIP = "127.0.0.1",
                             Email = "admin@mail.com",
                             FirstName = "Admin",
@@ -508,10 +508,10 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         },
                         new
                         {
-                            ID = new Guid("7ab1dc10-cbe5-4770-822c-291e48611d83"),
+                            ID = new Guid("985ae49c-63cc-4a11-9fe1-7dbb24ea7336"),
                             BirthDate = new DateTime(2020, 11, 10, 17, 0, 0, 0, DateTimeKind.Unspecified),
                             CreatedComputerName = "DataSeed",
-                            CreatedDate = new DateTime(2020, 4, 15, 17, 27, 28, 108, DateTimeKind.Local).AddTicks(510),
+                            CreatedDate = new DateTime(2020, 4, 30, 20, 33, 41, 381, DateTimeKind.Local).AddTicks(1731),
                             CreatedIP = "127.0.0.1",
                             Email = "user@mail.com",
                             FirstName = "User",
@@ -544,12 +544,14 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasMaxLength(15);
 
                     b.Property<Guid?>("CustomerID")
+                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime?>("DeleteDate")
                         .HasColumnType("datetime2");
 
                     b.Property<Guid?>("EmployeeID")
+                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<double?>("Freight")
@@ -645,9 +647,8 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.Property<Guid>("ProductID")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("Quantity")
-                        .IsRequired()
-                        .HasColumnType("int");
+                    b.Property<long>("Quantity")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("RemovedComputerName")
                         .HasColumnType("nvarchar(15)")
@@ -687,6 +688,7 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasDefaultValueSql("newid()");
 
                     b.Property<Guid?>("CategoryID")
+                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedComputerName")
@@ -745,15 +747,18 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                         .HasColumnType("int");
 
                     b.Property<Guid?>("SupplierID")
+                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal?>("UnitPrice")
                         .IsRequired()
                         .HasColumnType("decimal(5,3)");
 
-                    b.Property<int?>("UnitsInStock")
-                        .IsRequired()
-                        .HasColumnType("int");
+                    b.Property<long>("UnitsInStock")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("imageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -989,12 +994,14 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.HasOne("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.Customer", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.Employee", "Employee")
                         .WithMany("Orders")
                         .HasForeignKey("EmployeeID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.OrderDetail", b =>
@@ -1023,11 +1030,14 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Migrations
                     b.HasOne("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.Category", "Category")
                         .WithMany("Products")
                         .HasForeignKey("CategoryID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("PharmaceuticalWarehouseManagementSystem.ENTITY.Entity.Supplier", "Supplier")
                         .WithMany("Products")
-                        .HasForeignKey("SupplierID");
+                        .HasForeignKey("SupplierID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -21,12 +21,12 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
-        private IProductRepository _repository;
-        private ICategoryRepository _categoryRepository;
-        private ISupplierRepository _supplierRepository;
-        private ProjectContext _context;
-        private ILogger<ProductController> _logger;
-        private IHostingEnvironment _hostingEnvironment;
+        private readonly IProductRepository _repository;
+        private readonly ICategoryRepository _categoryRepository;
+        private readonly ISupplierRepository _supplierRepository;
+        private readonly ProjectContext _context;
+        private readonly ILogger<ProductController> _logger;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
 
 
@@ -112,6 +112,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             }
             else
             {
+                _logger.LogCritical("Employee Saving Failed "+DateTime.Now.ToString());
                 return View();
             }
            
@@ -175,9 +176,17 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 
         public IActionResult Delete(Guid id)
         {
-            _repository.Remove(_repository.GetById(id));
-            _logger.LogInformation(id + " Deleted " + DateTime.Now.ToString());
-            return RedirectToAction("List");
+            if (ModelState.IsValid)
+            {
+                _logger.LogInformation("Product Deleted"+" "+ id+" "+DateTime.Now.ToString());
+                _repository.Remove(_repository.GetById(id));
+                return RedirectToAction("List");
+            }
+            else
+            {
+                _logger.LogError("Product Delete Action Failed"+" "+DateTime.Now.ToString());
+                return BadRequest();
+            }
         }
 
         public IActionResult Details(Guid id)

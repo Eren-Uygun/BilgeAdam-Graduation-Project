@@ -16,8 +16,8 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class ShipperController : Controller
     {
-        private IShipperRepository _repository;
-        private ILogger<ShipperController> _logger;
+        private readonly IShipperRepository _repository;
+        private readonly ILogger<ShipperController> _logger;
 
         public ShipperController(IShipperRepository repository,ILogger<ShipperController> logger)
         {
@@ -50,12 +50,14 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 }
                 else
                 {
+                    _logger.LogError("Shipper add failed "+DateTime.Now.ToString());
                     return View(item);
                 }
                   
             }
             else
             {
+                _logger.LogCritical("Shipper add failed "+DateTime.Now.ToString());
                 return View(item);
             }
            
@@ -90,7 +92,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 }
                 else
                 {
-                     _logger.LogError("Shipper Saving Failed "+DateTime.Now.ToString());
+                     _logger.LogError("Shipper Edit Failed "+DateTime.Now.ToString());
                     return View(update);
                 }
 
@@ -98,16 +100,24 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             }
             else
             {
-                _logger.LogCritical("Shipper Saving Failed "+DateTime.Now.ToString());
+                _logger.LogCritical("Shipper Edit Failed "+DateTime.Now.ToString());
                 return View();
             }
         }
 
         public IActionResult Delete(Guid id)
         {
-            var shipper = _repository.GetById(id);
-            _logger.LogInformation("Shipper Deleted "+id+" "+DateTime.Now.ToString());
-            return View(shipper);
+            if (ModelState.IsValid)
+            {
+                _logger.LogInformation("Shipper Deleted"+" "+ id+" "+DateTime.Now.ToString());
+                _repository.Remove(_repository.GetById(id));
+                return RedirectToAction("List");
+            }
+            else
+            {
+                _logger.LogError("Shipper Delete Action Failed"+" "+DateTime.Now.ToString());
+                return BadRequest();
+            }
         }
 
      

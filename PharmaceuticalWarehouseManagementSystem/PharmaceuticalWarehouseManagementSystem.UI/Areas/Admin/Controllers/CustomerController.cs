@@ -16,8 +16,8 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class CustomerController : Controller
     {
-        private ICustomerRepository _repository;
-        private ILogger<CustomerController> _logger;
+        private readonly ICustomerRepository _repository;
+        private readonly ILogger<CustomerController> _logger;
 
         public CustomerController(ICustomerRepository repository)
         {
@@ -49,20 +49,20 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result == true)
                 {
                     _repository.Save();
-                    _logger.LogWarning("Customer Added"+" "+DateTime.Now.ToString());
+                    _logger.LogInformation("Customer Added"+" "+DateTime.Now.ToString());
                     return RedirectToAction("List","Customer");
                 }
                 else
                 {
                     TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
-                    _logger.LogWarning("Customer adding operation failed"+" "+ DateTime.Now.ToString());
+                    _logger.LogError("Customer adding operation failed"+" "+ DateTime.Now.ToString());
                     return View(customer);
                 }
             }
             else
             {
                 TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
-                _logger.LogError("Customer Add operations Error" +" "+DateTime.Now.ToString());
+                _logger.LogCritical("Customer Add operations Error" +" "+DateTime.Now.ToString());
                 return View(customer);
             }
         }
@@ -103,14 +103,14 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 else
                 {
                     TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
-                    _logger.LogWarning("Customer edit opertaion failed"+" "+DateTime.Now.ToString());
+                    _logger.LogError("Customer edit opertaion failed"+" "+DateTime.Now.ToString());
                     return View(updated);
                 }
             }
             else
             {
                 TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
-                  _logger.LogError("Customer edit opertaion failed"+" "+DateTime.Now.ToString());
+                  _logger.LogCritical("Customer edit opertaion failed"+" "+DateTime.Now.ToString());
                 return View();
             }
         }
@@ -121,9 +121,17 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 
         public IActionResult Delete(Guid id)
         {
-             _logger.LogInformation("Customer Deleted"+" "+DateTime.Now.ToString());
-            _repository.Remove(_repository.GetById(id));
-            return RedirectToAction("List");
+            if (ModelState.IsValid)
+            {
+                _logger.LogInformation("Customer Deleted"+" "+ id+" "+DateTime.Now.ToString());
+                _repository.Remove(_repository.GetById(id));
+                return RedirectToAction("List");
+            }
+            else
+            {
+                _logger.LogError("Customer Delete Action Failed"+" "+DateTime.Now.ToString());
+                return BadRequest();
+            }
         }
 
 

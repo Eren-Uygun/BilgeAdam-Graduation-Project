@@ -22,11 +22,11 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class EmployeeController : Controller
     {
-        private IEmployeeRepository _repository;
-        private ProjectContext _context;
-        private IHostingEnvironment _hostingEnvironment;
-        private IWebHostEnvironment _webHostEnvironment;
-        private ILogger<EmployeeController> _logger;
+        private readonly IEmployeeRepository _repository;
+        private readonly ProjectContext _context;
+        private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly ILogger<EmployeeController> _logger;
         
 
 
@@ -163,9 +163,17 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 
         public IActionResult Delete(Guid id)
         {
-            _repository.Remove(_repository.GetById(id));
-            _logger.LogInformation("Employee Deleted"+" "+id+" "+DateTime.Now.ToString());
-            return RedirectToAction("List");
+            if (ModelState.IsValid)
+            { 
+                _logger.LogInformation("Employee Deleted"+" "+ id+" "+DateTime.Now.ToString());
+                _repository.Remove(_repository.GetById(id));
+                return RedirectToAction("List");
+            }
+            else
+            {
+                _logger.LogError("Employee Delete Action Failed"+" "+DateTime.Now.ToString());
+                return BadRequest();
+            }
         }
 
         public IActionResult Details(Guid id)

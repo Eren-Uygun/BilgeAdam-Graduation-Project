@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.Extensions.Logging;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
 
@@ -16,10 +18,12 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
     public class SupplierController : Controller
     {
         private ISupplierRepository _repository;
+        private ILogger<SupplierController> _logger;
 
-        public SupplierController(ISupplierRepository repository)
+        public SupplierController(ISupplierRepository repository,ILogger<SupplierController> logger)
         {
             this._repository = repository;
+            this._logger = logger;
         }
         public IActionResult List()
         {
@@ -35,8 +39,27 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Add(Supplier item)
         {
-            _repository.Add(item);
-            return RedirectToAction("List");
+            if (ModelState.IsValid)
+            {
+                bool result =  _repository.Add(item);
+
+                if (result)
+                {
+                    _logger.LogInformation("Supplier added "+item.ID+" "+DateTime.Now.ToString());
+                    return RedirectToAction("List");
+                }
+                else
+                {
+                    _logger.LogError("Supplier add failed "+DateTime.Now.ToString());
+                    return View(item);
+                }
+                  
+            }
+            else
+            {
+                _logger.LogCritical("Supplier add failed "+DateTime.Now.ToString());
+                return View(item);
+            }
         }
 
         [HttpGet]
@@ -65,15 +88,18 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result)
                 {
                     _repository.Save();
+                    _logger.LogInformation("Supplier Edited "+item.ID+" "+DateTime.Now.ToString());
                     return RedirectToAction("List");
                 }
                 else
                 {
+                    _logger.LogError("Supplier Edit Failed "+DateTime.Now.ToString());
                     return View(update);
                 }
             }
             else
             {
+                _logger.LogCritical("Supplier Edit Failed "+DateTime.Now.ToString());
                 return View();
             }
         }
@@ -82,8 +108,17 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
 
         public IActionResult Delete(Guid id)
         {
-            _repository.Remove(_repository.GetById(id));
-            return RedirectToAction("List");
+            if (ModelState.IsValid)
+            {
+                _logger.LogInformation("Supplier Deleted"+" "+ id+" "+DateTime.Now.ToString());
+                _repository.Remove(_repository.GetById(id));
+                return RedirectToAction("List");
+            }
+            else
+            {
+                _logger.LogError("Supplier Delete Action Failed"+" "+DateTime.Now.ToString());
+                return BadRequest();
+            }
         }
 
    

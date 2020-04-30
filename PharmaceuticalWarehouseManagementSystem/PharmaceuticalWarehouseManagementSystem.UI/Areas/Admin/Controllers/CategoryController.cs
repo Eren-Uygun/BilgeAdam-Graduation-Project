@@ -21,9 +21,9 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
     
     public class CategoryController : Controller
     {
-        private ICategoryRepository _repository;
-        private ProjectContext _context;
-        private ILogger<CategoryController> _logger;
+        private readonly ICategoryRepository _repository;
+        private readonly ProjectContext _context;
+        private readonly ILogger<CategoryController> _logger;
        
        
 

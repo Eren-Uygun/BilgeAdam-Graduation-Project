@@ -19,9 +19,9 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class OrderDetailController : Controller
     {
-        private IOrderDetailRepository _repository;
-        private ProjectContext _context;
-        private ILogger<OrderDetailController> _logger;
+        private readonly IOrderDetailRepository _repository;
+        private readonly ProjectContext _context;
+        private readonly ILogger<OrderDetailController> _logger;
 
         public OrderDetailController(IOrderDetailRepository repository,ProjectContext context,ILogger<OrderDetailController> logger)
         {
@@ -70,12 +70,14 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 else
                 {
                     TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                    _logger.LogError("Order Detail add failed"+" "+DateTime.Now.ToString());
                     return View(item);
                 }
             }
             else
             {
                 TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                _logger.LogCritical("Order Detail add failed"+" "+DateTime.Now.ToString());
                 return View(item);
             }
         }
@@ -104,24 +106,35 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result)
                 {
                     _repository.Save();
+                    _logger.LogInformation("Order Detail edited "+item.ID+" "+DateTime.Now.ToString());
                     return RedirectToAction("List");
                 }
                 else
                 {
+                    _logger.LogError("Order Detail edit failed"+" "+DateTime.Now.ToString());
                     return View(update);
                 }
             }
             else
             {
+                _logger.LogCritical("Order Detail edit failed"+" "+DateTime.Now.ToString());
                 return View();
             }
         }
 
         public IActionResult Delete(Guid id)
         {
-            _repository.Remove(_repository.GetById(id));
-            
-            return RedirectToAction("List");
+            if (ModelState.IsValid)
+            {
+                _logger.LogInformation("Order Detail Deleted"+" "+ id+" "+DateTime.Now.ToString());
+                _repository.Remove(_repository.GetById(id));
+                return RedirectToAction("List");
+            }
+            else
+            {
+                _logger.LogError("Order Detail Delete Action Failed"+" "+DateTime.Now.ToString());
+                return BadRequest();
+            }
         }
 
 

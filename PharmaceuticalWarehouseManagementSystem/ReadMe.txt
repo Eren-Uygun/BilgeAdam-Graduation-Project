@@ -1,0 +1,1 @@
+Dataseed için ProjectContext.cs ye girin ve modelbuilder.seed() i comment satırından çıkarın, migration ve update-database yaptıkdan sonra modelbuilder.seed() i tekrar comment satırına alın.

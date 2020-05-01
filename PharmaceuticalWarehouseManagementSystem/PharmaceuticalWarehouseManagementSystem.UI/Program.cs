@@ -19,17 +19,20 @@ namespace PharmaceuticalWarehouseManagementSystem.UI
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-           
-              .ConfigureLogging((ProjectContext,logging)=>{
-                  logging.ClearProviders();
-                  logging.AddConfiguration(ProjectContext.Configuration.GetSection("Logging"));
-                  
-                  logging.AddConsole();
-                  logging.AddDebug();
-                  logging.AddEventSourceLogger();
+
+                .ConfigureLogging((ProjectContext, logging) =>
+                {
+                    logging.ClearProviders();
+                    logging.AddConfiguration(ProjectContext.Configuration.GetSection("Logging"));
+
+                    logging.AddConsole();
+                    logging.AddDebug();
+                    logging.AddEventSourceLogger();
 
 
-                  })
+
+                })
+              
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "List";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    TempData["Message"] = null;
 }
 
 <div class="card-header">
@@ -11,7 +12,7 @@
 
 
 <div class="card-body table-responsive">
-<table class="table">
+<table class="table table-bordered">
     <thead>
     <tr>
         <th>

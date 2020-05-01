@@ -3,13 +3,21 @@
 @{
     ViewData["Title"] = "Details";
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
+    var imageUrl = "~/images/" + (Model.imageUrl ?? "noimage.jpg");
 }
 
-<h1>Details</h1>
+<h1>Product Details</h1>
+<div class="row">
+    <dd class="col-sm-2">
+        <label>Image</label>
+    </dd>
 
+    <dd class="col-sm-2">
+        <img class="block card-img-top img-bordered" src="@imageUrl" asp-append-version="true" />
+    </dd>
+</div>
+<hr />
 <div>
-    <h4>Product</h4>
-    <hr />
     <dl class="row border-primary">
         <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ID)

@@ -5,9 +5,13 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Add</h1>
 
-<h4>Customer</h4>
+
+<div class="card-header">
+   
+    <h4>Customer Add</h4>
+</div>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -71,16 +75,16 @@
 </div>
 
 <script>
-        document
-            .getElementById("Add")
-            .addEventListener("click", function( e ){ //e => event
-                if( ! confirm("Do you want to Add?") ){
-                    e.preventDefault(); // ! => don't want to do this
-                } else {
-                    //want to do this! => maybe do something about it?
-                    alert("Added");
-                }
-            });
+    document
+        .getElementById("Add")
+        .addEventListener("click", function (e) { //e => event
+            if (!confirm("Do you want to Add?")) {
+                e.preventDefault(); // ! => don't want to do this
+            } else {
+                //want to do this! => maybe do something about it?
+                alert("Added");
+            }
+        });
 
-    </script>
+</script>
 

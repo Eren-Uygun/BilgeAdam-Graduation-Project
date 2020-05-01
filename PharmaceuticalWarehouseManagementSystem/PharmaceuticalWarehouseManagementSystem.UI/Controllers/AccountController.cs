@@ -99,7 +99,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
                         HttpContext.Session.SetString("UserMail",model.UserMail);
                         var user = await _userManager.GetUserAsync(HttpContext.User);
                         _Ilogger.LogInformation(model.UserMail+" "+Rmodel.Role+" Logged in "+DateTime.Now.ToString());
-                        TempData["Message"] = model.UserMail+" "+Rmodel.Role+" Logged in ";
+                      
                         return Redirect("Admin/Category/List");
                     }
                     else if (Rmodel.Role == Role.User)
@@ -107,12 +107,12 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
                         HttpContext.Session.SetString("UserMail",model.UserMail);
                         var user = await _userManager.GetUserAsync(HttpContext.User);
                          _Ilogger.LogInformation(model.UserMail+" "+Rmodel.Role+" Logged in "+DateTime.Now.ToString());
-                         TempData["Message"] = model.UserMail+" "+Rmodel.Role+" Logged in ";
+                      
                         return Redirect("User/Category/List");
                     }
                     else
                     {
-                         TempData["Message"] = "Login Failed";
+                       
                         return RedirectToAction("index", "home");
 
                     }
@@ -123,7 +123,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
                 else
                 {
                     ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
-                     TempData["Message"] = "Login failed";
+                    
                     _Ilogger.LogWarning("Login operation failed");
                 }
             }
@@ -131,7 +131,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Controllers
             {
 
                 ModelState.AddModelError(string.Empty,"Invalid Login Attempt,Check your email , password and role");
-                TempData["Message"] = "Login failed";
+               
                   _Ilogger.LogWarning("Login operation failed "+DateTime.Now.ToString());
 
 

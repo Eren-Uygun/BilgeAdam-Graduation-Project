@@ -18,14 +18,14 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
     [Area("User")]
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     [Authorize(Roles = "User")]
-      public class ProductController : Controller
+     public class ProductController : Controller
     {
-        private IProductRepository _repository;
-        private ICategoryRepository _categoryRepository;
-        private ISupplierRepository _supplierRepository;
-        private ProjectContext _context;
-        private ILogger<ProductController> _logger;
-        private IHostingEnvironment _hostingEnvironment;
+        private readonly IProductRepository _repository;
+        private readonly ICategoryRepository _categoryRepository;
+        private readonly ISupplierRepository _supplierRepository;
+        private readonly ProjectContext _context;
+        private readonly ILogger<ProductController> _logger;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
 
 
@@ -111,6 +111,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
             }
             else
             {
+                _logger.LogCritical("Employee Saving Failed "+DateTime.Now.ToString());
                 return View();
             }
            
@@ -133,10 +134,26 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Product item)
+        public IActionResult Edit(Product item,List<IFormFile> Files)
         {
             if (ModelState.IsValid)
             {
+                bool imgResult;
+
+                string imgPath = Upload.ImageUpload(Files, _hostingEnvironment, out imgResult);
+
+              
+
+                if (imgResult)
+                {
+                    item.imageUrl = imgPath;
+                    _logger.LogInformation("Image added!!");
+                }
+                else
+                {
+                    item.imageUrl = "NULL";
+                    _logger.LogWarning("Image cannot added!!");
+                }
                 
                 Product updated = _repository.GetById(item.ID);
                 updated.CategoryID = item.CategoryID;
@@ -147,6 +164,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
                 updated.UnitsInStock = item.UnitsInStock;
                 updated.ReorderLevel = item.ReorderLevel;
                 updated.ExpiredDate = item.ExpiredDate;
+                updated.imageUrl = item.imageUrl;
                 updated.Discontinued = item.Discontinued;
 
                 bool result = _repository.Update(updated);
@@ -174,9 +192,17 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
 
         public IActionResult Delete(Guid id)
         {
-            _repository.Remove(_repository.GetById(id));
-            _logger.LogInformation(id + " Deleted " + DateTime.Now.ToString());
-            return RedirectToAction("List");
+            if (ModelState.IsValid)
+            {
+                _logger.LogInformation("Product Deleted"+" "+ id+" "+DateTime.Now.ToString());
+                _repository.Remove(_repository.GetById(id));
+                return RedirectToAction("List");
+            }
+            else
+            {
+                _logger.LogError("Product Delete Action Failed"+" "+DateTime.Now.ToString());
+                return BadRequest();
+            }
         }
 
         public IActionResult Details(Guid id)

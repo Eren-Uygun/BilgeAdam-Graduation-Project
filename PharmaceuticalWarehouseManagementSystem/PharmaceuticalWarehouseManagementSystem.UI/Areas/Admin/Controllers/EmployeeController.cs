@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Net.Mime;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -68,6 +69,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (imgResult)
                 {
                     item.imageUrl = imgPath;
+                    TempData["Message"] = "Image Added";
                     _logger.LogInformation("Image added!!");
                 }
                 else
@@ -91,15 +93,15 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 }
                 else
                 {
-                    TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
-                    _logger.LogError("Employee Saving Failed "+DateTime.Now.ToString());
+                    TempData["Message"] = $"Employee Add Operation Failed";
+                    _logger.LogError("Employee Add Operation "+DateTime.Now.ToString());
                     return View(item);
                 }
             }
             else
             {
-                TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
-                _logger.LogCritical("Employee Saving Failed "+DateTime.Now.ToString());
+                TempData["Message"] = $"Employee Add Operation Failed";
+                _logger.LogCritical("Employee Add Operation Failed "+DateTime.Now.ToString());
                 return View(item);
             }
           
@@ -112,10 +114,27 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Employee item)
+        public IActionResult Edit(Employee item,List<IFormFile> Files)
         {
             if (ModelState.IsValid)
             {
+                bool imgResult;
+
+                string imgPath = Upload.ImageUpload(Files, _hostingEnvironment, out imgResult);
+
+              
+
+                if (imgResult)
+                {
+                    item.imageUrl = imgPath;
+                    _logger.LogInformation("Image added!!");
+                }
+                else
+                {
+                    item.imageUrl = "NULL";
+                    _logger.LogWarning("Image cannot added!!");
+                }
+
                 Employee updated = _repository.GetById(item.ID);
 
                 updated.FirstName = item.FirstName;
@@ -139,20 +158,21 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result)
                 {
                     _repository.Save();
+                    
                     _logger.LogInformation("Employee edited "+DateTime.Now.ToString());
                     return RedirectToAction("List");
                 }
                 else
                 {
-                    TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
-                   _logger.LogError("Employee Edit Failed"+DateTime.Now.ToString());
+                 
+                   _logger.LogError("Employee edit operation Failed"+DateTime.Now.ToString());
                     return View(updated);
                 }
             }
             else
             {
-                TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
-                 _logger.LogError("Employee Edit Error "+DateTime.Now.ToString());
+               
+                 _logger.LogError("Employee edit operation failed "+DateTime.Now.ToString());
                 return View();
             }
 
@@ -166,13 +186,15 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             if (ModelState.IsValid)
             { 
                 _logger.LogInformation("Employee Deleted"+" "+ id+" "+DateTime.Now.ToString());
+             
                 _repository.Remove(_repository.GetById(id));
                 return RedirectToAction("List");
             }
             else
             {
-                _logger.LogError("Employee Delete Action Failed"+" "+DateTime.Now.ToString());
-                return BadRequest();
+                
+                _logger.LogError("Employee Delete Operation Failed"+" "+DateTime.Now.ToString());
+                return View();
             }
         }
 
@@ -180,6 +202,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         {
 
             var employee = _repository.GetById(id);
+            
             _logger.LogInformation("Details opened "+id+" "+DateTime.Now.ToString());
             return View(employee);
         }

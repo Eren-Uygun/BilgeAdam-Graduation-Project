@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
 
@@ -13,16 +14,19 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
     [Area("User")]
     [Authorize(AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
     [Authorize(Roles = "User")]
-     public class ShipperController : Controller
+       public class ShipperController : Controller
     {
-        private IShipperRepository _repository;
+        private readonly IShipperRepository _repository;
+        private readonly ILogger<ShipperController> _logger;
 
-        public ShipperController(IShipperRepository repository)
+        public ShipperController(IShipperRepository repository,ILogger<ShipperController> logger)
         {
             this._repository = repository;
+            this._logger = logger;
         }
         public IActionResult List()
         {
+            _logger.LogInformation("Shippers Listed "+DateTime.Now.ToString());
             return View(_repository.GetActive());
         }
 
@@ -35,8 +39,28 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
         [HttpPost]
         public IActionResult Add(Shipper item)
         {
-            _repository.Add(item);
-            return RedirectToAction("List");
+            if (ModelState.IsValid)
+            {
+               bool result =  _repository.Add(item);
+
+                if (result)
+                {
+                    _logger.LogInformation("Shipper added "+item.ID+" "+DateTime.Now.ToString());
+                    return RedirectToAction("List");
+                }
+                else
+                {
+                    _logger.LogError("Shipper add failed "+DateTime.Now.ToString());
+                    return View(item);
+                }
+                  
+            }
+            else
+            {
+                _logger.LogCritical("Shipper add failed "+DateTime.Now.ToString());
+                return View(item);
+            }
+           
         }
 
         [HttpGet]
@@ -62,11 +86,13 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
                 bool result = _repository.Update(update);
                 if (result)
                 {
+                    _logger.LogInformation("Shipper Edited "+item.ID+" "+DateTime.Now.ToString());
                     _repository.Save();
                     return RedirectToAction("List");
                 }
                 else
                 {
+                     _logger.LogError("Shipper Edit Failed "+DateTime.Now.ToString());
                     return View(update);
                 }
 
@@ -74,14 +100,24 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
             }
             else
             {
+                _logger.LogCritical("Shipper Edit Failed "+DateTime.Now.ToString());
                 return View();
             }
         }
 
         public IActionResult Delete(Guid id)
         {
-            var shipper = _repository.GetById(id);
-            return View(shipper);
+            if (ModelState.IsValid)
+            {
+                _logger.LogInformation("Shipper Deleted"+" "+ id+" "+DateTime.Now.ToString());
+                _repository.Remove(_repository.GetById(id));
+                return RedirectToAction("List");
+            }
+            else
+            {
+                _logger.LogError("Shipper Delete Action Failed"+" "+DateTime.Now.ToString());
+                return BadRequest();
+            }
         }
 
      

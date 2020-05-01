@@ -6,13 +6,17 @@
     Layout = "~/Areas/User/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Add</h1>
 
-<h4>Product</h4>
+
+<div class="card-header">
+  
+    <h4>Product Add</h4>
+</div>
+
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Add">
+        <form asp-action="Add" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ProductName" class="control-label"></label>
@@ -52,13 +56,17 @@
                 <input asp-for="ExpiredDate" class="form-control" />
                 <span asp-validation-for="ExpiredDate" class="text-danger"></span>
             </div>
+            <div class="form-group">
+
+                <input class="form-control" type="file" name="files" />
+            </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Discontinued" /> @Html.DisplayNameFor(model => model.Discontinued)
                 </label>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" id="Add" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -68,3 +76,16 @@
     <a asp-action="List">Back to List</a>
 </div>
 
+<script>
+    document
+        .getElementById("Add")
+        .addEventListener("click", function (e) { //e => event
+            if (!confirm("Do you want to Add?")) {
+                e.preventDefault(); // ! => don't want to do this
+            } else {
+                //want to do this! => maybe do something about it?
+
+            }
+        });
+
+</script>

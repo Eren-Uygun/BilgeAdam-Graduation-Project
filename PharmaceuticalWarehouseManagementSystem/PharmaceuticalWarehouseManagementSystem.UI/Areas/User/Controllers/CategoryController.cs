@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.INFRASTRUCTURE.Repository.Abstract;
+using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 
 namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
 {
@@ -17,25 +18,38 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
     
     public class CategoryController : Controller
     {
-        private ICategoryRepository _repository;
-        private ILogger<CategoryController> _logger;
-        public CategoryController(ICategoryRepository repository,ILogger<CategoryController> logger)
+        private readonly ICategoryRepository _repository;
+        private readonly ProjectContext _context;
+        private readonly ILogger<CategoryController> _logger;
+       
+       
+
+        public CategoryController(ICategoryRepository repository,ProjectContext context,ILogger<CategoryController> logger)
         {
             this._repository = repository;
+            this._context = context;
             this._logger = logger;
+
         }
+
+
         public IActionResult List()
         {
-          
-            return View(  _repository.GetActive());
+
+            _logger.LogInformation("Category Listed"+" "+DateTime.Now.ToString());
+            return View(_repository.GetActive());
         }
+
+
         [HttpGet]
         public IActionResult Add()
         {
             return View();
         }
+
+
         [HttpPost]
-       public IActionResult Add(Category category)
+        public IActionResult Add(Category category)
         {
             if (ModelState.IsValid)
             { 
@@ -62,13 +76,16 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
                 return View(category);
             }
         }
+
         [HttpGet]
-        public IActionResult Edit(Guid ID)
+        public IActionResult Edit(Guid id)
         {
-            return View(_repository.GetById(ID));
+            return View(_repository.GetById(id));
         }
+
+
         [HttpPost]
-         public IActionResult Edit(Category item)
+        public IActionResult Edit(Category item)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +115,9 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
             }
         }
 
-          public IActionResult Delete(Guid id)
+
+    
+        public IActionResult Delete(Guid id)
         {
             if (ModelState.IsValid)
             {
@@ -113,5 +132,6 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.User.Controllers
             }
          
         }
+
     }
 }

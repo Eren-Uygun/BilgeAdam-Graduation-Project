@@ -59,19 +59,20 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result == true)
                 {
                     _repository.Save();
+                   
                     _logger.LogInformation("Order Added "+" "+DateTime.Now.ToString());
                     return RedirectToAction("List");
                 }
                 else
                 {
-                    TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                   
                     _logger.LogError("Order add failed "+DateTime.Now.ToString());
                     return View(item);
                 }
             }
             else
             {
-                TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+               
                 _logger.LogCritical("Order add failed");
                 return View(item);
             }
@@ -107,19 +108,20 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result)
                 {
                     _repository.Save();
+                  
                     _logger.LogInformation("Order "+item.ID+" "+"Edited "+DateTime.Now.ToString());
                     return RedirectToAction("List");
                 }
                 else
                 {
-                    TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
+                  
                     _logger.LogError("Order Edit Error" + DateTime.Now.ToString());
                     return View(updated);
                 }
             }
             else
             {
-                TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
+              
                 _logger.LogCritical("Order Edit Error");
                 return View();
             }
@@ -130,13 +132,15 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _logger.LogInformation("Order Deleted"+" "+ id+" "+DateTime.Now.ToString());
+                
                 _repository.Remove(_repository.GetById(id));
                 return RedirectToAction("List");
             }
             else
             {
                 _logger.LogError("Order Delete Action Failed"+" "+DateTime.Now.ToString());
-                return BadRequest();
+               
+                return View();
             }
         }
 

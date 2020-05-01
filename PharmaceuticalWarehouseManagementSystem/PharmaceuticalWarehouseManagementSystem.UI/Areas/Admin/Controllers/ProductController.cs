@@ -100,11 +100,12 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 if (result)
                 {
                       _logger.LogInformation("Product added "+item.ID+" "+DateTime.Now.ToString());
+
                        return RedirectToAction("List");
                 }
                 else
                 {
-                     TempData["Message"] = $"Kayıt işlemi sırasında bir hata oluştu. Lütfen tüm alanları kontrol edip tekrar deneyin..!";
+                     TempData["Message"] = $"Product Add Operation Failed";
                     _logger.LogError("Employee Saving Failed "+DateTime.Now.ToString());
                     return View(item);
                 }
@@ -112,6 +113,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
             }
             else
             {
+                TempData["Message"] = $"Product Add Operation Failed";
                 _logger.LogCritical("Employee Saving Failed "+DateTime.Now.ToString());
                 return View();
             }
@@ -135,10 +137,26 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(Product item)
+        public IActionResult Edit(Product item,List<IFormFile> Files)
         {
             if (ModelState.IsValid)
             {
+                bool imgResult;
+
+                string imgPath = Upload.ImageUpload(Files, _hostingEnvironment, out imgResult);
+
+              
+
+                if (imgResult)
+                {
+                    item.imageUrl = imgPath;
+                    _logger.LogInformation("Image added!!");
+                }
+                else
+                {
+                    item.imageUrl = "NULL";
+                    _logger.LogWarning("Image cannot added!!");
+                }
                 
                 Product updated = _repository.GetById(item.ID);
                 updated.CategoryID = item.CategoryID;
@@ -149,6 +167,7 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 updated.UnitsInStock = item.UnitsInStock;
                 updated.ReorderLevel = item.ReorderLevel;
                 updated.ExpiredDate = item.ExpiredDate;
+                updated.imageUrl = item.imageUrl;
                 updated.Discontinued = item.Discontinued;
 
                 bool result = _repository.Update(updated);
@@ -160,14 +179,14 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
                 }
                 else
                 {
-                    TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
-                    _logger.LogError("Product Edit Failed "+DateTime.Now.ToString());
+                    TempData["Message"] = $"Product Edit Operation Failed";
+                    _logger.LogError("Product Edit Operation Failed "+DateTime.Now.ToString());
                     return View(updated);
                 }
             }
             else
             {
-                TempData["Message"] = $"Güncelleme işlemi sırasında bir hata oluştu. Lütfen tekrar deneyin..!";
+                TempData["Message"] = $"Product Edit Operation Failed";
                 _logger.LogCritical("Product Edit Failed "+DateTime.Now.ToString());
                 return View();
             }
@@ -178,12 +197,14 @@ namespace PharmaceuticalWarehouseManagementSystem.UI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                TempData["Message"] = $"Product Deleted";
                 _logger.LogInformation("Product Deleted"+" "+ id+" "+DateTime.Now.ToString());
                 _repository.Remove(_repository.GetById(id));
                 return RedirectToAction("List");
             }
             else
             {
+                TempData["Message"] = $"Product Delete Operation Failed";
                 _logger.LogError("Product Delete Action Failed"+" "+DateTime.Now.ToString());
                 return BadRequest();
             }

@@ -1,1 +1,3 @@
-Dataseed için ProjectContext.cs ye girin ve modelbuilder.seed() i comment satýrýndan çýkarýn, migration ve update-database yaptýkdan sonra modelbuilder.seed() i tekrar comment satýrýna alýn.
+-Ýlk kurulumda veri eklemek için PharmaceuticalWarehouseManagementSystem.Dal/Context/ProjectContext.cs yi açalým.
+- protected override void OnModelCreating(ModelBuilder modelBuilder) bölümünün iç kýsmýndaki   /*modelBuilder.Seed(); i comment satýrýndan çýkaralým.
+- Enable-Migration ve Update-database yaptýkdan sonra   modelBuilder.Seed(); kodunu tekrar Comment satýrýna alalým.

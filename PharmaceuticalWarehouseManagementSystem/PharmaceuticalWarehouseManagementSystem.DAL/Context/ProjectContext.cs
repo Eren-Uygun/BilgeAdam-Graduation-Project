@@ -38,7 +38,9 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.Context
             modelBuilder.ApplyConfiguration(new ShipperMap());
             modelBuilder.ApplyConfiguration(new SupplierMap());
 
-            /*modelBuilder.Seed(); */ /*Migration ve update database yaptıkdan sonra yorum satırına alınıyor.Çünkü programın çalışmasını engelliyor.*/
+          
+
+            /*Migration ve update database yaptıkdan sonra yorum satırına alınıyor.Çünkü programın çalışmasını engelliyor.*/
 
 
 

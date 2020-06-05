@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.ValueGeneration;
+using Microsoft.Extensions.DependencyInjection;
+using PharmaceuticalWarehouseManagementSystem.DAL.Context;
 using PharmaceuticalWarehouseManagementSystem.ENTITY.Entity;
 using PharmaceuticalWarehouseManagementSystem.KERNEL.Enum;
 using PharmaceuticalWarehouseManagementSystem.Utility;
@@ -11,13 +15,18 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.DataSeed
 {
    public static class DataSeed
     {
-       public static void Seed(this ModelBuilder modelBuilder)
+
+       public static void Seed(IServiceProvider serviceProvider)
        {
-
-
-
-       
-            modelBuilder.Entity<Employee>().HasData(
+            using(var context = new ProjectContext(serviceProvider.GetRequiredService<DbContextOptions<ProjectContext>>()))
+            {
+                if (context.Employees.Any())
+                {
+                    return;
+                }
+                else
+                {
+                     context.Employees.AddRange( //  modelBuilder.Entity<Employee>().HasData(
                 new Employee()
                 {
                     ID=Guid.NewGuid(),
@@ -54,8 +63,17 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.DataSeed
 
             );
 
-            
-            modelBuilder.Entity<Category>().HasData(
+                }
+
+
+
+                if (context.Categories.Any())
+                {
+                    return;
+                }
+                else
+                {
+                      context.Categories.AddRange( //   modelBuilder.Entity<Category>().HasData(
                 new Category()
                 {
                     ID=Guid.NewGuid(),
@@ -80,8 +98,21 @@ namespace PharmaceuticalWarehouseManagementSystem.DAL.DataSeed
                 }
 
             );
+                }
+
+
+
+              context.SaveChanges();
+            }
+       
+
+          
+            
+          
 
 
         }
+
+
     }
 }

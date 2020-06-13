@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "s0Pik/Juwj+7u7OT1UPphrHmRKEA6Ahn9WGupOnw5WN+um9I1eydAQdqkNwgukQs7gmr+KTz0HgFNQ3DKWDHXA==",
+  "dgSpecHash": "888dEX0fPxakPDfGZHT15IBNPxizrVh0AKKKwlNj3umwwnBoo5l6/ebtPgThweXH52KocUPz85CQhdkg5UCjqg==",
   "success": true,
   "projectFilePath": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.Utility\\PharmaceuticalWarehouseManagementSystem.Utility.csproj",
   "expectedPackageFiles": [
@@ -41,8 +41,7 @@
     "C:\\Users\\LornV\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",
     "C:\\Users\\LornV\\.nuget\\packages\\system.diagnostics.diagnosticsource\\4.7.0\\system.diagnostics.diagnosticsource.4.7.0.nupkg.sha512",
     "C:\\Users\\LornV\\.nuget\\packages\\system.reflection.metadata\\1.6.0\\system.reflection.metadata.1.6.0.nupkg.sha512",
-    "C:\\Users\\LornV\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512",
-    "C:\\Users\\LornV\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+    "C:\\Users\\LornV\\.nuget\\packages\\system.text.encodings.web\\4.5.0\\system.text.encodings.web.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }

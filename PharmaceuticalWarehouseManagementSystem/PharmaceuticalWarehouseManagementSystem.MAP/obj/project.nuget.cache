@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "03ehbs+F5prvg01wq76cNratX9bq3ZACiFiKXEBdYaJUt7LFZ9IySL0PBWASg7UPYfbRcn3rwd16rDhYTGqn0A==",
+  "dgSpecHash": "jmgc9++44+LDa+1xr8BRX6Pps+BzF6/34DWb+NJzLmGMZgx05GNyxpnzgU86z10Unk7rRvG0KjXnL9/99D5W9g==",
   "success": true,
   "projectFilePath": "C:\\Users\\LornV\\Documents\\GitHub\\Test-Version\\PharmaceuticalWarehouseManagementSystem\\PharmaceuticalWarehouseManagementSystem.MAP\\PharmaceuticalWarehouseManagementSystem.MAP.csproj",
   "expectedPackageFiles": [
@@ -108,8 +108,7 @@
     "C:\\Users\\LornV\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\LornV\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\LornV\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\LornV\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\LornV\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.2\\microsoft.aspnetcore.app.ref.3.1.2.nupkg.sha512"
+    "C:\\Users\\LornV\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

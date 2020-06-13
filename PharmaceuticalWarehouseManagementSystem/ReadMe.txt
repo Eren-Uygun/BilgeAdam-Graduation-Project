@@ -1,3 +1,9 @@
--Ýlk kurulumda veri eklemek için PharmaceuticalWarehouseManagementSystem.Dal/Context/ProjectContext.cs yi açalým.
-- protected override void OnModelCreating(ModelBuilder modelBuilder) bölümünün iç kýsmýndaki   /*modelBuilder.Seed(); i comment satýrýndan çýkaralým.
-- Enable-Migration ve Update-database yaptýkdan sonra   modelBuilder.Seed(); kodunu tekrar Comment satýrýna alalým.
+PharmaceuticalWarehouseManagementSystem
+
+Projeyi Çalýþtýrmak için,
+
+1-PharmaceuticalWarehouseManagementSystem.UI bölümünde appsettings.json dosyasý açýlýr ve ConnectionStrings'deki veri tabaný ve giriþ bilgileri düzenlenir.
+2-Update-Database yapýlýr.
+3-Proje çalýþtýrýldýðýnda dataseed iþlemi yapýldýðý için Email:admin@mail.com Password:123 Role:Admin / Email:User@mail.com Password:123 Role:User giriþ bilgileri ile giriþ yapýlabilir.
+
+

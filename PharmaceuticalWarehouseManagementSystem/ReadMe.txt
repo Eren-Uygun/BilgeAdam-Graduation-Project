@@ -1,9 +1,11 @@
 PharmaceuticalWarehouseManagementSystem
 
-Projeyi Çalıştırmak için,
+Proje .Net Core Mvc plaformunda yazÄ±lmÄ±ÅŸtÄ±r.Projemde mÃ¼mkÃ¼n olduÄŸu kadar N-Tier Architecture'a uyulmaya Ã§alÄ±ÅŸÄ±lmÄ±ÅŸtÄ±r.Repository Pattern, Dependency Injection yapÄ±larÄ± kullanÄ±lmaya Ã§alÄ±ÅŸÄ±lmÄ±ÅŸtÄ±r.Orm aracÄ± olarak EntityFrameworkCore kullanÄ±lmÄ±ÅŸtÄ±r.
 
-1-PharmaceuticalWarehouseManagementSystem.UI bölümünde appsettings.json dosyası açılır ve ConnectionStrings'deki veri tabanı ve giriş bilgileri düzenlenir.
-2-Update-Database yapılır.
-3-Proje çalıştırıldığında dataseed işlemi yapıldığı için Email:admin@mail.com Password:123 Role:Admin / Email:User@mail.com Password:123 Role:User giriş bilgileri ile giriş yapılabilir.
+Projeyi Ã‡alÄ±ÅŸtÄ±rmak iÃ§in,
+
+1-PharmaceuticalWarehouseManagementSystem.UI bÃ¶lÃ¼mÃ¼nde appsettings.json dosyasÄ± aÃ§Ä±lÄ±r ve ConnectionStrings'deki veri tabanÄ± ve giriÅŸ bilgileri dÃ¼zenlenir.
+2-Update-Database yapÄ±lÄ±r.
+3-Proje Ã§alÄ±ÅŸtÄ±rÄ±ldÄ±ÄŸÄ±nda dataseed iÅŸlemi yapÄ±ldÄ±ÄŸÄ± iÃ§in Email:admin@mail.com Password:123 Role:Admin / Email:User@mail.com Password:123 Role:User giriÅŸ bilgileri ile giriÅŸ yapÄ±labilir.
 
 
